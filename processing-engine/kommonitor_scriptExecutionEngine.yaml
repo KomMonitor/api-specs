@@ -1,0 +1,348 @@
+swagger: '2.0'
+info:
+  description: "erster Entwurf einer Script Execution Engine API, die Script COde ausführen kann."
+  version: "0.0.1"
+  title: "KomMonitor Script Execution Engine API"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "christian.danowski-buhren@hs-bochum.de"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8086"
+basePath: "/processing"
+tags:
+- name: "script-engine"
+  description: "Execute scripts"
+schemes:
+- "http"
+- "https"
+securityDefinitions:
+  # basicAuth: abcdef12345
+   basicAuth:
+     type: basic
+
+security:
+  - basicAuth: []
+
+paths:
+
+######## FEEDBACK EMAIL SUPPORT
+  /feedback-mail:
+      post:
+        tags:
+        - "feedback-mail"
+        summary: "Send Feedback Mail."
+        description: "Send Feedback Mail."
+        operationId: "postFeedbackMail"
+        consumes:
+        - "application/json"
+        parameters:
+        - name: "mail-input"
+          in: "body"
+          description: "details necessary to send the mail"
+          required: true
+          schema:
+            $ref: '#/definitions/FeedbackMailInputType'
+        responses:
+          200:
+            description: "OK"
+          401:
+            $ref: "#/responses/UnauthorizedError"
+          405:
+            description: "Invalid input"
+
+######## PROCESS SCRIPTS
+  /script-engine/customizableIndicatorComputation:
+      post:
+        tags:
+        - "script-engine"
+        summary: "Initiate execution of a customizable indicator computation."
+        description: "Initiate execution of a customizable indicator computation."
+        operationId: "postCustomizableIndicatorComputation"
+        consumes:
+        - "application/json"
+        parameters:
+        - name: "script-input"
+          in: "body"
+          description: "details necessary to trigger script execution"
+          required: true
+          schema:
+            $ref: '#/definitions/CustomizableIndicatorComputationInputType'
+        responses:
+          201:
+            description: "Created"
+            headers:
+              location:
+                type: string
+                description: identifier of the created job execution
+          401:
+            $ref: "#/responses/UnauthorizedError"
+          405:
+            description: "Invalid input"
+
+  /script-engine/customizableIndicatorComputation/{jobId}:
+      parameters:
+        - name: "jobId"
+          in: "path"
+          description: "unique identifier of the job that performs indicator computation"
+          required: true
+          type: string
+      get:
+        tags:
+        - "script-engine"
+        summary: "retrieve status information and/or results about executing customizable indicator computation."
+        description: "retrieve status information and/or results about executing customizable indicator computation."
+        operationId: "getCustomizableIndicatorComputation"
+        produces:
+        - "application/json"
+        responses:
+          200:
+            description: "OK"
+            schema:
+              $ref: '#/definitions/CustomizableIndicatorComputationStatusResultType'
+          400:
+            description: "Invalid status value"
+
+  /script-engine/defaultIndicatorComputation:
+      post:
+        tags:
+        - "script-engine"
+        summary: "Initiate execution of a default indicator computation."
+        description: "Initiate execution of a default indicator computation."
+        operationId: "postDefaultIndicatorComputation"
+        consumes:
+        - "application/json"
+        parameters:
+        - name: "script-input"
+          in: "body"
+          description: "details necessary to trigger script execution"
+          required: true
+          schema:
+            $ref: '#/definitions/DefaultIndicatorComputationInputType'
+        responses:
+          201:
+            description: "Created"
+            headers:
+              location:
+                type: string
+                description: identifier of the created job execution
+          401:
+            $ref: "#/responses/UnauthorizedError"
+          405:
+            description: "Invalid input"
+
+  /script-engine/defaultIndicatorComputation/{jobId}:
+      parameters:
+        - name: "jobId"
+          in: "path"
+          description: "unique identifier of the job that performs indicator computation"
+          required: true
+          type: string
+      get:
+        tags:
+        - "script-engine"
+        summary: "retrieve status information and/or results about executing default indicator computation."
+        description: "retrieve status information and/or results about executing default indicator computation."
+        operationId: "getDefaultIndicatorComputation"
+        produces:
+        - "application/json"
+        responses:
+          200:
+            description: "OK"
+            schema:
+              $ref: '#/definitions/DefaultIndicatorComputationStatusResultType'
+          400:
+            description: "Invalid status value"
+
+responses:
+  UnauthorizedError:
+    description: API key is missing or invalid
+    headers:
+      WWW_Authenticate:
+        type: string
+
+definitions:
+  CustomizableIndicatorComputationInputType:
+    type: object
+    description: required input parameters to execute a customizable indicator computation
+    required:
+      - scriptId
+      - targetDate
+      - targetSpatialUnitId
+      - basicIndicatorIds
+      - georesourceIdss
+      - customProcessProperties
+    properties:
+      scriptId:
+        type: string
+        description: the identifier of the script that contains the code to perform the target indicator computation.
+      targetDate:
+        type: string
+        format: date
+        description: a timestamp representing the date for which the indicator shall be computed according to ISO 8601 (e.g. 2018-01-30)
+      targetSpatialUnitId:
+        type: string
+        description: the identifier of the target spatial unit for which the indicator shall be computed.
+      baseIndicatorIds:
+        type: array
+        description: a list of identifiers of base indicators that are required to compute the target indicator. While the parameter is required, the list may be empty if no other indicator is required for the computation.
+        items:
+          type: string
+      georesourceIds:
+        type: array
+        description: a list of identifiers of georesources that are required to compute the target indicator. While the parameter is required, the list may be empty if no georesource is required for the computation.
+        items:
+          type: string
+      customProcessProperties:
+        type: array
+        description: a list of custom process parameters. Using different values, a caller may infect the target indicator computation.
+        items:
+          $ref: "#/definitions/ProcessPropertyType"
+
+  ProcessPropertyType:
+    type: object
+    required:
+      - name
+      - dataType
+      - value
+    properties:
+      name:
+        type: string
+        description: the name of the process input parameter
+      dataType:
+        type: string
+        description: the data type of the process input
+        enum:
+          - string
+          - boolean
+          - integer
+          - double
+      value:
+        type: string
+        description: the value of the process parameter according to the specified data type as string value.
+
+  CustomizableIndicatorComputationStatusResultType:
+    type: object
+    description: status information about the execution of the target indicator. If the result was computed then it is also included within the response object.
+    required:
+      - jobId
+      - status
+      - progress
+      - result_geoJSON
+    properties:
+      jobId:
+        type: string
+        description: the identifier of the job that executes the target indicator computation.
+      status:
+        type: string
+        description: the current status of execution. Possible values are ACCEPTED, RUNNING, FINISHED, ERROR.
+        enum:
+          - ACCEPTED
+          - RUNNING
+          - FINISHED
+          - ERROR
+      progress:
+        type: number
+        format: int32
+        description: the progress of indicator computation in percent.
+      result_geoJSON:
+        type: string
+        description: the computed target indicator for the target spatial unit as valid GeoJSON string.
+      error:
+        type: string
+        description: an error message if an error occured during indicator computation. It is only included in the response object if an error occured.
+
+  DefaultIndicatorComputationInputType:
+    type: object
+    description: required input parameters to execute a default indicator computation. Default means that the process parameters/properties that infect the indicator computation are set to default values.
+    required:
+      - scriptId
+      - targetIndicatorId
+      - targetDate
+      - basicIndicatorIds
+      - georesourceIds
+      - defaultProcessProperties
+    properties:
+      scriptId:
+        type: string
+        description: the identifier of the script that contains the code to perform the target indicator computation.
+      targetIndicatorId:
+        type: string
+        description: the identifier of the target indicator that can be computed by the associated script.
+      targetDate:
+        type: string
+        format: date
+        description: a timestamp representing the date for which the indicator shall be computed according to ISO 8601 (e.g. 2018-01-30)
+      baseIndicatorIds:
+        type: array
+        description: a list of identifiers of base indicators that are required to compute the target indicator. While the parameter is required, the list may be empty if no other indicator is required for the computation.
+        items:
+          type: string
+      georesourceIds:
+        type: array
+        description: a list of identifiers of georesources that are required to compute the target indicator. While the parameter is required, the list may be empty if no georesource is required for the computation.
+        items:
+          type: string
+      defaultProcessProperties:
+        type: array
+        description: a list of process parameters utilizing their default values.
+        items:
+          $ref: "#/definitions/ProcessPropertyType"
+
+  DefaultIndicatorComputationStatusResultType:
+    type: object
+    description: status information about the default execution of the target indicator.
+    required:
+      - jobId
+      - status
+      - progress
+      - result_url
+    properties:
+      jobId:
+        type: string
+        description: the identifier of the job that executes the default indicator computation for all applicable spatial units.
+      status:
+        type: string
+        description: the current status of execution. Possible values are ACCEPTED, RUNNING, FINISHED, ERROR.
+        enum:
+          - ACCEPTED
+          - RUNNING
+          - FINISHED
+          - ERROR
+      progress:
+        type: number
+        format: int32
+        description: the progress of indicator computation in percent.
+      result_url:
+        type: string
+        description: the full URL to the freshly computed and persisted indicator.
+      error:
+        type: string
+        description: an error message if an error occured during indicator computation. It is only included in the response object if an error occured.
+
+  FeedbackMailInputType:
+    type: object
+    description: input details for feedback mail.
+    required:
+      - recipientMail
+      - body
+      - subject
+    properties:
+      recipientMail:
+        type: string
+        description: the mail address of the recipient.
+      body:
+        type: string
+        description: the mail message body.
+      subject:
+        type: string
+        description: the mail subject.
+      attachment:
+        type: "string"
+        description: "an optional attachment as Base64 encoded String."  
+
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
