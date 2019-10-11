@@ -619,9 +619,10 @@ definitions:
           - GML
           - EXCEL
           - CSV
+      format:
+        $ref: "#/definitions/FormatType"
       payload:
-        type: string
-        description: "The payload with matching content according to selected sourceFormat (i.e. an URL to a WFS, or Base64 encoded String of a zipped ShapeFile or GeoJSON)"
+        $ref: "#/definitions/PayloadType"
       featureDatasetReference:
         type: string
         description: "If the data source configured via sourceFormat and payload has more than one geodata source (e.g. multiple layers, featureTypes, database tables, etc.), the respective name/reference of the target feature dataset must be submitted here"
@@ -637,3 +638,31 @@ definitions:
       validEndDatePropertyName:
         type: string
         description: "The property that contains information about each feature's period of validity end date - might be null to indicator that feature is most current feature (optional, can also be configured globally for all features in POST and PUT requests)"
+
+  FormatType:
+    type: "object"
+    required:
+      - mimeType
+    properties:
+      mimeType:
+        type: string
+        description: "The MIME-Type of the source format according to https://www.iana.org/assignments/media-types/media-types.xhtml"
+      schema:
+        type: string
+        description: "The schema of the source format"
+      encoding:
+        type: string
+        description: "The encoding of the source format"
+
+  PayloadType:
+    type: "object"
+    properties:
+      inputType:
+        type: string
+        description: "Specifies the the way the payload content will be provided. Possible values are 'DATA' for providing data inline or 'REFERENCE' to specifiy an URL that references some data"
+        enum:
+          - DATA
+          - REFERENCE
+      payload:
+        type: string
+        description: "The payload with matching content according to selected sourceFormat (i.e. an URL to a WFS, or Base64 encoded String of a zipped ShapeFile or GeoJSON)"
