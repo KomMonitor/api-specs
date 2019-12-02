@@ -384,7 +384,7 @@ definitions:
       - datasetName
       - periodOfValidity
       - metadata
-      - applicableTopics
+      - topicReference
       - jsonSchema
       - geoJsonString
     properties:
@@ -400,11 +400,9 @@ definitions:
         description: list of role identifiers that have read access rights for this dataset
         items:
           type: string
-      applicableTopics:
-        type: array
-        description: "array of thematic categories for which the dataset is applicable. Note that the used topicName has to be defined under /topics"
-        items:
-          type: string
+      topicReference:
+        type: string
+        description: "id of the last topic hierarchy entity"
       isPOI:
         type: boolean
         description: boolean value indicating if the dataset contains points of interest
@@ -452,7 +450,7 @@ definitions:
     required:
       - periodOfValidity
       - metadata
-      - applicableTopics
+      - topicReference
     properties:
       metadata:
         $ref: "#/definitions/CommonMetadataType"
@@ -461,11 +459,9 @@ definitions:
         description: list of role identifiers that have read access rights for this dataset
         items:
           type: string
-      applicableTopics:
-        type: array
-        description: "array of thematic categories for which the dataset is applicable. Note that the used topicName has to be defined under /topics"
-        items:
-          type: string
+      topicReference:
+        type: string
+        description: "id of the last topic hierarchy entity "
       isPOI:
         type: boolean
         description: boolean value indicating if the dataset contains points of interest
@@ -521,7 +517,7 @@ definitions:
       - georesourceId
       - metadata
       - availablePeriodsOfValidity
-      - applicableTopics
+      - topicReference
       - isPOI
       - wmsUrl
       - wfsUrl
@@ -536,11 +532,9 @@ definitions:
         $ref: "#/definitions/CommonMetadataType"
       availablePeriodsOfValidity:
         $ref: "#/definitions/AvailablePeriodsOfValidityType"
-      applicableTopics:
-        type: array
-        description: "array of thematic categories for which the dataset is applicable. Note that the used topicName has to be defined under /topics"
-        items:
-          type: string
+      topicReference:
+        type: string
+        description: "id of the last topic hierarchy entity "
       allowedRoles:
         type: array
         description: list of role identifiers that have read access rights for this dataset
@@ -699,7 +693,7 @@ definitions:
       - creationType
       - applicableSpatialUnits
       - applicableDates
-      - applicableTopics
+      - topicReference
       - ogcServices
       - abbreviation
       - isHeadlineIndicator
@@ -740,11 +734,9 @@ definitions:
         description: array of applicable dates (year and month and day as YEAR-MONTH-DAY) according to ISO 8601 (e.g. 2018-01-30)
         items:
           type: string
-      applicableTopics:
-        type: array
-        description: "array of thematic categories for which the dataset is applicable. Note that the used topicName has to be defined under /topics"
-        items:
-          type: string
+      topicReference:
+        type: string
+        description: "id of the last topic hierarchy entity "
       allowedRoles:
         type: array
         description: list of role identifiers that have read access rights for this dataset
@@ -842,7 +834,7 @@ definitions:
     required:
       - datasetName
       - applicableSpatialUnit
-      - applicableTopics
+      - topicReference
       - metadata
       - allowedRoles
       - processDescription
@@ -870,11 +862,9 @@ definitions:
       applicableSpatialUnit:
         type: string
         description: identifier/name of the spatial unit level
-      applicableTopics:
-        type: array
-        description: "array of thematic categories for which the dataset is applicable. Note that the used topicName has to be defined under /topics"
-        items:
-          type: string
+      topicReference:
+        type: string
+        description: "id of the last topic hierarchy entity "
       metadata:
         $ref: "#/definitions/CommonMetadataType"
       processDescription:
@@ -994,7 +984,7 @@ definitions:
   IndicatorPATCHInputType:
     type: "object"
     required:
-      - applicableTopics
+      - topicReference
       - metadata
       - allowedRoles
       - unit
@@ -1004,11 +994,9 @@ definitions:
       - interpretation
       - tags
     properties:
-      applicableTopics:
-        type: array
-        description: "array of thematic categories for which the dataset is applicable. Note that the used topicName has to be defined under /topics"
-        items:
-          type: string
+      topicReference:
+        type: string
+        description: "id of the last topic hierarchy entity "
       metadata:
         $ref: "#/definitions/CommonMetadataType"
       processDescription:
