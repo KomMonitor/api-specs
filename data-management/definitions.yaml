@@ -586,7 +586,7 @@ definitions:
         description: color name or color code (i.e. hex number) for lines of interest
       aoiColor:
         type: string
-        description: color name or color code (i.e. hex number) for areas of interest    
+        description: color name or color code (i.e. hex number) for areas of interest
       poiSymbolBootstrap3Name:
         type: string
         description: If georesource is a POI then custom POI marker symbol can be set by specifying the name of a Bootstrap 3 glyphicon symbol (i.e. "home" for a home symbol or "education" for a students hat symbol)
@@ -730,6 +730,7 @@ definitions:
     type: object
     required:
       - indicatorName
+      - characteristicValue
       - indicatorId
       - unit
       - metadata
@@ -747,6 +748,9 @@ definitions:
       indicatorName:
         type: "string"
         description: "name of the indicator"
+        characteristicValue:
+          type: string
+          description: the distuingishing characteristic value of the indicator
       indicatorId:
         type: string
         description: unique identifier of this resource
@@ -877,6 +881,7 @@ definitions:
     type: "object"
     required:
       - datasetName
+      - characteristicValue
       - applicableSpatialUnit
       - topicReference
       - metadata
@@ -893,6 +898,9 @@ definitions:
       datasetName:
         type: string
         description: the meaningful name of the indicator
+      characteristicValue:
+        type: string
+        description: the distuingishing characteristic value of the indicator
       indicatorType:
         type: string
         description: indicates whether the indicator is a status indicator (values represent the extent of the watched phenomenon for a certain point in time) or a dynamic indicator (values represent the change of extent of the watched phenomenon within a certain period of time)
@@ -1005,7 +1013,7 @@ definitions:
     properties:
       colorBrewerSchemeName:
         type: string
-        description: "the name of the colorBrewer color scheme jused to define the colors for classification (see project http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3 for colorSchemes). Set to 'INDIVIDUAL' if colors are set arbitrarily."
+        description: "the name of the colorBrewer color scheme used to define the colors for classification (see project http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3 for colorSchemes). Set to 'INDIVIDUAL' if colors are set arbitrarily."
       items:
         type: array
         description: "array of classification mapping items. The order of the items corresponds to indicator value intervals from low to high. The number of items represents the number of classes. In combination they represent the default classification and mapping to custom rating of the indicator values"
@@ -1038,6 +1046,12 @@ definitions:
       - interpretation
       - tags
     properties:
+      datasetName:
+        type: string
+        description: the meaningful name of the indicator
+      characteristicValue:
+        type: string
+        description: the distuingishing characteristic value of the indicator
       topicReference:
         type: string
         description: "id of the last topic hierarchy entity "
