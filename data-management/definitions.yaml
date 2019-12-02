@@ -181,7 +181,7 @@ definitions:
         type: array
         description: optional list of subTopics
         items:
-          $ref: '#/definitions/SubTopicInputType'
+          $ref: '#/definitions/TopicInputType'
 
   TopicOverviewType:
     type: "object"
@@ -203,47 +203,7 @@ definitions:
         type: array
         description: optional list of subTopics
         items:
-          $ref: '#/definitions/SubTopicOverviewType'
-
-  SubTopicInputType:
-    type: "object"
-    required:
-      - subTopicName
-      - subTopicDescription
-    properties:
-      subTopicName:
-        type: string
-        description: the subTopic name
-      subTopicDescription:
-        type: string
-        description: short description of the subTopic
-      subTopics:
-        type: array
-        description: optional list of subTopics
-        items:
-          $ref: '#/definitions/SubTopicInputType'
-
-  SubTopicOverviewType:
-    type: "object"
-    required:
-      - subTopicId
-      - subTopicName
-      - subTopicDescription
-    properties:
-      subTopicId:
-        type: string
-        description: the identifier of the subTopic
-      subTopicName:
-        type: string
-        description: the subTopic name
-      subTopicDescription:
-        type: string
-        description: short description of the subTopic
-      subTopics:
-        type: array
-        description: optional list of subTopics
-        items:
-          $ref: '#/definitions/SubTopicOverviewType'
+          $ref: '#/definitions/TopicOverviewType'
 
   RoleInputType:
     type: "object"
