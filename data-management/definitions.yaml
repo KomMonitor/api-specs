@@ -748,9 +748,9 @@ definitions:
       indicatorName:
         type: "string"
         description: "name of the indicator"
-        characteristicValue:
-          type: string
-          description: the distuingishing characteristic value of the indicator
+      characteristicValue:
+        type: string
+        description: the distuingishing characteristic value of the indicator
       indicatorId:
         type: string
         description: unique identifier of this resource
