@@ -407,6 +407,20 @@ definitions:
         type: boolean
         description: boolean value indicating if the dataset contains points of interest
         default: false
+      isLOI:
+        type: boolean
+        description: boolean value indicating if the dataset contains lines of interest
+        default: false
+      isAOI:
+        type: boolean
+        description: boolean value indicating if the dataset contains areas of interest
+        default: false
+      loiColor:
+        type: string
+        description: color name or color code (i.e. hex number) for lines of interest
+      aoiColor:
+        type: string
+        description: color name or color code (i.e. hex number) for areas of interest
       poiSymbolBootstrap3Name:
         type: string
         description: If georesource is a POI then custom POI marker symbol can be set by specifying the name of a Bootstrap 3 glyphicon symbol (i.e. "home" for a home symbol or "education" for a students hat symbol)
@@ -466,6 +480,20 @@ definitions:
         type: boolean
         description: boolean value indicating if the dataset contains points of interest
         default: false
+      isLOI:
+        type: boolean
+        description: boolean value indicating if the dataset contains lines of interest
+        default: false
+      isAOI:
+        type: boolean
+        description: boolean value indicating if the dataset contains areas of interest
+        default: false
+      loiColor:
+        type: string
+        description: color name or color code (i.e. hex number) for lines of interest
+      aoiColor:
+        type: string
+        description: color name or color code (i.e. hex number) for areas of interest
       poiSymbolBootstrap3Name:
         type: string
         description: If georesource is a POI then custom POI marker symbol can be set by specifying the name of a Bootstrap 3 glyphicon symbol (i.e. "home" for a home symbol or "education" for a students hat symbol)
@@ -519,6 +547,8 @@ definitions:
       - availablePeriodsOfValidity
       - topicReference
       - isPOI
+      - isLOI
+      - isAOI
       - wmsUrl
       - wfsUrl
     properties:
@@ -543,6 +573,20 @@ definitions:
       isPOI:
         type: boolean
         description: boolean value indicating if the dataset contains points of interest
+      isLOI:
+        type: boolean
+        description: boolean value indicating if the dataset contains lines of interest
+        default: false
+      isAOI:
+        type: boolean
+        description: boolean value indicating if the dataset contains areas of interest
+        default: false
+      loiColor:
+        type: string
+        description: color name or color code (i.e. hex number) for lines of interest
+      aoiColor:
+        type: string
+        description: color name or color code (i.e. hex number) for areas of interest    
       poiSymbolBootstrap3Name:
         type: string
         description: If georesource is a POI then custom POI marker symbol can be set by specifying the name of a Bootstrap 3 glyphicon symbol (i.e. "home" for a home symbol or "education" for a students hat symbol)
