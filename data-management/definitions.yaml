@@ -1052,6 +1052,16 @@ definitions:
       characteristicValue:
         type: string
         description: the distuingishing characteristic value of the indicator
+      indicatorType:
+        type: string
+        description: indicates whether the indicator is a status indicator (values represent the extent of the watched phenomenon for a certain point in time) or a dynamic indicator (values represent the change of extent of the watched phenomenon within a certain period of time)
+        enum:
+          - STATUS_ABSOLUTE
+          - DYNAMIC_ABSOLUTE
+          - STATUS_RELATIVE
+          - DYNAMIC_RELATIVE
+          - STATUS_STANDARDIZED
+          - DYNAMIC_STANDARDIZED  
       topicReference:
         type: string
         description: "id of the last topic hierarchy entity "
