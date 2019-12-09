@@ -418,6 +418,9 @@ definitions:
       loiColor:
         type: string
         description: color name or color code (i.e. hex number) for lines of interest
+      loiDashArrayString:
+        type: string
+        description: sring of line stroke dash array for lines of interest (e.g. 20,20; see https://developer.mozilla.org/de/docs/Web/SVG/Attribute/stroke-dasharray)    
       aoiColor:
         type: string
         description: color name or color code (i.e. hex number) for areas of interest
@@ -491,6 +494,9 @@ definitions:
       loiColor:
         type: string
         description: color name or color code (i.e. hex number) for lines of interest
+      loiDashArrayString:
+        type: string
+        description: sring of line stroke dash array for lines of interest (e.g. 20,20; see https://developer.mozilla.org/de/docs/Web/SVG/Attribute/stroke-dasharray)
       aoiColor:
         type: string
         description: color name or color code (i.e. hex number) for areas of interest
@@ -584,6 +590,9 @@ definitions:
       loiColor:
         type: string
         description: color name or color code (i.e. hex number) for lines of interest
+      loiDashArrayString:
+        type: string
+        description: sring of line stroke dash array for lines of interest (e.g. 20,20; see https://developer.mozilla.org/de/docs/Web/SVG/Attribute/stroke-dasharray)
       aoiColor:
         type: string
         description: color name or color code (i.e. hex number) for areas of interest
@@ -1061,7 +1070,7 @@ definitions:
           - STATUS_RELATIVE
           - DYNAMIC_RELATIVE
           - STATUS_STANDARDIZED
-          - DYNAMIC_STANDARDIZED  
+          - DYNAMIC_STANDARDIZED
       topicReference:
         type: string
         description: "id of the last topic hierarchy entity "
