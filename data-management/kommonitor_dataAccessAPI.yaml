@@ -1072,6 +1072,17 @@ paths:
               description: "Invalid status value"
             401:
               $ref: "#/responses/UnauthorizedError"
+      delete:
+        tags:
+        - "indicators"
+        summary: "Delete the features/contents of the selected indicator dataset for the selected spatial unit"
+        description: "Delete the features/contents of the selected indicator dataset for the selected spatial unit"
+        operationId: "deleteIndicatorByIdAndSpatialUnitId"
+        responses:
+          200:
+            description: "OK"
+          401:
+            $ref: "#/responses/UnauthorizedError"
 
   /indicators/{indicatorId}/{spatialUnitId}/without-geometry:
       parameters:
