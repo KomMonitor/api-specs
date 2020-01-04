@@ -485,7 +485,7 @@ definitions:
         $ref: "#/definitions/CommonMetadataType"
       datasetName:
         type: string
-        description: the meaningful name of the dataset  
+        description: the meaningful name of the dataset
       allowedRoles:
         type: array
         description: list of role identifiers that have read access rights for this dataset
@@ -1086,6 +1086,13 @@ definitions:
           - DYNAMIC_RELATIVE
           - STATUS_STANDARDIZED
           - DYNAMIC_STANDARDIZED
+      creationType:
+        type: string
+        description: indicates if the data is simply inserted (INSERTION), computed by an automated script (COMPUTATION) or automatically aggregated by a script (AGGREGATION)
+        enum:
+          - INSERTION
+          - COMPUTATION
+          - AGGREGATION    
       topicReference:
         type: string
         description: "id of the last topic hierarchy entity "
