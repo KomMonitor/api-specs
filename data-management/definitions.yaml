@@ -210,7 +210,7 @@ definitions:
         description: topic type indicating if the topic object is a subtopic or a main topic - only topics of type 'sub' shall be subTopics of topics with type 'main'
         enum:
           - main
-          - sub  
+          - sub
       subTopics:
         type: array
         description: optional list of subTopics
@@ -483,6 +483,9 @@ definitions:
     properties:
       metadata:
         $ref: "#/definitions/CommonMetadataType"
+      datasetName:
+        type: string
+        description: the meaningful name of the dataset  
       allowedRoles:
         type: array
         description: list of role identifiers that have read access rights for this dataset
