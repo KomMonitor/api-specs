@@ -641,18 +641,6 @@ paths:
       operationId: "getGeoresources"
       produces:
       - "application/json"
-      parameters:
-        - name: "topic"
-          in: "query"
-          description: "thematic topic to filter available geo-resource"
-          required: false
-          type: string
-          enum:
-            - demography
-            - environment
-            - habitation
-            - migration
-            - social
       responses:
         200:
           description: "OK"
@@ -918,18 +906,6 @@ paths:
         operationId: "getIndicators"
         produces:
         - "application/json"
-        parameters:
-          - name: "topic"
-            in: "query"
-            description: "thematic topic to filter available indicators"
-            required: false
-            type: string
-            enum:
-              - demography
-              - environment
-              - habitation
-              - migration
-              - social
         responses:
           200:
             description: "OK"
