@@ -110,6 +110,32 @@ paths:
           $ref: "#/responses/UnauthorizedError"
         400:
           description: "Invalid status value"
+    put:
+      tags:
+      - "topics"
+      summary: "Modify topic information"
+      description: "Modify topic information"
+      operationId: "updateTopic"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "topic-data"
+        in: "body"
+        description: "topic input data"
+        required: true
+        schema:
+          $ref: "./definitions.yaml#/definitions/TopicInputType"
+      responses:
+        200:
+          description: "OK"
+          headers:
+            location:
+              type: string
+              description: identifier of the modified topic
+        401:
+          $ref: "#/responses/UnauthorizedError"
+        405:
+          description: "Invalid input"
     delete:
       tags:
       - "topics"
