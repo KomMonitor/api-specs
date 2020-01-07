@@ -170,6 +170,7 @@ definitions:
     required:
       - topicName
       - topicDescription
+      - topicType
     properties:
       topicName:
         type: string
@@ -195,6 +196,7 @@ definitions:
       - topicId
       - topicName
       - topicDescription
+      - topicType
     properties:
       topicId:
         type: string
@@ -302,9 +304,6 @@ definitions:
       - spatialUnitLevel
       - periodOfValidity
       - metadata
-      - nextLowerHierarchyLevel
-      - nextUpperHierarchyLevel
-      - jsonSchema
       - geoJsonString
     properties:
       spatialUnitLevel:
@@ -331,8 +330,6 @@ definitions:
     type: "object"
     required:
       - metadata
-      - nextLowerHierarchyLevel
-      - nextUpperHierarchyLevel
     properties:
       metadata:
         $ref: "#/definitions/CommonMetadataType"
@@ -396,8 +393,6 @@ definitions:
       - datasetName
       - periodOfValidity
       - metadata
-      - topicReference
-      - jsonSchema
       - geoJsonString
     properties:
       datasetName:
@@ -479,7 +474,6 @@ definitions:
     required:
       - periodOfValidity
       - metadata
-      - topicReference
     properties:
       metadata:
         $ref: "#/definitions/CommonMetadataType"
@@ -884,7 +878,6 @@ definitions:
       - ID
       - NAME
       - validStartDate
-      - validEndDate
     properties:
       ID:
         type: string
@@ -905,19 +898,15 @@ definitions:
     type: "object"
     required:
       - datasetName
-      - characteristicValue
       - applicableSpatialUnit
       - topicReference
       - metadata
-      - allowedRoles
       - processDescription
       - unit
       - creationType
       - defaultClassificationMapping
-      - abbreviation
       - isHeadlineIndicator
       - interpretation
-      - tags
     properties:
       datasetName:
         type: string
@@ -1031,9 +1020,6 @@ definitions:
 
   DefaultClassificationMappingType:
     type: "object"
-    required:
-      - items
-      - colorBrewerSchemeName
     properties:
       colorBrewerSchemeName:
         type: string
@@ -1062,13 +1048,10 @@ definitions:
     required:
       - topicReference
       - metadata
-      - allowedRoles
       - unit
       - processDescription
-      - abbreviation
       - isHeadlineIndicator
       - interpretation
-      - tags
     properties:
       datasetName:
         type: string
@@ -1092,7 +1075,7 @@ definitions:
         enum:
           - INSERTION
           - COMPUTATION
-          - AGGREGATION    
+          - AGGREGATION
       topicReference:
         type: string
         description: "id of the last topic hierarchy entity "
