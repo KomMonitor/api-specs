@@ -304,7 +304,6 @@ definitions:
       - spatialUnitLevel
       - periodOfValidity
       - metadata
-      - geoJsonString
     properties:
       spatialUnitLevel:
         type: string
@@ -393,7 +392,6 @@ definitions:
       - datasetName
       - periodOfValidity
       - metadata
-      - geoJsonString
     properties:
       datasetName:
         type: string

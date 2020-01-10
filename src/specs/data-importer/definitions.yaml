@@ -155,12 +155,12 @@ definitions:
     type: object
     required:
       - name
-      - mimeType
+      - mimeTypes
     properties:
       name:
         type: string
         description: unique name of the converter
-      mimeType:
+      mimeTypes:
         type: array
         description: list of MIME-types of the source format according to https://www.iana.org/assignments/media-types/media-types.xhtml that are supported by the converter
         items:
