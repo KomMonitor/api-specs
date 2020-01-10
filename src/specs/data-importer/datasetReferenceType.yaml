@@ -1,0 +1,19 @@
+  DatasetReferenceType:
+    description: The respective name/reference of the target feature dataset in case of the underlying data source has more than one geodata source (e.g. multiple layers, featureTypes, database tables, etc.)
+    type: object
+    required:
+      - type
+      - value
+    properties:
+      type:
+        type: string
+        description: Type of the dataset reference. Can be an attribute for tabular data or FeatureType if the underlying datasource is Feature like.
+        enum:
+          - ATTRIBUTE
+          - FEATURE_TYPE
+      name:
+        type: string
+        description: name of the attribute that contains a certain value for referencing the target dataset
+      value:
+        type: string
+        description: the value that specifies the target dataset to be referenced
