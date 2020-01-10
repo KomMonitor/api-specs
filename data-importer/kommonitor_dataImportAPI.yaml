@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  description: "Data Import API that enables the import of spatial data (spatial units, georesources and indicators) from various datasoruces into the KomMonitor Data Management layer."
+  description: "Data Import API that enables the import of spatial data (spatial units, georesources and indicators) from various datasources into the KomMonitor Data Management layer."
   version: "0.0.1"
   title: "KomMonitor Data Import API"
   termsOfService: "http://swagger.io/terms/"
@@ -30,6 +30,7 @@ security:
 
 paths:
 
+  ######## SpatialUnits
   /spatial-units:
     post:
       tags:
