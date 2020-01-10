@@ -472,7 +472,6 @@ definitions:
   GeoresourcePATCHInputType:
     type: "object"
     required:
-      - periodOfValidity
       - metadata
     properties:
       metadata:
