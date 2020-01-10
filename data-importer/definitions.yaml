@@ -1,5 +1,4 @@
 definitions:
-
   Import_SpatialUnitPOSTInputType:
     description: Definitions for importing an new spatial unit
     type: object
@@ -10,7 +9,7 @@ definitions:
       - propertyMapping
     properties:
       spatialUnitPostBody:
-        $ref: '../data-management/definitions.yaml#/definitions/SpatialUnitPOSTInputType'
+        $ref: "../data-management/definitions.yaml#/definitions/SpatialUnitPOSTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
@@ -28,7 +27,7 @@ definitions:
       - propertyMapping
     properties:
       georesourcePostBody:
-        $ref: '../data-management/definitions.yaml#/definitions/GeoresourcePOSTInputType'
+        $ref: "../data-management/definitions.yaml#/definitions/GeoresourcePOSTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
@@ -46,7 +45,7 @@ definitions:
       - propertyMapping
     properties:
       indicatorPostBody:
-        $ref: '../data-management/definitions.yaml#/definitions/IndicatorPOSTInputType'
+        $ref: "../data-management/definitions.yaml#/definitions/IndicatorPOSTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
@@ -68,7 +67,7 @@ definitions:
           - FILE
           - FTP
           - HTTP
-          - INLINE  
+          - INLINE
       parameters:
         type: array
         description: list with descriptions of additional parameters that are required for retrieving datasets from a datasource
@@ -208,8 +207,9 @@ definitions:
           $ref: "#/definitions/ParameterValueType"
 
   ParameterType:
-    description: Definition of an additional parameter that is either required for retrieving a dataset from a certain datsource |
-     or for converting the dataset in a certain format (e.g. separator for CSV-based datasets)
+    description:
+      Definition of an additional parameter that is either required for retrieving a dataset from a certain datsource |
+      or for converting the dataset in a certain format (e.g. separator for CSV-based datasets)
     type: object
     required:
       - name
@@ -228,10 +228,11 @@ definitions:
           - number
           - boolean
           - array
-      
+
   ParameterValueType:
-    description: Additional parameter as key-value-pair that is either required for retrieving a dataset from a certain datsource |
-     or for converting the dataset in a certain format (e.g. separator for CSV-based datasets)
+    description:
+      Additional parameter as key-value-pair that is either required for retrieving a dataset from a certain datsource |
+      or for converting the dataset in a certain format (e.g. separator for CSV-based datasets)
     type: object
     required:
       - name
