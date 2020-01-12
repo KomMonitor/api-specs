@@ -172,6 +172,9 @@ definitions:
       - topicDescription
       - topicType
     properties:
+      topicId:
+        type: string
+        description: the topic identifier
       topicName:
         type: string
         description: the topic name
