@@ -1,6 +1,6 @@
 definitions:
   Import_SpatialUnitPOSTInputType:
-    description: Definitions for importing an new spatial unit
+    description: Definitions for importing an new spatial unit from a certain datasource
     type: object
     required:
       - spatialUnitPostBody
@@ -10,6 +10,24 @@ definitions:
     properties:
       spatialUnitPostBody:
         $ref: "../data-management/definitions.yaml#/definitions/SpatialUnitPOSTInputType"
+      dataSource:
+        $ref: "#/definitions/DataSourceDefinitionType"
+      converter:
+        $ref: "#/definitions/ConverterDefinitionType"
+      propertyMapping:
+        $ref: "#/definitions/SpatialResourcePropertyMappingType"
+
+  Update_SpatialUnitPOSTInputType:
+    description: Definitions for updating an spatial unit from a certain datasource
+    type: object
+    required:
+      - periodOfValidity
+      - dataSource
+      - converter
+      - propertyMapping
+    properties:
+      spatialUnitPutBody:
+        $ref: "../data-management/definitions.yaml#/definitions/SpatialUnitPUTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
@@ -35,8 +53,44 @@ definitions:
       propertyMapping:
         $ref: "#/definitions/SpatialResourcePropertyMappingType"
 
+  Update_GeoresourcePOSTInputType:
+    description: Definitions for updating a georesource from a certain datasource
+    type: object
+    required:
+      - georesourcePutBody
+      - dataSource
+      - converter
+      - propertyMapping
+    properties:
+      georesourcePostBody:
+        $ref: "../data-management/definitions.yaml#/definitions/GeoresourcePUTInputType"
+      dataSource:
+        $ref: "#/definitions/DataSourceDefinitionType"
+      converter:
+        $ref: "#/definitions/ConverterDefinitionType"
+      propertyMapping:
+        $ref: "#/definitions/SpatialResourcePropertyMappingType"
+
   Import_IndicatorPOSTInputType:
-    description: Definitions for importing an new indicator
+    description: Definitions for importing an new indicator from a certain datasource
+    type: object
+    required:
+      - indicatorPostBody
+      - dataSource
+      - converter
+      - propertyMapping
+    properties:
+      indicatorPostBody:
+        $ref: "../data-management/definitions.yaml#/definitions/IndicatorPOSTInputType"
+      dataSource:
+        $ref: "#/definitions/DataSourceDefinitionType"
+      converter:
+        $ref: "#/definitions/ConverterDefinitionType"
+      propertyMapping:
+        $ref: "#/definitions/IndicatorPropertyMappingType"
+
+  Update_IndicatorPOSTInputType:
+    description: Definitions for updating a new indicator from a certain datasource
     type: object
     required:
       - indicatorPostBody
