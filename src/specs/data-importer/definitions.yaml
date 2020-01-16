@@ -21,11 +21,15 @@ definitions:
     description: Definitions for updating an spatial unit from a certain datasource
     type: object
     required:
+      - spatialUnitId
       - spatialUnitPutBody
       - dataSource
       - converter
       - propertyMapping
     properties:
+      spatialUnitId:
+        type: string
+        description: the unique ID of the spatial unit that shall be updated
       spatialUnitPutBody:
         $ref: "../data-management/definitions.yaml#/definitions/SpatialUnitPUTInputType"
       dataSource:
@@ -44,7 +48,7 @@ definitions:
       - converter
       - propertyMapping
     properties:
-      georesourcePutBody:
+      georesourcePostBody:
         $ref: "../data-management/definitions.yaml#/definitions/GeoresourcePOSTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
@@ -57,11 +61,15 @@ definitions:
     description: Definitions for updating a georesource from a certain datasource
     type: object
     required:
+      - georesourceId
       - georesourcePutBody
       - dataSource
       - converter
       - propertyMapping
     properties:
+      georesourceId:
+        type: string
+        description: the unique ID of the georesource that shall be updated
       georesourcePutBody:
         $ref: "../data-management/definitions.yaml#/definitions/GeoresourcePUTInputType"
       dataSource:
@@ -93,11 +101,15 @@ definitions:
     description: Definitions for updating a new indicator from a certain datasource
     type: object
     required:
+      - indicatorId
       - indicatorPutBody
       - dataSource
       - converter
       - propertyMapping
     properties:
+      indicatorId:
+        type: string
+        description: the unique ID of the indicator that shall be updated
       indicatorPutBody:
         $ref: "../data-management/definitions.yaml#/definitions/IndicatorPUTInputType"
       dataSource:
