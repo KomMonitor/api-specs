@@ -64,6 +64,42 @@ paths:
           description: Unexpected error
           schema:
             $ref: "./definitions.yaml#/definitions/Error"
+  /upload:
+    post:
+      tags:
+        - "upload"
+      summary: "Upload a file"
+      description: "Upload a file that can be used as datasource for importing or updating a KomMonitor resource."
+      operationId: "upload"
+      consumes:
+        - "multipart/form-data"
+      parameters:
+        - name: "file"
+          description: The file to upload
+          in: "formData"
+          type: "file"
+          required: true
+        - name: "filename"
+          in: "formData"
+          description: "The name that will be used for storing the file on the server"
+          type: string
+          required: true
+      responses:
+        201:
+          description: "Created"
+          schema:
+            type: string
+            description: name of the cretated file
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "./definitions.yaml#/definitions/Error"
+        401:
+          $ref: "#/responses/UnauthorizedError"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "./definitions.yaml#/definitions/Error"
 
   /spatial-units/update:
     post:
@@ -213,7 +249,7 @@ paths:
         - "indicators"
       summary: "Update a new indicator dataset"
       description: "Update an indicator dataset for a certain period of time and spatial unit/level. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls PUT /indicators of KomMonitor Data Management API"
-      operationId: "importIndicator"
+      operationId: "updateIndicator"
       consumes:
         - "application/json"
       parameters:
