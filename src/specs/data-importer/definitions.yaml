@@ -204,7 +204,6 @@ definitions:
     required:
       - spatialReferenceKeyProperty
       - indicatorValueProperty
-      - timestampProperty
     properties:
       spatialReferenceKeyProperty:
         type: string
@@ -212,6 +211,10 @@ definitions:
       indicatorValueProperty:
         type: string
         description: property that contains the numeric value of the indicator
+      timestamp:
+        type: string
+        format: date
+        description: optional timestamp value for the indicator that will be used if there is no property containing timestamp information
       timestampProperty:
         type: string
         description: property that contains the timestamp (year, month and date) according to ISO 8601 (e.g. 2018-01-30)
