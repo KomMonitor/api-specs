@@ -563,6 +563,17 @@ paths:
           description: "Invalid status value"
         401:
           $ref: "#/responses/UnauthorizedError"
+    delete:
+      tags:
+      - "spatial-units"
+      summary: "Delete all features/contents of the selected spatial-unit dataset"
+      description: "Delete all features/contents of the selected spatial-unit dataset"
+      operationId: "deleteAllSpatialUnitFeaturesById"
+      responses:
+        200:
+          description: "OK"
+        401:
+          $ref: "#/responses/UnauthorizedError"
 
   /spatial-units/{spatialUnitId}/{year}/{month}/{day}:
     parameters:
@@ -826,6 +837,17 @@ paths:
             type: string
         400:
           description: "Invalid status value"
+        401:
+          $ref: "#/responses/UnauthorizedError"
+    delete:
+      tags:
+      - "georesources"
+      summary: "Delete all features/contents of the selected geo-resource dataset"
+      description: "Delete all features/contents of the selected geo-resource dataset"
+      operationId: "deleteAllGeoresourceFeaturesById"
+      responses:
+        200:
+          description: "OK"
         401:
           $ref: "#/responses/UnauthorizedError"
 
