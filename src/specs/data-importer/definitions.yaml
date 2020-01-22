@@ -208,6 +208,18 @@ definitions:
       spatialReferenceKeyProperty:
         type: string
         description: property that contains the identifier of the spatial feature to which the values shall be applied
+      timeseriesMappings:
+        type: array
+        description: list of property mappings for timeseries values
+        items:
+          $ref: "#/definitions/TimeseriesMappingType"
+
+  TimeseriesMappingType:
+    description: Definitions for mapping datasource properties to required properties for timeseries values
+    type: object
+    required:
+      - indicatorValueProperty
+    properties:
       indicatorValueProperty:
         type: string
         description: property that contains the numeric value of the indicator
