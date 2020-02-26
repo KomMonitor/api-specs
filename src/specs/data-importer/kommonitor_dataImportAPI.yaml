@@ -64,6 +64,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: "./definitions.yaml#/definitions/Error"
+      
+  ######## Upload
   /upload:
     post:
       tags:
@@ -100,6 +102,25 @@ paths:
           description: Unexpected error
           schema:
             $ref: "./definitions.yaml#/definitions/Error"
+
+    get:
+      tags:
+        - "upload"
+      summary: "Get a list of files"
+      description: "Retrieve a list of information for all uploaded files"
+      operationId: "getUploadedFiles"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: array
+            description: list of filenames
+            items:
+              $ref: "./definitions.yaml#/definitions/UploadedFileType"
+        401:
+          $ref: "#/responses/UnauthorizedError"
 
   /spatial-units/update:
     post:

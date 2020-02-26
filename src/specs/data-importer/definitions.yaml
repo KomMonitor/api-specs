@@ -311,6 +311,19 @@ definitions:
         type: string
         description: value of the parameter
 
+  UploadedFileType:
+    description: Definition of an uploaded file
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        description: name of the uploaded file
+      contentType:
+        type: string
+        description: Content type of the uploaded files
+
   Error:
     description: A default error that will be responded if an unexpected server error occurs
     type: object
