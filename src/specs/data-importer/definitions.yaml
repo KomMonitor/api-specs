@@ -16,6 +16,9 @@ definitions:
         $ref: "#/definitions/ConverterDefinitionType"
       propertyMapping:
         $ref: "#/definitions/SpatialResourcePropertyMappingType"
+      dryRun:
+        type: boolean
+        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
   Update_SpatialUnitPOSTInputType:
     description: Definitions for updating an spatial unit from a certain datasource
@@ -38,6 +41,9 @@ definitions:
         $ref: "#/definitions/ConverterDefinitionType"
       propertyMapping:
         $ref: "#/definitions/SpatialResourcePropertyMappingType"
+      dryRun:
+        type: boolean
+        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
   Import_GeoresourcePOSTInputType:
     description: Definitions for importing an new georesource
@@ -56,6 +62,9 @@ definitions:
         $ref: "#/definitions/ConverterDefinitionType"
       propertyMapping:
         $ref: "#/definitions/SpatialResourcePropertyMappingType"
+      dryRun:
+        type: boolean
+        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
   Update_GeoresourcePOSTInputType:
     description: Definitions for updating a georesource from a certain datasource
@@ -78,6 +87,9 @@ definitions:
         $ref: "#/definitions/ConverterDefinitionType"
       propertyMapping:
         $ref: "#/definitions/SpatialResourcePropertyMappingType"
+      dryRun:
+        type: boolean
+        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
   Import_IndicatorPOSTInputType:
     description: Definitions for importing an new indicator from a certain datasource
@@ -96,6 +108,9 @@ definitions:
         $ref: "#/definitions/ConverterDefinitionType"
       propertyMapping:
         $ref: "#/definitions/IndicatorPropertyMappingType"
+      dryRun:
+        type: boolean
+        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
   Update_IndicatorPOSTInputType:
     description: Definitions for updating a new indicator from a certain datasource
@@ -118,6 +133,9 @@ definitions:
         $ref: "#/definitions/ConverterDefinitionType"
       propertyMapping:
         $ref: "#/definitions/IndicatorPropertyMappingType"
+      dryRun:
+        type: boolean
+        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
   DataSourceType:
     description: Holds various information about the datasource for importing new resources
@@ -338,6 +356,24 @@ definitions:
       contentType:
         type: string
         description: Content type of the uploaded files
+
+  ImportResponseType:
+    description: Contains information about imported resource features
+    type: object
+    properties:
+      uri:
+        type: string
+        description: URIs of the newly created spatial unit resource
+      importedFeatures:
+        type: array
+        description: list of IDs that indicate those resource features that were imported succesfully
+        items:
+          type: string
+      failedFeatures:
+        type: array
+        description: list of IDs that indicate those resource features for which the import failed
+        items:
+          type: string
 
   Error:
     description: A default error that will be responded if an unexpected server error occurs

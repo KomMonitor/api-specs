@@ -47,80 +47,20 @@ paths:
           schema:
             $ref: "./definitions.yaml#/definitions/Import_SpatialUnitPOSTInputType"
       responses:
-        201:
-          description: "Created"
-          schema:
-            type: array
-            description: URIs of the newly created spatial unit resources
-            items:
-              type: string
-        400:
-          description: "Bad Request"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-        401:
-          $ref: "#/responses/UnauthorizedError"
-        default:
-          description: Unexpected error
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-      
-  ######## Upload
-  /upload:
-    post:
-      tags:
-        - "upload"
-      summary: "Upload a file"
-      description: "Upload a file that can be used as datasource for importing or updating a KomMonitor resource."
-      operationId: "upload"
-      consumes:
-        - "multipart/form-data"
-      parameters:
-        - name: "file"
-          description: The file to upload
-          in: "formData"
-          type: "file"
-          required: true
-        - name: "filename"
-          in: "formData"
-          description: "The name that will be used for storing the file on the server"
-          type: string
-          required: true
-      responses:
-        201:
-          description: "Created"
-          schema:
-            type: string
-            description: name of the cretated file
-        400:
-          description: "Bad Request"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-        401:
-          $ref: "#/responses/UnauthorizedError"
-        default:
-          description: Unexpected error
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-
-    get:
-      tags:
-        - "upload"
-      summary: "Get a list of files"
-      description: "Retrieve a list of information for all uploaded files"
-      operationId: "getUploadedFiles"
-      produces:
-        - "application/json"
-      responses:
         200:
           description: "OK"
           schema:
-            type: array
-            description: list of filenames
-            items:
-              $ref: "./definitions.yaml#/definitions/UploadedFileType"
+            $ref: "./definitions.yaml#/definitions/ImportResponseType"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "./definitions.yaml#/definitions/Error"
         401:
           $ref: "#/responses/UnauthorizedError"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "./definitions.yaml#/definitions/Error"
 
   /spatial-units/update:
     post:
@@ -142,10 +82,7 @@ paths:
         200:
           description: "OK"
           schema:
-            type: array
-            description: URIs of the updated spatial unit resources
-            items:
-              type: string
+            $ref: "./definitions.yaml#/definitions/ImportResponseType"
         400:
           description: "Bad Request"
           schema:
@@ -175,13 +112,10 @@ paths:
           schema:
             $ref: "./definitions.yaml#/definitions/Import_GeoresourcePOSTInputType"
       responses:
-        201:
-          description: "Created"
+        200:
+          description: "OK"
           schema:
-            type: array
-            description: URIs of the newly created georesources
-            items:
-              type: string
+            $ref: "./definitions.yaml#/definitions/ImportResponseType"
         400:
           description: "Bad Request"
           schema:
@@ -213,10 +147,7 @@ paths:
         200:
           description: "OK"
           schema:
-            type: array
-            description: URIs of the updated georesources
-            items:
-              type: string
+            $ref: "./definitions.yaml#/definitions/ImportResponseType"
         400:
           description: "Bad Request"
           schema:
@@ -246,13 +177,10 @@ paths:
           schema:
             $ref: "./definitions.yaml#/definitions/Import_IndicatorPOSTInputType"
       responses:
-        201:
-          description: "Created"
+        200:
+          description: "OK"
           schema:
-            type: array
-            description: URIs of the newly created indicator resources
-            items:
-              type: string
+            $ref: "./definitions.yaml#/definitions/ImportResponseType"
         400:
           description: "Bad Request"
           schema:
@@ -284,10 +212,7 @@ paths:
         200:
           description: "OK"
           schema:
-            type: array
-            description: URIs of the updated indicator resources
-            items:
-              type: string
+            $ref: "./definitions.yaml#/definitions/ImportResponseType"
         400:
           description: "Bad Request"
           schema:
@@ -299,6 +224,64 @@ paths:
           schema:
             $ref: "./definitions.yaml#/definitions/Error"
 
+  ######## UPLOAD
+  /upload:
+    post:
+      tags:
+        - "upload"
+      summary: "Upload a file"
+      description: "Upload a file that can be used as datasource for importing or updating a KomMonitor resource."
+      operationId: "upload"
+      consumes:
+        - "multipart/form-data"
+      parameters:
+        - name: "file"
+          description: The file to upload
+          in: "formData"
+          type: "file"
+          required: true
+        - name: "filename"
+          in: "formData"
+          description: "The name that will be used for storing the file on the server"
+          type: string
+          required: true
+      responses:
+        201:
+          description: "Created"
+          schema:
+            type: string
+            description: name of the created file
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "./definitions.yaml#/definitions/Error"
+        401:
+          $ref: "#/responses/UnauthorizedError"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "./definitions.yaml#/definitions/Error"
+
+    get:
+      tags:
+        - "upload"
+      summary: "Get a list of files"
+      description: "Retrieve a list of information for all uploaded files"
+      operationId: "getUploadedFiles"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: array
+            description: list of filenames
+            items:
+              $ref: "./definitions.yaml#/definitions/UploadedFileType"
+        401:
+          $ref: "#/responses/UnauthorizedError"
+
+  ######## CONVERTERS
   /converters:
     get:
       tags:
@@ -346,6 +329,7 @@ paths:
           schema:
             $ref: "./definitions.yaml#/definitions/Error"
 
+  ######## DATASOURCE TYPES
   /datasourceTypes:
     get:
       tags:
