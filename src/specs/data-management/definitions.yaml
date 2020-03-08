@@ -438,6 +438,10 @@ definitions:
       loiColor:
         type: string
         description: color name or color code (i.e. hex number) for lines of interest
+      loiWidth:
+        type: number
+        format: int32  
+        description: display width for lines of interest (number of pixels in leaflet)        
       loiDashArrayString:
         type: string
         description: sring of line stroke dash array for lines of interest (e.g. 20,20; see https://developer.mozilla.org/de/docs/Web/SVG/Attribute/stroke-dasharray)
@@ -515,6 +519,10 @@ definitions:
       loiColor:
         type: string
         description: color name or color code (i.e. hex number) for lines of interest
+      loiWidth:
+        type: number
+        format: int32  
+        description: display width for lines of interest (number of pixels in leaflet)    
       loiDashArrayString:
         type: string
         description: sring of line stroke dash array for lines of interest (e.g. 20,20; see https://developer.mozilla.org/de/docs/Web/SVG/Attribute/stroke-dasharray)
@@ -611,6 +619,10 @@ definitions:
       loiColor:
         type: string
         description: color name or color code (i.e. hex number) for lines of interest
+      loiWidth:
+        type: number
+        format: int32  
+        description: display width for lines of interest (number of pixels in leaflet)    
       loiDashArrayString:
         type: string
         description: sring of line stroke dash array for lines of interest (e.g. 20,20; see https://developer.mozilla.org/de/docs/Web/SVG/Attribute/stroke-dasharray)
