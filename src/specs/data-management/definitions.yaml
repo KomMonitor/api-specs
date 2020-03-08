@@ -187,6 +187,12 @@ definitions:
         enum:
           - main
           - sub
+      topicResource:
+        type: string
+        description: topic resource indicating if the topic object corresponds to an indicator or to a georesource
+        enum:
+          - indicator
+          - georesource
       subTopics:
         type: array
         description: optional list of subTopics
@@ -216,6 +222,12 @@ definitions:
         enum:
           - main
           - sub
+      topicResource:
+        type: string
+        description: topic resource indicating if the topic object corresponds to an indicator or to a georesource
+        enum:
+          - indicator
+          - georesource    
       subTopics:
         type: array
         description: optional list of subTopics
