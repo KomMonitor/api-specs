@@ -375,9 +375,9 @@ definitions:
         description: list of IDs that indicate those resource features that were imported succesfully
         items:
           type: string
-      failedFeatures:
+      errors:
         type: array
-        description: list of IDs that indicate those resource features for which the import failed
+        description: List of error messages that occurred during the import
         items:
           type: string
 
@@ -391,4 +391,10 @@ definitions:
       code:
         type: integer
       message:
+        description: General message that describes the main error
         type: string
+      errors:
+        type: array
+        description: List of error messages that occurred during the import
+        items:
+          type: string
