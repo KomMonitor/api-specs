@@ -7,6 +7,7 @@ definitions:
       - dataSource
       - converter
       - propertyMapping
+      - dryRun
     properties:
       spatialUnitPostBody:
         $ref: "../data-management/definitions.yaml#/definitions/SpatialUnitPOSTInputType"
@@ -29,6 +30,7 @@ definitions:
       - dataSource
       - converter
       - propertyMapping
+      - dryRun
     properties:
       spatialUnitId:
         type: string
@@ -53,6 +55,7 @@ definitions:
       - dataSource
       - converter
       - propertyMapping
+      - dryRun
     properties:
       georesourcePostBody:
         $ref: "../data-management/definitions.yaml#/definitions/GeoresourcePOSTInputType"
@@ -75,6 +78,7 @@ definitions:
       - dataSource
       - converter
       - propertyMapping
+      - dryRun
     properties:
       georesourceId:
         type: string
@@ -99,6 +103,7 @@ definitions:
       - dataSource
       - converter
       - propertyMapping
+      - dryRun
     properties:
       indicatorPostBody:
         $ref: "../data-management/definitions.yaml#/definitions/IndicatorPOSTInputType"
@@ -121,6 +126,7 @@ definitions:
       - dataSource
       - converter
       - propertyMapping
+      - dryRun
     properties:
       indicatorId:
         type: string
