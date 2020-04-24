@@ -706,6 +706,8 @@ definitions:
         type: string
         enum:
           - "ARBITRARY"
+          - "DAILY"
+          - "WEEKLY"
           - "MONTHLY"
           - "QUARTERLY"
           - "HALF_YEARLY"
