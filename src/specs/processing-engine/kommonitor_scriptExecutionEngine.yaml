@@ -171,7 +171,7 @@ definitions:
       - targetDate
       - targetSpatialUnitId
       - basicIndicatorIds
-      - georesourceIdss
+      - georesourceIds
       - customProcessProperties
     properties:
       scriptId:
@@ -263,6 +263,7 @@ definitions:
       - basicIndicatorIds
       - georesourceIds
       - defaultProcessProperties
+      - useAggregationForHigherSpatialUnits
     properties:
       scriptId:
         type: string
@@ -289,6 +290,9 @@ definitions:
         description: a list of process parameters utilizing their default values.
         items:
           $ref: "#/definitions/ProcessPropertyType"
+      useAggregationForHigherSpatialUnits:
+        type: boolean
+        description: if 'false', then the indicator value shall be computed for each spatial unit individually. If 'true', then only the 'lowestSpatialUnit' is computed and the indicator values for each hierarchically higher spatial unit will be aggregated from the lowest unit 
 
   DefaultIndicatorComputationStatusResultType:
     type: object
