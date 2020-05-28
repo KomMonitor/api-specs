@@ -205,6 +205,7 @@ definitions:
     required:
       - idProperty
       - nameProperty
+      - keepAttributes
     properties:
       identifierProperty:
         type: string
@@ -221,6 +222,14 @@ definitions:
       arisenFromProperty:
         type: string
         description: the property that contains an ID that references a former spatial feature that over time evolved into the respective feature
+      keepAttributes:
+        type: boolean
+        description: indicates if all attributes of the feature should be kept (note, if true, you can't specify an alias for the attributes, like you would do for the attribute mappings)
+      attributes:
+        type: array
+        description: list of additional attribute mappings (will be skipped, if `keepAttributes` is true)
+        items:
+          $ref: "#/definitions/AttributeMappingType"
 
   IndicatorPropertyMappingType:
     description: Definitions for mapping datasource properties to required properties for indicators
@@ -237,6 +246,11 @@ definitions:
         description: list of property mappings for timeseries values
         items:
           $ref: "#/definitions/TimeseriesMappingType"
+      attributeMappings:
+        type: array
+        description: list of additional attribute mappings
+        items:
+          $ref: "#/definitions/AttributeMappingType"
 
   TimeseriesMappingType:
     description: Definitions for mapping datasource properties to required properties for timeseries values
@@ -254,6 +268,28 @@ definitions:
       timestampProperty:
         type: string
         description: property that contains the timestamp (year, month and date) according to ISO 8601 (e.g. 2018-01-30)
+
+  AttributeMappingType:
+    description: Definitions for mapping of additional attributes of datasets from a data source
+    type: object
+    required:
+      - name
+      - type
+    properties:
+      name:
+        type: string
+        description: name of the attribute from the origin dataset
+      mappingName:
+        type: string
+        description: name that should be used for importing the attribute into KomMonitor
+      type:
+        type: string
+        description: data type of the parameter
+        enum:
+          - string
+          - integer
+          - float
+          - date
 
   ConverterType:
     description: Conerverter that enables the converting of a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators
