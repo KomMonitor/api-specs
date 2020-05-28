@@ -205,6 +205,7 @@ definitions:
     required:
       - idProperty
       - nameProperty
+      - keepAttributes
     properties:
       identifierProperty:
         type: string
@@ -221,9 +222,12 @@ definitions:
       arisenFromProperty:
         type: string
         description: the property that contains an ID that references a former spatial feature that over time evolved into the respective feature
-      attributeMappings:
+      keepAttributes:
+        type: boolean
+        description: indicates if all attributes of the feature should be kept (note, if true, you can't specify an alias for the attributes, like you would do for the attribute mappings)
+      attributes:
         type: array
-        description: list of additional attribute mappings
+        description: list of additional attribute mappings (will be skipped, if `keepAttributes` is true)
         items:
           $ref: "#/definitions/AttributeMappingType"
 
