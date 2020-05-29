@@ -206,6 +206,7 @@ definitions:
       - idProperty
       - nameProperty
       - keepAttributes
+      - keepMissingOrNullValueAttributes
     properties:
       identifierProperty:
         type: string
@@ -225,6 +226,9 @@ definitions:
       keepAttributes:
         type: boolean
         description: indicates if all attributes of the feature should be kept (note, if true, you can't specify an alias for the attributes, like you would do for the attribute mappings)
+      keepMissingOrNullValueAttributes:
+        type: boolean
+        description: Indicates if missing attributes or attributes with a null value should be kept. If true, missing attributes will be added with a null value and attributes that hold a null value will be kept. Will be ignored if `keepAttributes` is true, since alle values would be kept anyway.
       attributes:
         type: array
         description: list of additional attribute mappings (will be skipped, if `keepAttributes` is true)
@@ -237,6 +241,7 @@ definitions:
     required:
       - spatialReferenceKeyProperty
       - indicatorValueProperty
+      - keepMissingOrNullValueIndicator
     properties:
       spatialReferenceKeyProperty:
         type: string
@@ -246,6 +251,9 @@ definitions:
         description: list of property mappings for timeseries values
         items:
           $ref: "#/definitions/TimeseriesMappingType"
+      keepMissingOrNullValueIndicator:
+        type: boolean
+        description: Indicates if missing Indicators or Indicators with a null value should be kept. Missing Indicators will be added with a null value and Indicators that hold a null value will be kept.
       attributeMappings:
         type: array
         description: list of additional attribute mappings
@@ -414,6 +422,11 @@ definitions:
       errors:
         type: array
         description: List of error messages that occurred during the import
+        items:
+          type: string
+      warnings:
+        type: array
+        description: List of warning messages that occurred during the import
         items:
           type: string
 
