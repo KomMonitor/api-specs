@@ -238,29 +238,16 @@ definitions:
     type: "object"
     required:
       - roleName
-      - accessibleGeoresources
-      - accessibleIndicators
     properties:
       roleName:
         type: string
         description: the role name
-      accessibleGeoresources:
-        type: array
-        description: mandatory list of identifiers of georesources that this role is allowed to retrieve. Specify 'ALL' to enable access to all existing georesources. If unspecified, than full content restriction is assumed (this means that this role cannot access any content).
-        items:
-          type: string
-      accessibleIndicators:
-        type: array
-        description: mandatory list of identifiers of indicators that this role is allowed to retrieve. Specify 'ALL' to enable access to all existing georesources. If unspecified, than full content restriction is assumed (this means that this role cannot access any content).
-        items:
-          type: string
 
   RoleOverviewType:
     type: "object"
     required:
       - roleId
       - roleName
-      - priviledges
     properties:
       roleId:
         type: string
@@ -268,11 +255,6 @@ definitions:
       roleName:
         type: string
         description: the role name
-      priviledges:
-        type: array
-        description: list of priviledges that are associated to this role. They indicate, what operations and data can be accessed by users.
-        items:
-          type: string
 
   UserInputType:
     type: "object"
