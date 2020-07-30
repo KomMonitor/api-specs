@@ -1188,3 +1188,8 @@ definitions:
                     type: number
                     format: float
                     description: the numeric extent of the indicator for the timestamp
+      allowedRoles:
+        type: array
+        description: list of role identifiers that have read access rights for this dataset
+        items:
+          type: string
