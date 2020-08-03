@@ -1035,7 +1035,7 @@ definitions:
         type: string
         description: "the default custom rating string for the specified value interval, i.e. 'very high'/'very low' or 'good'/'bad'"
 
-  IndicatorPATCHInputType:
+  IndicatorMetadataPATCHInputType:
     type: "object"
     required:
       - topicReference
@@ -1167,6 +1167,19 @@ definitions:
         description: list of role identifiers that have read access rights for this dataset
         items:
           type: string
+
+  IndicatorPATCHInputType:
+    type: "object"
+    properties:
+      defaultClassificationMapping:
+        $ref: "#/definitions/DefaultClassificationMappingType"
+      allowedRoles:
+        type: array
+        description: list of role identifiers that have read access rights for this dataset
+        items:
+          type: string
+
+
   IndicatorSpatialUnitJoinItem:
     type: "object"
     required:
