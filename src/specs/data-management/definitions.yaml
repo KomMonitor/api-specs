@@ -809,10 +809,10 @@ definitions:
         type: string
         description: description about how the indicator was computed
       applicableSpatialUnits:
-              type: array
-              description: "array of spatial unit levels for which the dataset is applicable"
-              items:
-                type: string
+        description: "array of spatial unit levels for which the dataset is applicable"
+        type: array
+        items:
+          $ref: "#/definitions/IndicatorSpatialUnitJoinItem"
       applicableDates:
         type: "array"
         description: array of applicable dates (year and month and day as YEAR-MONTH-DAY) according to ISO 8601 (e.g. 2018-01-30)
@@ -942,9 +942,6 @@ definitions:
           - DYNAMIC_RELATIVE
           - STATUS_STANDARDIZED
           - DYNAMIC_STANDARDIZED
-      applicableSpatialUnit:
-        type: string
-        description: identifier/name of the spatial unit level
       topicReference:
         type: string
         description: "id of the last topic hierarchy entity "
@@ -1012,29 +1009,6 @@ definitions:
             referenceDescription:
               type: string
               description: short description of how the georesource is referenced to the indicator
-      indicatorValues:
-        type: array
-        description: an array of entries containing indicator values and mapping to spatial features via identifiers
-        items:
-          type: object
-          properties:
-            spatialReferenceKey:
-              type: string
-              description: identifier (uuid) of the spatial feature to which the values shall be applied
-            valueMapping:
-              type: array
-              description: an array of entries mapping an indicator value to a timestamp as mapping key
-              items:
-                type: object
-                properties:
-                  timestamp:
-                    type: string
-                    format: date
-                    description: timestamp consisting of year, month and day according to ISO 8601 (e.g. 2018-01-30)
-                  indicatorValue:
-                    type: number
-                    format: float
-                    description: the numeric extent of the indicator for the timestamp
 
   DefaultClassificationMappingType:
     type: "object"
@@ -1188,6 +1162,23 @@ definitions:
                     type: number
                     format: float
                     description: the numeric extent of the indicator for the timestamp
+      allowedRoles:
+        type: array
+        description: list of role identifiers that have read access rights for this dataset
+        items:
+          type: string
+  IndicatorSpatialUnitJoinItem:
+    type: "object"
+    required:
+      - spatialUnitId
+      - spatialUnitName
+    properties:
+      spatialUnitId:
+        type: string
+        description: "ID of the applicable spatial unit"
+      spatialUnitName:
+        type: string
+        description: "name of the applicable spatial unit"
       allowedRoles:
         type: array
         description: list of role identifiers that have read access rights for this dataset
