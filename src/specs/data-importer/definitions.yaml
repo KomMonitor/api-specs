@@ -369,6 +369,9 @@ definitions:
       description:
         type: string
         description: description of the parameter
+      mandatory:
+        type: boolean
+        description: indicates wether the parameter is mandatory or optional
       type:
         type: string
         description: type of the parameter
