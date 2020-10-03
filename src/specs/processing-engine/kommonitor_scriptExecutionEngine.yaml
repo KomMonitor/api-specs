@@ -259,7 +259,7 @@ definitions:
     required:
       - scriptId
       - targetIndicatorId
-      - targetDate
+      - targetDates
       - basicIndicatorIds
       - georesourceIds
       - defaultProcessProperties
@@ -271,10 +271,13 @@ definitions:
       targetIndicatorId:
         type: string
         description: the identifier of the target indicator that can be computed by the associated script.
-      targetDate:
-        type: string
-        format: date
-        description: a timestamp representing the date for which the indicator shall be computed according to ISO 8601 (e.g. 2018-01-30)
+      targetDates:
+        type: array
+        description: a list of target dates representing the dates for which the indicator shall be computed according to ISO 8601 (e.g. 2018-01-30).
+        items:
+          type: string
+          format: date
+          description: a timestamp representing the date for which the indicator shall be computed according to ISO 8601 (e.g. 2018-01-30)
       baseIndicatorIds:
         type: array
         description: a list of identifiers of base indicators that are required to compute the target indicator. While the parameter is required, the list may be empty if no other indicator is required for the computation.
