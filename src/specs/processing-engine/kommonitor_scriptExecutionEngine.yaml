@@ -54,6 +54,21 @@ paths:
 
 ######## PROCESS SCRIPTS
   /script-engine/customizableIndicatorComputation:
+      get:
+        tags:
+        - "script-engine"
+        summary: "retrieve status information about existing customizable indicator computation jobs."
+        description: "retrieve status information about existing customizable indicator computation jobs."
+        operationId: "getCustomizableIndicatorComputationJobOverview"
+        produces:
+        - "application/json"
+        responses:
+          200:
+            description: "OK"
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/CustomizableIndicatorComputationStatusResultType'
       post:
         tags:
         - "script-engine"
@@ -105,6 +120,21 @@ paths:
             description: "Invalid status value"
 
   /script-engine/defaultIndicatorComputation:
+      get:
+        tags:
+        - "script-engine"
+        summary: "retrieve status information about existing default indicator computation jobs."
+        description: "retrieve status information about existing deafult indicator computation jobs."
+        operationId: "getDefaultIndicatorComputationJobOverview"
+        produces:
+        - "application/json"
+        responses:
+          200:
+            description: "OK"
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/DefaultIndicatorComputationStatusResultType'
       post:
         tags:
         - "script-engine"
