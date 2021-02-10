@@ -1030,7 +1030,7 @@ paths:
           description: "metadata input"
           required: true
           schema:
-            $ref: './definitions.yaml#/definitions/IndicatorPATCHInputType'
+            $ref: './definitions.yaml#/definitions/IndicatorMetadataPATCHInputType'
         responses:
           200:
             description: "OK"
@@ -1107,6 +1107,32 @@ paths:
             description: "OK"
           401:
             $ref: "#/responses/UnauthorizedError"
+      patch:
+        tags:
+        - "indicators"
+        summary: "Modify/Update the selected indicator dataset"
+        description: "Modify/Update the selected indicator dataset. This replaces the formerly stored attributes."
+        operationId: "updateIndicatorMetadataAsBody"
+        consumes:
+        - "application/json"
+        parameters:
+        - name: "indicatorData"
+          in: "body"
+          description: "Indicator parameters input"
+          required: true
+          schema:
+            $ref: './definitions.yaml#/definitions/IndicatorPATCHInputType'
+        responses:
+          200:
+            description: "OK"
+            headers:
+              location:
+                type: string
+                description: identifier of the modified indicator
+          401:
+            $ref: "#/responses/UnauthorizedError"
+          405:
+            description: "Invalid input"
 
   /indicators/{indicatorId}/{spatialUnitId}/without-geometry:
       parameters:
