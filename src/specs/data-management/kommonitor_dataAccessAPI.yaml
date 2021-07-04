@@ -726,6 +726,44 @@ paths:
       security:
         - kommonitor-data-access_oauth: []
         
+  /management/indicators/display-order:
+    patch:
+      tags:
+        - indicators-controller
+      summary: Update displayOrder for submitted indicators
+      description: Update displayOrder for submitted indicators
+      operationId: updateIndicatorDisplayOrder
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: indicatorOrderArray
+          description: array of indicator id and displayOrder items
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/IndicatorPATCHDisplayOrderInputType'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '405':
+          description: Invalid input
+      security:
+        - kommonitor-data-access_oauth: []
+        
       deprecated: false
   '/management/indicators/{indicatorId}':
     get:
@@ -3538,6 +3576,13 @@ definitions:
       processDescription:
         type: string
         description: description about how the indicator was computed
+      referenceDateNote:
+        type: string
+        description: an optional note on the reference date of the indicator
+      displayOrder:
+        type: number
+        format: int32
+        description: an order number to control display order in clients
       refrencesToGeoresources:
         type: array
         description: 'array of references to other georesource datasets. E.g., if an indicator is defined by performing geometric-topological operations, then the identifiers of those required georesources can be referenced here'
@@ -3644,6 +3689,13 @@ definitions:
       processDescription:
         type: string
         description: description about how the indicator was computed
+      referenceDateNote:
+        type: string
+        description: an optional note on the reference date of the indicator
+      displayOrder:
+        type: number
+        format: int32
+        description: an order number to control display order in clients  
       referencedGeoresources:
         type: array
         description: list of references to georesources
@@ -3666,6 +3718,19 @@ definitions:
         type: string
         description: unit of the indicator values
     title: IndicatorOverviewType
+  IndicatorPATCHDisplayOrderInputType:
+    type: object
+    required:
+      - indicatorId
+      - displayOrder
+    properties:
+      indicatorId:
+        type: string
+        description: unique ID of the associated indicator
+      displayOrder:
+        type: number
+        format: int32
+        description: the new displayOrder value  
   IndicatorPATCHInputType:
     type: object
     required:
@@ -3741,6 +3806,13 @@ definitions:
       processDescription:
         type: string
         description: description about how the indicator was computed
+      referenceDateNote:
+        type: string
+        description: an optional note on the reference date of the indicator
+      displayOrder:
+        type: number
+        format: int32
+        description: an order number to control display order in clients
       refrencesToGeoresources:
         type: array
         description: 'array of references to other georesource datasets. E.g., if an indicator is defined by performing geometric-topological operations, then the identifiers of those required georesources can be referenced here'
@@ -3971,6 +4043,9 @@ definitions:
       scriptId:
         type: string
         description: unique identifier of the process script
+      scriptType:
+        type: string
+        description: a script type reference name used to distuingish process scripts from a client perspective, i.e. setup admin pages due to knowledge about type-specific script parameters and required indicators/georesources  
       variableProcessParameters:
         type: array
         description: list of process parameters that can be set by an expert user. They are used within the script to parameterize the indicator computation
@@ -4007,6 +4082,9 @@ definitions:
         description: identifiers of indicators that are used within the script.
         items:
           type: string
+      scriptType:
+        type: string
+        description: a script type reference name used to distuingish process scripts from a client perspective, i.e. setup admin pages due to knowledge about type-specific script parameters and required indicators/georesources     
       scriptCodeBase64:
         type: string
         description: the actual script code (JavaScript) as BASE64 encoded string
@@ -4042,6 +4120,9 @@ definitions:
         description: identifiers of indicators that are used within the script.
         items:
           type: string
+      scriptType:
+        type: string
+        description: a script type reference name used to distuingish process scripts from a client perspective, i.e. setup admin pages due to knowledge about type-specific script parameters and required indicators/georesources     
       scriptCodeBase64:
         type: string
         description: the actual script code (JavaScript) as BASE64 encoded string
