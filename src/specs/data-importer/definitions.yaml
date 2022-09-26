@@ -10,7 +10,7 @@ definitions:
       - dryRun
     properties:
       spatialUnitPostBody:
-        $ref: "../data-management/definitions.yaml#/definitions/SpatialUnitPOSTInputType"
+        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/SpatialUnitPOSTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
@@ -36,7 +36,7 @@ definitions:
         type: string
         description: the unique ID of the spatial unit that shall be updated
       spatialUnitPutBody:
-        $ref: "../data-management/definitions.yaml#/definitions/SpatialUnitPUTInputType"
+        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/SpatialUnitPUTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
@@ -58,7 +58,7 @@ definitions:
       - dryRun
     properties:
       georesourcePostBody:
-        $ref: "../data-management/definitions.yaml#/definitions/GeoresourcePOSTInputType"
+        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/GeoresourcePOSTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
@@ -84,7 +84,7 @@ definitions:
         type: string
         description: the unique ID of the georesource that shall be updated
       georesourcePutBody:
-        $ref: "../data-management/definitions.yaml#/definitions/GeoresourcePUTInputType"
+        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/GeoresourcePUTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
@@ -106,7 +106,7 @@ definitions:
       - dryRun
     properties:
       indicatorPostBody:
-        $ref: "../data-management/definitions.yaml#/definitions/IndicatorPOSTInputType"
+        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/IndicatorPOSTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
@@ -132,7 +132,7 @@ definitions:
         type: string
         description: the unique ID of the indicator that shall be updated
       indicatorPutBody:
-        $ref: "../data-management/definitions.yaml#/definitions/IndicatorPUTInputType"
+        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/IndicatorPUTInputType"
       dataSource:
         $ref: "#/definitions/DataSourceDefinitionType"
       converter:
