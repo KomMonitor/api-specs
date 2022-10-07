@@ -118,6 +118,8 @@ paths:
                 $ref: '#/components/schemas/JobOverviewType'
         '401':
           description: unauthorized
+        '404':
+          description: Job not found
       security:
         - kommonitor_auth:
             - access:spatial-data-processor
