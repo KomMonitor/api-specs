@@ -264,6 +264,39 @@ components:
           description: |
             The result is a JSON object whose schema depends on the underlying process. Each process has its own result
             schema.
+            
+    IsochronePruneProcessResultType:
+      type: object
+      properties:
+        overallCoverage:
+          $ref: '#/components/schemas/IndicatorCoverageType'
+        poiCoverage:
+          type: array
+          items:
+            $ref: '#/components/schemas/IndicatorCoverageType'
+        spatialUnitCoverage:
+          type: array
+          items:
+            $ref: '#/components/schemas/IndicatorCoverageType'
+
+    IndicatorCoverageType:
+      type: object
+      required:
+        - id
+        - result
+      properties:
+        poiId:
+          type: string
+          format: uuid
+        spatialUnitId:
+          type: string
+          format: uuid
+        absoluteCoverage:
+          type: number
+          format: float
+        relativeCoverage:
+          type: number
+          format: float
 
     uuid:
       type: string
