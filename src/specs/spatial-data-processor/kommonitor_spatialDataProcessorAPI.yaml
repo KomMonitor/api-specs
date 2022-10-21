@@ -208,6 +208,9 @@ components:
           items:
             type: string
             format: uuid
+        date:
+          type: string
+          format: date
         configuration:
           type: object
           #TODO: expand on this
@@ -268,6 +271,9 @@ components:
     IsochronePruneProcessResultType:
       type: object
       properties:
+        indicatorId:
+          type: string
+          format: uuid
         overallCoverage:
           $ref: '#/components/schemas/IndicatorCoverageType'
         poiCoverage:
@@ -281,16 +287,22 @@ components:
 
     IndicatorCoverageType:
       type: object
-      required:
-        - id
-        - result
       properties:
-        poiId:
+        poiFeatureId:
           type: string
-          format: uuid
-        spatialUnitId:
+        spatialUnitFeatureId:
           type: string
-          format: uuid
+        coverage:
+          type: array
+          items:
+            $ref: '#/components/schemas/IndicatorCoverageValueType'
+
+    IndicatorCoverageValueType:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
         absoluteCoverage:
           type: number
           format: float
