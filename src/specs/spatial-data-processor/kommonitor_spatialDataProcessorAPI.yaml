@@ -72,11 +72,7 @@ paths:
       operationId: enqueueJob
       parameters:
         - in: header
-          name: A      parameters:
-        - in: header
           name: Authorization
-          schema:
-            type: stringuthorization
           schema:
             type: string
       requestBody:
