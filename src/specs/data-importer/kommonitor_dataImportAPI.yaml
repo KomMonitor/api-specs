@@ -1,7 +1,7 @@
-swagger: "2.0"
+openapi: 3.0.3
 info:
   description: "Data Import API that enables the import of spatial data (spatial units, georesources and indicators) from various datasources into the KomMonitor Data Management layer."
-  version: "0.0.1"
+  version: "3.0.0"
   title: "KomMonitor Data Import API"
   termsOfService: "http://swagger.io/terms/"
   contact:
@@ -9,8 +9,9 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "localhost:8087"
-basePath: "/import"
+servers:
+  - url: http://localhost:8087
+    description: Development server
 tags:
   - name: "spatial-units"
     description: "Spatial units/levels for which indicators can be associated (e.g. rastercells, building blocks, quarters, city districts, city boroughs, city)"
@@ -18,15 +19,6 @@ tags:
     description: "Additional georesources that are necessary for the computation of indicators (e.g. land use, locations of schools, streets/ways)"
   - name: "indicators"
     description: "Municipal indicators that provide statiscial time series information"
-schemes:
-  - "http"
-  - "https"
-securityDefinitions:
-  basicAuth:
-    type: basic
-
-security:
-  - basicAuth: []
 
 paths:
   ######## SpatialUnits
@@ -37,30 +29,33 @@ paths:
       summary: "Import a new spatial unit"
       description: "Import a new spatial unit for a certain period of time. Parses input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls POST /spatial-units of KomMonitor Data Management API"
       operationId: "importSpatialUnit"
-      consumes:
-        - "application/json"
-      parameters:
-        - name: "feature-data"
-          in: "body"
-          description: "feature data"
-          required: true
-          schema:
-            $ref: "./definitions.yaml#/definitions/Import_SpatialUnitPOSTInputType"
+      requestBody:
+        description: "Definitions to import spatial units"
+        content:
+          application/json:
+            schema:
+              $ref: "./definitions.yaml#/definitions/Import_SpatialUnitPOSTInputType"
       responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "./definitions.yaml#/definitions/ImportResponseType"
-        400:
+        "200":
+          description: "List of created feature IDs"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+        "400":
           description: "Bad Request"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-        401:
-          $ref: "#/responses/UnauthorizedError"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+        "401":
+          description: "Unauthenticated"
         default:
-          description: Unexpected error
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
 
   /spatial-units/update:
     post:
@@ -69,32 +64,35 @@ paths:
       summary: "Update a spatial unit"
       description: "Update a new spatial unit for a certain period of time. Parses input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls PUT /spatial-units of KomMonitor Data Management API"
       operationId: "updateSpatialUnit"
-      consumes:
-        - "application/json"
-      parameters:
-        - name: "feature-data"
-          in: "body"
-          description: "feature data"
-          required: true
-          schema:
-            $ref: "./definitions.yaml#/definitions/Update_SpatialUnitPOSTInputType"
+      requestBody:
+        description: "Definitions to update spatial units"
+        content:
+          application/json:
+            schema:
+              $ref: "./definitions.yaml#/definitions/Import_SpatialUnitPUTInputType"
       responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "./definitions.yaml#/definitions/ImportResponseType"
-        400:
+        "200":
+          description: "List of created feature IDs"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+        "400":
           description: "Bad Request"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-        401:
-          $ref: "#/responses/UnauthorizedError"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+        "401":
+          description: "Unauthenticated"
         default:
-          description: Unexpected error
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
 
-  ########## GEO RESOURCES
+  ########## GEORESOURCES
   /georesources:
     post:
       tags:
@@ -102,127 +100,104 @@ paths:
       summary: "Import a new geo-resource"
       description: "Import a geo-resource dataset for a certain period of time. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls POST /georesources of KomMonitor Data Management API"
       operationId: "importGeoresource"
-      consumes:
-        - "application/json"
-      parameters:
-        - name: "feature-data"
-          in: "body"
-          description: "feature data"
-          required: true
-          schema:
-            $ref: "./definitions.yaml#/definitions/Import_GeoresourcePOSTInputType"
+      requestBody:
+        description: "Definitions to create georesources"
+        content:
+          application/json:
+            schema:
+              $ref: "./definitions.yaml#/definitions/Import_GeoresourcePOSTInputType"
       responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "./definitions.yaml#/definitions/ImportResponseType"
-        400:
+        "200":
+          description: "List of created feature IDs"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+        "400":
           description: "Bad Request"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-        401:
-          $ref: "#/responses/UnauthorizedError"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+        "401":
+          description: "Unauthenticated"
         default:
-          description: Unexpected error
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
 
   /georesources/update:
     post:
       tags:
         - "georesources"
-      summary: "Update a geo-resource"
-      description: "Update a geo-resource dataset for a certain period of time. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls PUT /georesources of KomMonitor Data Management API"
+      summary: "Update a georesource"
+      description: "Update a georesource dataset for a certain period of time. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls PUT /georesources of KomMonitor Data Management API"
       operationId: "updateGeoresource"
-      consumes:
-        - "application/json"
-      parameters:
-        - name: "feature-data"
-          in: "body"
-          description: "feature data"
-          required: true
-          schema:
-            $ref: "./definitions.yaml#/definitions/Update_GeoresourcePOSTInputType"
+      requestBody:
+        description: "Definitions to update georesources"
+        content:
+          application/json:
+            schema:
+              $ref: "./definitions.yaml#/definitions/Update_GeoresourcePOSTInputType"
       responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "./definitions.yaml#/definitions/ImportResponseType"
-        400:
+        "200":
+          description: "List of created feature IDs"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+        "400":
           description: "Bad Request"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-        401:
-          $ref: "#/responses/UnauthorizedError"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+        "401":
+          description: "Unauthenticated"
         default:
-          description: Unexpected error
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
 
   ######## INDICATORS
-  /indicators:
-    post:
-      tags:
-        - "indicators"
-      summary: "Import a new indicator dataset"
-      description: "Import an indicator dataset for a certain period of time and spatial unit/level. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls POST /indicators of KomMonitor Data Management API"
-      operationId: "importIndicator"
-      consumes:
-        - "application/json"
-      parameters:
-        - name: "indicator-data"
-          in: "body"
-          description: "indicator data"
-          required: true
-          schema:
-            $ref: "./definitions.yaml#/definitions/Import_IndicatorPOSTInputType"
-      responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "./definitions.yaml#/definitions/ImportResponseType"
-        400:
-          description: "Bad Request"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-        401:
-          $ref: "#/responses/UnauthorizedError"
-        default:
-          description: Unexpected error
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-
   /indicators/update:
     post:
       tags:
         - "indicators"
-      summary: "Update a new indicator dataset"
-      description: "Update an indicator dataset for a certain period of time and spatial unit/level. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls PUT /indicators of KomMonitor Data Management API"
+      summary: "Update or create a new indicator dataset"
+      description: "Update or create an indicator dataset for a certain period of time and spatial unit/level. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls PUT /indicators of KomMonitor Data Management API"
       operationId: "updateIndicator"
-      consumes:
-        - "application/json"
-      parameters:
-        - name: "indicator-data"
-          in: "body"
-          description: "indicator data"
-          required: true
-          schema:
-            $ref: "./definitions.yaml#/definitions/Update_IndicatorPOSTInputType"
+      requestBody:
+        description: "Definitions to create or update indicators"
+        content:
+          application/json:
+            schema:
+              $ref: "./definitions.yaml#/definitions/Update_IndicatorPOSTInputType"
       responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "./definitions.yaml#/definitions/ImportResponseType"
-        400:
+        "200":
+          description: "List of created feature IDs"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+        "400":
           description: "Bad Request"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-        401:
-          $ref: "#/responses/UnauthorizedError"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+        "401":
+          description: "Unauthenticated"
         default:
-          description: Unexpected error
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
 
   ######## UPLOAD
   /upload:
@@ -232,35 +207,41 @@ paths:
       summary: "Upload a file"
       description: "Upload a file that can be used as datasource for importing or updating a KomMonitor resource."
       operationId: "upload"
-      consumes:
-        - "multipart/form-data"
-      parameters:
-        - name: "file"
-          description: The file to upload
-          in: "formData"
-          type: "file"
-          required: true
-        - name: "filename"
-          in: "formData"
-          description: "The name that will be used for storing the file on the server"
-          type: string
-          required: true
+      requestBody:
+        description: "File that should be uploaded"
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                filename:
+                  type: string
+                  description: "The name that will be used for storing the file on the server"
+                file:
+                  type: string
+                  format: binary
+                  description: "The file to upload"
       responses:
-        201:
-          description: "Created"
-          schema:
-            type: string
-            description: name of the created file
-        400:
+        "201":
+          description: "File uploaded"
+          content:
+            text/plain:
+              schema:
+                type: string
+        "400":
           description: "Bad Request"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-        401:
-          $ref: "#/responses/UnauthorizedError"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+        "401":
+          description: "Unauthenticated"
         default:
-          description: Unexpected error
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
 
     get:
       tags:
@@ -268,18 +249,23 @@ paths:
       summary: "Get a list of files"
       description: "Retrieve a list of information for all uploaded files"
       operationId: "getUploadedFiles"
-      produces:
-        - "application/json"
       responses:
-        200:
-          description: "OK"
-          schema:
-            type: array
-            description: list of filenames
-            items:
-              $ref: "./definitions.yaml#/definitions/UploadedFileType"
-        401:
-          $ref: "#/responses/UnauthorizedError"
+        "200":
+          description: "List of file names"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "./definitions.yaml#/definitions/UploadedFileType"
+        "401":
+          description: "Unauthenticated"
+        default:
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
 
   ######## CONVERTERS
   /converters:
@@ -289,45 +275,61 @@ paths:
       summary: "Retrieve information about all available converters"
       description: "Retrieve information such like supported formats and importing options about all available converters for decoding datasets and importing them into the KomMonitor Data Management layer"
       operationId: "getConverters"
-      produces:
-        - "application/json"
       responses:
-        200:
-          description: "OK"
-          schema:
-            type: array
-            description: array of all available converters
-            items:
-              $ref: "./definitions.yaml#/definitions/ConverterType"
-        401:
-          $ref: "#/responses/UnauthorizedError"
+        "200":
+          description: "List of all available converters"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "./definitions.yaml#/definitions/ConverterType"
+        "401":
+          description: "Unauthenticated"
+        default:
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+
 
   /converters/{name}:
-    parameters:
-      - name: "name"
-        in: "path"
-        description: "unique name of the converter"
-        required: true
-        type: string
     get:
       tags:
         - "converters"
       summary: "Retrieve information about the selected converters"
       description: "Retrieve information such like supported formats and decoding options about the selected converters for decoding a certain dataset and importing it into the KomMonitor Data Management layer"
       operationId: "getConverterByName"
-      produces:
-        - "application/json"
+      parameters:
+        - name: "name"
+          in: "path"
+          description: "unique name of the converter"
+          required: true
+          schema:
+            type: string
       responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "./definitions.yaml#/definitions/ConverterType"
-        401:
-          $ref: "#/responses/UnauthorizedError"
-        404:
+        "200":
+          description: "A converter"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/ConverterType"
+        "401":
+          description: "Unauthenticated"
+        "404":
           description: "A converter with the specified name was not found"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+        default:
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+
 
   ######## DATASOURCE TYPES
   /datasourceTypes:
@@ -337,52 +339,60 @@ paths:
       summary: "Retrieve information about all supported datasource types"
       description: "Retrieve information about the parameters of all supported datasource types that can be used for importing data into the KomMonitor Data Management layer"
       operationId: "getSupportedDataSourceTypes"
-      produces:
-        - "application/json"
       responses:
-        200:
-          description: "OK"
-          schema:
-            type: array
-            description: array of all available datasource types
-            items:
-              $ref: "./definitions.yaml#/definitions/DataSourceType"
-        401:
-          $ref: "#/responses/UnauthorizedError"
+        "200":
+          description: "List of all available datasource types"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "./definitions.yaml#/definitions/DataSourceType"
+        "401":
+          description: "Unauthenticated"
+        default:
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+
 
   /datasourceTypes/{type}:
-    parameters:
-      - name: "type"
-        in: "path"
-        description: "unique type of the datasource"
-        required: true
-        type: string
     get:
       tags:
         - "datasources"
       summary: "Retrieve information about the selected datasource type"
       description: "Retrieve information about the parameters for the selected datasource type that can be used for importing data into the KomMonitor Data Management layer"
       operationId: "getSupportedDataSourceTypeByType"
-      produces:
-        - "application/json"
+      parameters:
+        - name: "type"
+          in: "path"
+          description: "unique type of the datasource"
+          required: true
+          schema:
+            type: string
       responses:
-        200:
-          description: "OK"
-          schema:
-            $ref: "./definitions.yaml#/definitions/DataSourceType"
-        401:
-          $ref: "#/responses/UnauthorizedError"
-        404:
+        "200":
+          description: "A datasource type"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/DataSourceType"
+        "401":
+          description: "Unauthenticated"
+        "404":
           description: "No support for the specified datasource type"
-          schema:
-            $ref: "./definitions.yaml#/definitions/Error"
-
-responses:
-  UnauthorizedError:
-    description: API key is missing or invalid
-    headers:
-      WWW_Authenticate:
-        type: string
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
+        default:
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions.yaml#/definitions/Error"
 
 externalDocs:
   description: "Find out more about Swagger"
