@@ -571,6 +571,7 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: georesourceId
           in: path
           description: georesourceId
@@ -581,6 +582,7 @@ paths:
           description: month
           required: true
           type: number
+          default: 1
         - name: name
           in: query
           required: false
@@ -596,6 +598,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -628,6 +631,7 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: georesourceId
           in: path
           description: georesourceId
@@ -638,11 +642,13 @@ paths:
           description: month
           required: true
           type: number
+          default: 1
         - name: year
           in: path
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -1093,6 +1099,7 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: indicatorId
           in: path
           description: indicatorId
@@ -1103,6 +1110,7 @@ paths:
           description: month
           required: true
           type: number
+          default: 1
         - name: name
           in: query
           required: false
@@ -1123,6 +1131,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -1155,6 +1164,7 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: indicatorId
           in: path
           description: indicatorId
@@ -1165,6 +1175,7 @@ paths:
           description: month
           required: true
           type: number
+          default: 1
         - name: spatialUnitId
           in: path
           description: spatialUnitId
@@ -1175,6 +1186,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -1205,6 +1217,7 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: indicatorId
           in: path
           description: indicatorId
@@ -1215,6 +1228,7 @@ paths:
           description: month
           required: true
           type: number
+          default: 1
         - name: name
           in: query
           required: false
@@ -1229,6 +1243,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -1773,6 +1788,7 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: georesourceId
           in: path
           description: georesourceId
@@ -1783,6 +1799,7 @@ paths:
           description: month
           required: true
           type: number
+          default: 1
         - name: simplifyGeometries
           in: query
           description: simplifyGeometries
@@ -1794,6 +1811,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -1968,6 +1986,7 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: indicatorId
           in: path
           description: indicatorId
@@ -1978,6 +1997,7 @@ paths:
           description: month
           required: true
           type: number
+          default: 1
         - name: simplifyGeometries
           in: query
           description: simplifyGeometries
@@ -1994,6 +2014,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -2027,6 +2048,7 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: indicatorId
           in: path
           description: indicatorId
@@ -2037,6 +2059,7 @@ paths:
           description: month
           required: true
           type: number
+          default: 1
         - name: spatialUnitId
           in: path
           description: spatialUnitId
@@ -2047,6 +2070,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -2365,11 +2389,13 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: month
           in: path
           description: month
           required: true
           type: number
+          default: 1
         - name: simplifyGeometries
           in: query
           description: simplifyGeometries
@@ -2386,6 +2412,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -2964,11 +2991,13 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: month
           in: path
           description: month
           required: true
           type: number
+          default: 1
         - name: name
           in: query
           required: false
@@ -2989,6 +3018,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -3021,11 +3051,13 @@ paths:
           description: day
           required: true
           type: number
+          default: 1
         - name: month
           in: path
           description: month
           required: true
           type: number
+          default: 1
         - name: spatialUnitId
           in: path
           description: spatialUnitId
@@ -3036,6 +3068,7 @@ paths:
           description: year
           required: true
           type: number
+          default: 2023
       responses:
         '200':
           description: OK
@@ -3202,6 +3235,7 @@ definitions:
       sridEPSG:
         type: number
         description: the coordinate reference system of the dataset as EPSG code
+        default: 4326
       updateInterval:
         type: string
         enum:
@@ -3291,6 +3325,7 @@ definitions:
       loiWidth:
         type: number
         description: display width for lines of interest (number of pixels in leaflet)
+        default: 1
       metadata:
         $ref: '#/definitions/CommonMetadataType'
       poiMarkerColor:
@@ -3333,6 +3368,11 @@ definitions:
       wmsUrl:
         type: string
         description: the URL of a running WMS instance serving the spatial features of the associated dataset
+      userPermissions:
+        type: array
+        description: List of permissions that are effective on this dataset for the current user
+        items:
+          type: string
     title: GeoresourceOverviewType
   GeoresourcePATCHInputType:
     type: object
@@ -3368,6 +3408,7 @@ definitions:
       loiWidth:
         type: number
         description: display width for lines of interest (number of pixels in leaflet)
+        default: 1
       metadata:
         $ref: '#/definitions/CommonMetadataType'
       poiMarkerColor:
@@ -3447,6 +3488,7 @@ definitions:
       loiWidth:
         type: number
         description: display width for lines of interest (number of pixels in leaflet)
+        default: 1
       metadata:
         $ref: '#/definitions/CommonMetadataType'
       periodOfValidity:
@@ -3491,12 +3533,16 @@ definitions:
     required:
       - geoJsonString
       - periodOfValidity
+      - isPartialUpdate
     properties:
       geoJsonString:
         type: string
         description: a valid GeoJSON string containing the features consisting of a geometry and properties specific to the dataset
       periodOfValidity:
         $ref: '#/definitions/PeriodOfValidityType'
+      isPartialUpdate:
+        type: boolean
+        description: if set to TRUE, then a partial upload of geometries is possible. Missing features that are already in the database will then not be deleted
     title: GeoresourcePUTInputType
   GeoresourceReferenceType:
     type: object
@@ -3583,6 +3629,7 @@ definitions:
         type: number
         format: int32
         description: an order number to control display order in clients
+        default: 1
       refrencesToGeoresources:
         type: array
         description: 'array of references to other georesource datasets. E.g., if an indicator is defined by performing geometric-topological operations, then the identifiers of those required georesources can be referenced here'
@@ -3695,7 +3742,8 @@ definitions:
       displayOrder:
         type: number
         format: int32
-        description: an order number to control display order in clients  
+        description: an order number to control display order in clients
+        default: 1
       referencedGeoresources:
         type: array
         description: list of references to georesources
@@ -3717,6 +3765,11 @@ definitions:
       unit:
         type: string
         description: unit of the indicator values
+      userPermissions:
+        type: array
+        description: List of permissions that are effective on this dataset for the current user
+        items:
+          type: string
     title: IndicatorOverviewType
   IndicatorPATCHDisplayOrderInputType:
     type: object
@@ -3730,7 +3783,8 @@ definitions:
       displayOrder:
         type: number
         format: int32
-        description: the new displayOrder value  
+        description: the new displayOrder value
+        default: 1
   IndicatorPATCHInputType:
     type: object
     required:
@@ -3813,6 +3867,7 @@ definitions:
         type: number
         format: int32
         description: an order number to control display order in clients
+        default: 1
       refrencesToGeoresources:
         type: array
         description: 'array of references to other georesource datasets. E.g., if an indicator is defined by performing geometric-topological operations, then the identifiers of those required georesources can be referenced here'
@@ -3899,8 +3954,34 @@ definitions:
         type: array
         description: an array of entries containing indicator values and mapping to spatial features via identifiers
         items:
-          $ref: '#/definitions/IndicatorPOSTInputTypeIndicatorValues'
+          $ref: '#/definitions/IndicatorPUTInputTypeIndicatorValues'
     title: IndicatorPUTInputType
+  IndicatorPUTInputTypeIndicatorValues:
+    type: object
+    properties:
+      spatialReferenceKey:
+        type: string
+        description: identifier (uuid) of the spatial feature to which the values shall be applied
+      valueMapping:
+        type: array
+        description: an array of entries mapping an indicator value to a timestamp as mapping key
+        items:
+          $ref: '#/definitions/IndicatorPUTInputTypeValueMapping'
+    title: IndicatorPUTInputTypeIndicatorValues
+  IndicatorPUTInputTypeValueMapping:
+    type: object
+    properties:
+      indicatorValue:
+        type: number
+        format: float
+        description: the numeric extent of the indicator for the timestamp
+      timestamp:
+        type: string
+        format: date
+        description: timestamp consisting of year, month and day according to ISO 8601 (e.g. 2018-01-30)
+    title: IndicatorPOSTInputTypeValueMapping
+
+
   IndicatorPropertiesWithoutGeomType:
     type: object
     title: IndicatorPropertiesWithoutGeomType
@@ -3941,6 +4022,11 @@ definitions:
       spatialUnitName:
         type: string
         description: name of the applicable spatial unit
+      userPermissions:
+        type: array
+        description: List of permissions that are effective on this dataset for the current user
+        items:
+          type: string
     title: IndicatorSpatialUnitJoinItem
   OgcServicesType:
     type: object
@@ -4271,6 +4357,11 @@ definitions:
       wmsUrl:
         type: string
         description: the URL of a running WMS instance serving the spatial features of the associated dataset
+      userPermissions:
+        type: array
+        description: List of permissions that are effective on this dataset for the current user
+        items:
+          type: string
     title: SpatialUnitOverviewType
   SpatialUnitPATCHInputType:
     type: object
@@ -4336,12 +4427,16 @@ definitions:
     required:
       - geoJsonString
       - periodOfValidity
+      - isPartialUpdate
     properties:
       geoJsonString:
         type: string
         description: a valid GeoJSON string containing the features consisting of a geometry and a unique identifier as property 'uuid'
       periodOfValidity:
         $ref: '#/definitions/PeriodOfValidityType'
+      isPartialUpdate:
+        type: boolean
+        description: if set to TRUE, then a partial upload of geometries is possible. Missing features that are already in the database will then not be deleted
     title: SpatialUnitPUTInputType
   TopicInputType:
     type: object
