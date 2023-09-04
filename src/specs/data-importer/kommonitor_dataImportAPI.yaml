@@ -34,20 +34,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "./definitions.yaml#/definitions/Import_SpatialUnitPOSTInputType"
+              $ref: "./definitions.yaml#/components/schemas/Import_SpatialUnitPOSTInputType"
       responses:
         "200":
           description: "List of created feature IDs"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+                $ref: "./definitions.yaml#/components/schemas/ImportResponseType"
         "400":
           description: "Bad Request"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
         "401":
           description: "Unauthenticated"
         default:
@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
   /spatial-units/update:
     post:
@@ -69,20 +69,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "./definitions.yaml#/definitions/Import_SpatialUnitPUTInputType"
+              $ref: "./definitions.yaml#/components/schemas/Update_SpatialUnitPOSTInputType"
       responses:
         "200":
           description: "List of created feature IDs"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+                $ref: "./definitions.yaml#/components/schemas/ImportResponseType"
         "400":
           description: "Bad Request"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
         "401":
           description: "Unauthenticated"
         default:
@@ -90,7 +90,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
   ########## GEORESOURCES
   /georesources:
@@ -105,20 +105,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "./definitions.yaml#/definitions/Import_GeoresourcePOSTInputType"
+              $ref: "./definitions.yaml#/components/schemas/Import_GeoresourcePOSTInputType"
       responses:
         "200":
           description: "List of created feature IDs"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+                $ref: "./definitions.yaml#/components/schemas/ImportResponseType"
         "400":
           description: "Bad Request"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
         "401":
           description: "Unauthenticated"
         default:
@@ -126,7 +126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
   /georesources/update:
     post:
@@ -140,20 +140,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "./definitions.yaml#/definitions/Update_GeoresourcePOSTInputType"
+              $ref: "./definitions.yaml#/components/schemas/Update_GeoresourcePOSTInputType"
       responses:
         "200":
           description: "List of created feature IDs"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+                $ref: "./definitions.yaml#/components/schemas/ImportResponseType"
         "400":
           description: "Bad Request"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
         "401":
           description: "Unauthenticated"
         default:
@@ -161,7 +161,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
   ######## INDICATORS
   /indicators/update:
@@ -176,20 +176,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "./definitions.yaml#/definitions/Update_IndicatorPOSTInputType"
+              $ref: "./definitions.yaml#/components/schemas/Update_IndicatorPOSTInputType"
       responses:
         "200":
           description: "List of created feature IDs"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/ImportResponseType"
+                $ref: "./definitions.yaml#/components/schemas/ImportResponseType"
         "400":
           description: "Bad Request"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
         "401":
           description: "Unauthenticated"
         default:
@@ -197,7 +197,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
   ######## UPLOAD
   /upload:
@@ -233,7 +233,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
         "401":
           description: "Unauthenticated"
         default:
@@ -241,7 +241,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
     get:
       tags:
@@ -257,7 +257,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "./definitions.yaml#/definitions/UploadedFileType"
+                  $ref: "./definitions.yaml#/components/schemas/UploadedFileType"
         "401":
           description: "Unauthenticated"
         default:
@@ -265,7 +265,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
   ######## CONVERTERS
   /converters:
@@ -283,7 +283,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "./definitions.yaml#/definitions/ConverterType"
+                  $ref: "./definitions.yaml#/components/schemas/ConverterType"
         "401":
           description: "Unauthenticated"
         default:
@@ -291,7 +291,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
 
   /converters/{name}:
@@ -314,7 +314,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/ConverterType"
+                $ref: "./definitions.yaml#/components/schemas/ConverterType"
         "401":
           description: "Unauthenticated"
         "404":
@@ -322,13 +322,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
         default:
           description: "Unexpected error"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
 
   ######## DATASOURCE TYPES
@@ -347,7 +347,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "./definitions.yaml#/definitions/DataSourceType"
+                  $ref: "./definitions.yaml#/components/schemas/DataSourceType"
         "401":
           description: "Unauthenticated"
         default:
@@ -355,7 +355,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
 
   /datasourceTypes/{type}:
@@ -378,7 +378,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/DataSourceType"
+                $ref: "./definitions.yaml#/components/schemas/DataSourceType"
         "401":
           description: "Unauthenticated"
         "404":
@@ -386,13 +386,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
         default:
           description: "Unexpected error"
           content:
             application/json:
               schema:
-                $ref: "./definitions.yaml#/definitions/Error"
+                $ref: "./definitions.yaml#/components/schemas/Error"
 
 externalDocs:
   description: "Find out more about Swagger"

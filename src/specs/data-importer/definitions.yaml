@@ -1,452 +1,453 @@
-definitions:
-  Import_SpatialUnitPOSTInputType:
-    description: Definitions for importing an new spatial unit from a certain datasource
-    type: object
-    required:
-      - spatialUnitPostBody
-      - dataSource
-      - converter
-      - propertyMapping
-      - dryRun
-    properties:
-      spatialUnitPostBody:
-        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/SpatialUnitPOSTInputType"
-      dataSource:
-        $ref: "#/definitions/DataSourceDefinitionType"
-      converter:
-        $ref: "#/definitions/ConverterDefinitionType"
-      propertyMapping:
-        $ref: "#/definitions/SpatialResourcePropertyMappingType"
-      dryRun:
-        type: boolean
-        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
+components:
+  schemas:
+    Import_SpatialUnitPOSTInputType:
+      description: Definitions for importing an new spatial unit from a certain datasource
+      type: object
+      required:
+        - spatialUnitPostBody
+        - dataSource
+        - converter
+        - propertyMapping
+        - dryRun
+      properties:
+        spatialUnitPostBody:
+          $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/SpatialUnitPOSTInputType"
+        dataSource:
+          $ref: "#/components/schemas/DataSourceDefinitionType"
+        converter:
+          $ref: "#/components/schemas/ConverterDefinitionType"
+        propertyMapping:
+          $ref: "#/components/schemas/SpatialResourcePropertyMappingType"
+        dryRun:
+          type: boolean
+          description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
-  Update_SpatialUnitPOSTInputType:
-    description: Definitions for updating an spatial unit from a certain datasource
-    type: object
-    required:
-      - spatialUnitId
-      - spatialUnitPutBody
-      - dataSource
-      - converter
-      - propertyMapping
-      - dryRun
-    properties:
-      spatialUnitId:
-        type: string
-        description: the unique ID of the spatial unit that shall be updated
-      spatialUnitPutBody:
-        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/SpatialUnitPUTInputType"
-      dataSource:
-        $ref: "#/definitions/DataSourceDefinitionType"
-      converter:
-        $ref: "#/definitions/ConverterDefinitionType"
-      propertyMapping:
-        $ref: "#/definitions/SpatialResourcePropertyMappingType"
-      dryRun:
-        type: boolean
-        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
-
-  Import_GeoresourcePOSTInputType:
-    description: Definitions for importing an new georesource
-    type: object
-    required:
-      - georesourcePostBody
-      - dataSource
-      - converter
-      - propertyMapping
-      - dryRun
-    properties:
-      georesourcePostBody:
-        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/GeoresourcePOSTInputType"
-      dataSource:
-        $ref: "#/definitions/DataSourceDefinitionType"
-      converter:
-        $ref: "#/definitions/ConverterDefinitionType"
-      propertyMapping:
-        $ref: "#/definitions/SpatialResourcePropertyMappingType"
-      dryRun:
-        type: boolean
-        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
-
-  Update_GeoresourcePOSTInputType:
-    description: Definitions for updating a georesource from a certain datasource
-    type: object
-    required:
-      - georesourceId
-      - georesourcePutBody
-      - dataSource
-      - converter
-      - propertyMapping
-      - dryRun
-    properties:
-      georesourceId:
-        type: string
-        description: the unique ID of the georesource that shall be updated
-      georesourcePutBody:
-        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/GeoresourcePUTInputType"
-      dataSource:
-        $ref: "#/definitions/DataSourceDefinitionType"
-      converter:
-        $ref: "#/definitions/ConverterDefinitionType"
-      propertyMapping:
-        $ref: "#/definitions/SpatialResourcePropertyMappingType"
-      dryRun:
-        type: boolean
-        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
-
-  Import_IndicatorPOSTInputType:
-    description: Definitions for importing an new indicator from a certain datasource
-    type: object
-    required:
-      - indicatorPostBody
-      - dataSource
-      - converter
-      - propertyMapping
-      - dryRun
-    properties:
-      indicatorPostBody:
-        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/IndicatorPOSTInputType"
-      dataSource:
-        $ref: "#/definitions/DataSourceDefinitionType"
-      converter:
-        $ref: "#/definitions/ConverterDefinitionType"
-      propertyMapping:
-        $ref: "#/definitions/IndicatorPropertyMappingType"
-      dryRun:
-        type: boolean
-        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
-
-  Update_IndicatorPOSTInputType:
-    description: Definitions for updating a new indicator from a certain datasource
-    type: object
-    required:
-      - indicatorId
-      - indicatorPutBody
-      - dataSource
-      - converter
-      - propertyMapping
-      - dryRun
-    properties:
-      indicatorId:
-        type: string
-        description: the unique ID of the indicator that shall be updated
-      indicatorPutBody:
-        $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/IndicatorPUTInputType"
-      dataSource:
-        $ref: "#/definitions/DataSourceDefinitionType"
-      converter:
-        $ref: "#/definitions/ConverterDefinitionType"
-      propertyMapping:
-        $ref: "#/definitions/IndicatorPropertyMappingType"
-      dryRun:
-        type: boolean
-        description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
-
-  DataSourceType:
-    description: Holds various information about the datasource for importing new resources
-    type: object
-    required:
-      - type
-    properties:
-      type:
-        type: string
-        description: the type of datasource from which geodata or indicator data should be retrieved
-        enum:
-          - DB
-          - FILE
-          - FTP
-          - HTTP
-          - INLINE
-      parameters:
-        type: array
-        description: list with descriptions of additional parameters that are required for retrieving datasets from a datasource
-        items:
-          $ref: "#/definitions/ParameterType"
-
-  DataSourceDefinitionType:
-    description: Holds various information about the datasource for importing new resources
-    type: object
-    required:
-      - type
-    properties:
-      type:
-        type: string
-        description: the type of datasource from which geodata or indicator data should be retrieved
-        enum:
-          - DB
-          - FILE
-          - FTP
-          - HTTP
-          - INLINE
-      parameters:
-        type: array
-        description: list of additional parameters as key-value-pairs that are required for retrieving datasets from a datasource
-        items:
-          $ref: "#/definitions/ParameterValueType"
-
-  PayloadType:
-    description: The payload of the dataset that should we imported. Might be either provided inline or as a reference on a remote dataset.
-    type: object
-    properties:
-      inputType:
-        type: string
-        description: specifies the the way the payload content will be provided. Possible values are 'DATA' for providing data inline or 'REFERENCE' to specifiy an URL that references some remote data.
-        enum:
-          - DATA
-          - REFERENCE
-      content:
-        type: string
-        description: the content according to the selected sourceFormat (i.e. an URL to a WFS, or Base64 encoded String of a zipped ShapeFile or GeoJSON)
-
-  SpatialResourcePropertyMappingType:
-    description: Definitions for mapping datasource properties to required properties for spatial units and georesources
-    type: object
-    required:
-      - idProperty
-      - nameProperty
-      - keepAttributes
-      - keepMissingOrNullValueAttributes
-    properties:
-      identifierProperty:
-        type: string
-        description: the property that contains each feature's unique identifier
-      nameProperty:
-        type: string
-        description: the property that contains each feature's unique name
-      validStartDateProperty:
-        type: string
-        description: the property that contains information about each feature's period of validity start date (optional, can also be configured globally for all features in POST and PUT requests)
-      validEndDateProperty:
-        type: string
-        description: the property that contains information about each feature's period of validity end date - might be null to indicator that feature is most current feature (optional, can also be configured globally for all features in POST and PUT requests)
-      arisenFromProperty:
-        type: string
-        description: the property that contains an ID that references a former spatial feature that over time evolved into the respective feature
-      keepAttributes:
-        type: boolean
-        description: indicates if all attributes of the feature should be kept (note, if true, you can't specify an alias for the attributes, like you would do for the attribute mappings)
-      keepMissingOrNullValueAttributes:
-        type: boolean
-        description: Indicates if missing attributes or attributes with a null value should be kept. If true, missing attributes will be added with a null value and attributes that hold a null value will be kept. Will be ignored if `keepAttributes` is true, since alle values would be kept anyway.
-      attributes:
-        type: array
-        description: list of additional attribute mappings (will be skipped, if `keepAttributes` is true)
-        items:
-          $ref: "#/definitions/AttributeMappingType"
-
-  IndicatorPropertyMappingType:
-    description: Definitions for mapping datasource properties to required properties for indicators
-    type: object
-    required:
-      - spatialReferenceKeyProperty
-      - indicatorValueProperty
-      - keepMissingOrNullValueIndicator
-    properties:
-      spatialReferenceKeyProperty:
-        type: string
-        description: property that contains the identifier of the spatial feature to which the values shall be applied
-      timeseriesMappings:
-        type: array
-        description: list of property mappings for timeseries values
-        items:
-          $ref: "#/definitions/TimeseriesMappingType"
-      keepMissingOrNullValueIndicator:
-        type: boolean
-        description: Indicates if missing Indicators or Indicators with a null value should be kept. Missing Indicators will be added with a null value and Indicators that hold a null value will be kept.
-      attributeMappings:
-        type: array
-        description: list of additional attribute mappings
-        items:
-          $ref: "#/definitions/AttributeMappingType"
-
-  TimeseriesMappingType:
-    description: Definitions for mapping datasource properties to required properties for timeseries values
-    type: object
-    required:
-      - indicatorValueProperty
-    properties:
-      indicatorValueProperty:
-        type: string
-        description: property that contains the numeric value of the indicator
-      timestamp:
-        type: string
-        format: date
-        description: optional timestamp value for the indicator that will be used if there is no property containing timestamp information
-      timestampProperty:
-        type: string
-        description: property that contains the timestamp (year, month and date) according to ISO 8601 (e.g. 2018-01-30)
-
-  AttributeMappingType:
-    description: Definitions for mapping of additional attributes of datasets from a data source
-    type: object
-    required:
-      - name
-      - type
-    properties:
-      name:
-        type: string
-        description: name of the attribute from the origin dataset
-      mappingName:
-        type: string
-        description: name that should be used for importing the attribute into KomMonitor
-      type:
-        type: string
-        description: data type of the parameter
-        enum:
-          - string
-          - integer
-          - float
-          - date
-
-  ConverterType:
-    description: Conerverter that enables the converting of a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators
-    type: object
-    required:
-      - name
-      - mimeTypes
-    properties:
-      name:
-        type: string
-        description: unique name of the converter
-      mimeTypes:
-        type: array
-        description: list of MIME-types of the source format according to https://www.iana.org/assignments/media-types/media-types.xhtml that are supported by the converter
-        items:
+    Update_SpatialUnitPOSTInputType:
+      description: Definitions for updating an spatial unit from a certain datasource
+      type: object
+      required:
+        - spatialUnitId
+        - spatialUnitPutBody
+        - dataSource
+        - converter
+        - propertyMapping
+        - dryRun
+      properties:
+        spatialUnitId:
           type: string
-      schemas:
-        type: array
-        description: list of schemas of the source format (e.g. http://schemas.opengis.net/gml/3.0.0/base/feature.xsd for MIME-type text/xml) that are supported by the converter
-        items:
-          type: string
-      encodings:
-        type: array
-        description: list of encodings that are supported by the converter
-        items:
-          type: string
-      parameters:
-        type: array
-        description: list with descriptions of additional parameters that are required for decoding a certain dataset format
-        items:
-          $ref: "#/definitions/ParameterType"
+          description: the unique ID of the spatial unit that shall be updated
+        spatialUnitPutBody:
+          $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/SpatialUnitPUTInputType"
+        dataSource:
+          $ref: "#/components/schemas/DataSourceDefinitionType"
+        converter:
+          $ref: "#/components/schemas/ConverterDefinitionType"
+        propertyMapping:
+          $ref: "#/components/schemas/SpatialResourcePropertyMappingType"
+        dryRun:
+          type: boolean
+          description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
-  ConverterDefinitionType:
-    description: Definition of an conveter that should be used for decoding a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators and importing it
-    type: object
-    required:
-      - name
-      - mimeType
-    properties:
-      name:
-        type: string
-        description: unique name of the conveter
-      mimeType:
-        type: string
-        description: the MIME-type of the source format according to https://www.iana.org/assignments/media-types/media-types.xhtml
-      schema:
-        type: string
-        description: the schema of the source format (e.g. http://schemas.opengis.net/gml/3.0.0/base/feature.xsd for MIME-type text/xml)
-      encoding:
-        type: string
-        description: encoding procedure or character set used (e.g. raw, base64, or UTF-8)
-      parameters:
-        type: array
-        description: list of additional format related parameters as key-value-pairs that are required for decoding
-        items:
-          $ref: "#/definitions/ParameterValueType"
+    Import_GeoresourcePOSTInputType:
+      description: Definitions for importing an new georesource
+      type: object
+      required:
+        - georesourcePostBody
+        - dataSource
+        - converter
+        - propertyMapping
+        - dryRun
+      properties:
+        georesourcePostBody:
+          $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/GeoresourcePOSTInputType"
+        dataSource:
+          $ref: "#/components/schemas/DataSourceDefinitionType"
+        converter:
+          $ref: "#/components/schemas/ConverterDefinitionType"
+        propertyMapping:
+          $ref: "#/components/schemas/SpatialResourcePropertyMappingType"
+        dryRun:
+          type: boolean
+          description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
-  ParameterType:
-    description:
-      Definition of an additional parameter that is either required for retrieving a dataset from a certain datsource |
-      or for converting the dataset in a certain format (e.g. separator for CSV-based datasets)
-    type: object
-    required:
-      - name
-    properties:
-      name:
-        type: string
-        description: name of the parameter
+    Update_GeoresourcePOSTInputType:
+      description: Definitions for updating a georesource from a certain datasource
+      type: object
+      required:
+        - georesourceId
+        - georesourcePutBody
+        - dataSource
+        - converter
+        - propertyMapping
+        - dryRun
+      properties:
+        georesourceId:
+          type: string
+          description: the unique ID of the georesource that shall be updated
+        georesourcePutBody:
+          $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/GeoresourcePUTInputType"
+        dataSource:
+          $ref: "#/components/schemas/DataSourceDefinitionType"
+        converter:
+          $ref: "#/components/schemas/ConverterDefinitionType"
+        propertyMapping:
+          $ref: "#/components/schemas/SpatialResourcePropertyMappingType"
+        dryRun:
+          type: boolean
+          description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
+
+    Import_IndicatorPOSTInputType:
+      description: Definitions for importing an new indicator from a certain datasource
+      type: object
+      required:
+        - indicatorPostBody
+        - dataSource
+        - converter
+        - propertyMapping
+        - dryRun
+      properties:
+        indicatorPostBody:
+          $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/IndicatorPOSTInputType"
+        dataSource:
+          $ref: "#/components/schemas/DataSourceDefinitionType"
+        converter:
+          $ref: "#/components/schemas/ConverterDefinitionType"
+        propertyMapping:
+          $ref: "#/components/schemas/IndicatorPropertyMappingType"
+        dryRun:
+          type: boolean
+          description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
+
+    Update_IndicatorPOSTInputType:
+      description: Definitions for updating a new indicator from a certain datasource
+      type: object
+      required:
+        - indicatorId
+        - indicatorPutBody
+        - dataSource
+        - converter
+        - propertyMapping
+        - dryRun
+      properties:
+        indicatorId:
+          type: string
+          description: the unique ID of the indicator that shall be updated
+        indicatorPutBody:
+          $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/definitions/IndicatorPUTInputType"
+        dataSource:
+          $ref: "#/components/schemas/DataSourceDefinitionType"
+        converter:
+          $ref: "#/components/schemas/ConverterDefinitionType"
+        propertyMapping:
+          $ref: "#/components/schemas/IndicatorPropertyMappingType"
+        dryRun:
+          type: boolean
+          description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
+
+    DataSourceType:
+      description: Holds various information about the datasource for importing new resources
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          description: the type of datasource from which geodata or indicator data should be retrieved
+          enum:
+            - DB
+            - FILE
+            - FTP
+            - HTTP
+            - INLINE
+        parameters:
+          type: array
+          description: list with descriptions of additional parameters that are required for retrieving datasets from a datasource
+          items:
+            $ref: "#/components/schemas/ParameterType"
+
+    DataSourceDefinitionType:
+      description: Holds various information about the datasource for importing new resources
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          description: the type of datasource from which geodata or indicator data should be retrieved
+          enum:
+            - DB
+            - FILE
+            - FTP
+            - HTTP
+            - INLINE
+        parameters:
+          type: array
+          description: list of additional parameters as key-value-pairs that are required for retrieving datasets from a datasource
+          items:
+            $ref: "#/components/schemas/ParameterValueType"
+
+    PayloadType:
+      description: The payload of the dataset that should we imported. Might be either provided inline or as a reference on a remote dataset.
+      type: object
+      properties:
+        inputType:
+          type: string
+          description: specifies the the way the payload content will be provided. Possible values are 'DATA' for providing data inline or 'REFERENCE' to specifiy an URL that references some remote data.
+          enum:
+            - DATA
+            - REFERENCE
+        content:
+          type: string
+          description: the content according to the selected sourceFormat (i.e. an URL to a WFS, or Base64 encoded String of a zipped ShapeFile or GeoJSON)
+
+    SpatialResourcePropertyMappingType:
+      description: Definitions for mapping datasource properties to required properties for spatial units and georesources
+      type: object
+      required:
+        - idProperty
+        - nameProperty
+        - keepAttributes
+        - keepMissingOrNullValueAttributes
+      properties:
+        identifierProperty:
+          type: string
+          description: the property that contains each feature's unique identifier
+        nameProperty:
+          type: string
+          description: the property that contains each feature's unique name
+        validStartDateProperty:
+          type: string
+          description: the property that contains information about each feature's period of validity start date (optional, can also be configured globally for all features in POST and PUT requests)
+        validEndDateProperty:
+          type: string
+          description: the property that contains information about each feature's period of validity end date - might be null to indicator that feature is most current feature (optional, can also be configured globally for all features in POST and PUT requests)
+        arisenFromProperty:
+          type: string
+          description: the property that contains an ID that references a former spatial feature that over time evolved into the respective feature
+        keepAttributes:
+          type: boolean
+          description: indicates if all attributes of the feature should be kept (note, if true, you can't specify an alias for the attributes, like you would do for the attribute mappings)
+        keepMissingOrNullValueAttributes:
+          type: boolean
+          description: Indicates if missing attributes or attributes with a null value should be kept. If true, missing attributes will be added with a null value and attributes that hold a null value will be kept. Will be ignored if `keepAttributes` is true, since alle values would be kept anyway.
+        attributes:
+          type: array
+          description: list of additional attribute mappings (will be skipped, if `keepAttributes` is true)
+          items:
+            $ref: "#/components/schemas/AttributeMappingType"
+
+    IndicatorPropertyMappingType:
+      description: Definitions for mapping datasource properties to required properties for indicators
+      type: object
+      required:
+        - spatialReferenceKeyProperty
+        - indicatorValueProperty
+        - keepMissingOrNullValueIndicator
+      properties:
+        spatialReferenceKeyProperty:
+          type: string
+          description: property that contains the identifier of the spatial feature to which the values shall be applied
+        timeseriesMappings:
+          type: array
+          description: list of property mappings for timeseries values
+          items:
+            $ref: "#/components/schemas/TimeseriesMappingType"
+        keepMissingOrNullValueIndicator:
+          type: boolean
+          description: Indicates if missing Indicators or Indicators with a null value should be kept. Missing Indicators will be added with a null value and Indicators that hold a null value will be kept.
+        attributeMappings:
+          type: array
+          description: list of additional attribute mappings
+          items:
+            $ref: "#/components/schemas/AttributeMappingType"
+
+    TimeseriesMappingType:
+      description: Definitions for mapping datasource properties to required properties for timeseries values
+      type: object
+      required:
+        - indicatorValueProperty
+      properties:
+        indicatorValueProperty:
+          type: string
+          description: property that contains the numeric value of the indicator
+        timestamp:
+          type: string
+          format: date
+          description: optional timestamp value for the indicator that will be used if there is no property containing timestamp information
+        timestampProperty:
+          type: string
+          description: property that contains the timestamp (year, month and date) according to ISO 8601 (e.g. 2018-01-30)
+
+    AttributeMappingType:
+      description: Definitions for mapping of additional attributes of datasets from a data source
+      type: object
+      required:
+        - name
+        - type
+      properties:
+        name:
+          type: string
+          description: name of the attribute from the origin dataset
+        mappingName:
+          type: string
+          description: name that should be used for importing the attribute into KomMonitor
+        type:
+          type: string
+          description: data type of the parameter
+          enum:
+            - string
+            - integer
+            - float
+            - date
+
+    ConverterType:
+      description: Conerverter that enables the converting of a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators
+      type: object
+      required:
+        - name
+        - mimeTypes
+      properties:
+        name:
+          type: string
+          description: unique name of the converter
+        mimeTypes:
+          type: array
+          description: list of MIME-types of the source format according to https://www.iana.org/assignments/media-types/media-types.xhtml that are supported by the converter
+          items:
+            type: string
+        schemas:
+          type: array
+          description: list of schemas of the source format (e.g. http://schemas.opengis.net/gml/3.0.0/base/feature.xsd for MIME-type text/xml) that are supported by the converter
+          items:
+            type: string
+        encodings:
+          type: array
+          description: list of encodings that are supported by the converter
+          items:
+            type: string
+        parameters:
+          type: array
+          description: list with descriptions of additional parameters that are required for decoding a certain dataset format
+          items:
+            $ref: "#/components/schemas/ParameterType"
+
+    ConverterDefinitionType:
+      description: Definition of an conveter that should be used for decoding a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators and importing it
+      type: object
+      required:
+        - name
+        - mimeType
+      properties:
+        name:
+          type: string
+          description: unique name of the conveter
+        mimeType:
+          type: string
+          description: the MIME-type of the source format according to https://www.iana.org/assignments/media-types/media-types.xhtml
+        schema:
+          type: string
+          description: the schema of the source format (e.g. http://schemas.opengis.net/gml/3.0.0/base/feature.xsd for MIME-type text/xml)
+        encoding:
+          type: string
+          description: encoding procedure or character set used (e.g. raw, base64, or UTF-8)
+        parameters:
+          type: array
+          description: list of additional format related parameters as key-value-pairs that are required for decoding
+          items:
+            $ref: "#/components/schemas/ParameterValueType"
+
+    ParameterType:
       description:
-        type: string
-        description: description of the parameter
-      mandatory:
-        type: boolean
-        description: indicates wether the parameter is mandatory or optional
-      type:
-        type: string
-        description: type of the parameter
-        enum:
-          - string
-          - number
-          - boolean
-          - array
-
-  ParameterValueType:
-    description:
-      Additional parameter as key-value-pair that is either required for retrieving a dataset from a certain datsource |
-      or for converting the dataset in a certain format (e.g. separator for CSV-based datasets)
-    type: object
-    required:
-      - name
-      - value
-    properties:
-      name:
-        type: string
-        description: name of the parameter
-      value:
-        type: string
-        description: value of the parameter
-
-  UploadedFileType:
-    description: Definition of an uploaded file
-    type: object
-    required:
-      - name
-    properties:
-      name:
-        type: string
-        description: name of the uploaded file
-      contentType:
-        type: string
-        description: Content type of the uploaded files
-
-  ImportResponseType:
-    description: Contains information about imported resource features
-    type: object
-    properties:
-      uri:
-        type: string
-        description: URIs of the newly created spatial unit resource
-      importedFeatures:
-        type: array
-        description: list of IDs that indicate those resource features that were imported succesfully
-        items:
+        Definition of an additional parameter that is either required for retrieving a dataset from a certain datsource |
+        or for converting the dataset in a certain format (e.g. separator for CSV-based datasets)
+      type: object
+      required:
+        - name
+      properties:
+        name:
           type: string
-      errors:
-        type: array
-        description: List of error messages that occurred during the import
-        items:
+          description: name of the parameter
+        description:
           type: string
-      warnings:
-        type: array
-        description: List of warning messages that occurred during the import
-        items:
+          description: description of the parameter
+        mandatory:
+          type: boolean
+          description: indicates wether the parameter is mandatory or optional
+        type:
           type: string
+          description: type of the parameter
+          enum:
+            - string
+            - number
+            - boolean
+            - array
 
-  Error:
-    description: A default error that will be responded if an unexpected server error occurs
-    type: object
-    required:
-      - code
-      - message
-    properties:
-      code:
-        type: integer
-      message:
-        description: General message that describes the main error
-        type: string
-      errors:
-        type: array
-        description: List of error messages that occurred during the import
-        items:
+    ParameterValueType:
+      description:
+        Additional parameter as key-value-pair that is either required for retrieving a dataset from a certain datsource |
+        or for converting the dataset in a certain format (e.g. separator for CSV-based datasets)
+      type: object
+      required:
+        - name
+        - value
+      properties:
+        name:
           type: string
+          description: name of the parameter
+        value:
+          type: string
+          description: value of the parameter
+
+    UploadedFileType:
+      description: Definition of an uploaded file
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: name of the uploaded file
+        contentType:
+          type: string
+          description: Content type of the uploaded files
+
+    ImportResponseType:
+      description: Contains information about imported resource features
+      type: object
+      properties:
+        uri:
+          type: string
+          description: URIs of the newly created spatial unit resource
+        importedFeatures:
+          type: array
+          description: list of IDs that indicate those resource features that were imported succesfully
+          items:
+            type: string
+        errors:
+          type: array
+          description: List of error messages that occurred during the import
+          items:
+            type: string
+        warnings:
+          type: array
+          description: List of warning messages that occurred during the import
+          items:
+            type: string
+
+    Error:
+      description: A default error that will be responded if an unexpected server error occurs
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+        message:
+          description: General message that describes the main error
+          type: string
+        errors:
+          type: array
+          description: List of error messages that occurred during the import
+          items:
+            type: string
