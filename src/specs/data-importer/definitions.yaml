@@ -301,7 +301,7 @@ components:
             - date
 
     ConverterType:
-      description: Conerverter that enables the converting of a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators
+      description: Converter that enables the converting of a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators
       type: object
       required:
         - name
@@ -332,7 +332,7 @@ components:
             $ref: "#/components/schemas/ParameterType"
 
     ConverterDefinitionType:
-      description: Definition of an conveter that should be used for decoding a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators and importing it
+      description: Definition of an converter that should be used for decoding a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators and importing it
       type: object
       required:
         - name
@@ -340,7 +340,7 @@ components:
       properties:
         name:
           type: string
-          description: unique name of the conveter
+          description: unique name of the converter
         mimeType:
           type: string
           description: the MIME-type of the source format according to https://www.iana.org/assignments/media-types/media-types.xhtml
