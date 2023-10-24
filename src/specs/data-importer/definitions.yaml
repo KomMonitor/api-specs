@@ -332,6 +332,14 @@ components:
           description: list with descriptions of additional parameters that are required for decoding a certain dataset format
           items:
             $ref: "#/components/schemas/ParameterType"
+        datasources:
+          type: array
+          description: list of supported datasources
+          items:
+            type: string
+            example:
+              - INLINE
+              - HTTP
 
     ConverterDefinitionType:
       description: Definition of an converter that should be used for decoding a certain dataset format into the KomMonitor specific format of georesources, spatial units and indicators and importing it
