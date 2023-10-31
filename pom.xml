@@ -20,6 +20,10 @@
                 <directory>src/specs/processing-engine</directory>
                 <targetPath>specs/processing-engine</targetPath>
             </resource>
+            <resource>
+                <directory>src/specs/spatial-data-processor</directory>
+                <targetPath>specs/spatial-data-processor</targetPath>
+            </resource>
         </resources>
     </build>
 
