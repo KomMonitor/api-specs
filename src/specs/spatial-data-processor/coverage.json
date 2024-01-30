@@ -1,0 +1,42 @@
+{
+  "indicatorId": "baad078b-8e91-4999-aa94-0fee5a50cec6",
+  "overallCoverage": {
+    "date": "2015-12-31",
+    "absoluteCoverage": 164.43628,
+    "relativeCoverage": 0.05908598
+  },
+  "poiCoverage": [
+    {
+      "poiFeatureId": "7948f630-4a64-49e3-b243-facb1a75eb5a",
+      "overallCoverage": [
+        {
+          "date": "2015-12-31",
+          "absoluteCoverage": 164.43628,
+          "relativeCoverage": 0.05908598
+        }
+      ],
+      "spatialUnitCoverage": [
+        {
+          "spatialUnitFeatureId": "4",
+          "coverage": [
+            {
+              "date": "2015-12-31",
+              "absoluteCoverage": 164.43628,
+              "relativeCoverage": 0.05908598
+            }
+          ]
+        },
+        {
+          "spatialUnitFeatureId": "1",
+          "coverage": [
+            {
+              "date": "2015-12-31",
+              "absoluteCoverage": 2598.1118,
+              "relativeCoverage": 0.6930146
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
