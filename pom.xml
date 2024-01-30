@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.n52.kommonitor</groupId>
     <artifactId>kommonitor-api-specs</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>KomMonitor OpenAPI Specifications</name>
     <build>
