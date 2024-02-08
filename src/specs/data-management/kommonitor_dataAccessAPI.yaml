@@ -6211,7 +6211,7 @@ components:
         outlineDashArrayString:
           type: string
           description: 'string of line stroke dash array for lines of interest (e.g. 20,20; see https://developer.mozilla.org/de/docs/Web/SVG/Attribute/stroke-dasharray)'
-      SpatialUnitPUTInputType:
+    SpatialUnitPUTInputType:
       title: SpatialUnitPUTInputType
       required:
         - geoJsonString
