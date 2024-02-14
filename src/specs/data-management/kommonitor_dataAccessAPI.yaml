@@ -2109,6 +2109,48 @@ paths:
       deprecated: false
       security:
         - kommonitor-data-access_oauth: []
+  /organizationalUnits/{organizationalUnitId}/permissions:
+    get:
+      tags:
+        - access-control
+      summary: Retrieve information about selected organizationalUnits permissions
+      description: retrieve information about selected organizationalUnits permissions
+      operationId: getOrganizationalUnitPermissions
+      parameters:
+        - name: organizationalUnitId
+          in: path
+          description: organizationalUnitId
+          required: true
+          schema:
+            type: string
+        - name: resourceType
+          in: query
+          description: resourceType
+          required: false
+          schema:
+            $ref: "#/components/schemas/ResourceType"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationalUnitPermissionOverviewType'
+        "400":
+          description: Invalid status value
+          content: {}
+        "401":
+          description: API key is missing or invalid
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
+      security:
+        - kommonitor-data-access_oauth: []
   /process-scripts:
     get:
       tags:
@@ -5842,6 +5884,64 @@ components:
           items:
             $ref: '#/components/schemas/RoleOverviewType'
       description: organizational unit (group)
+    ResourceType:
+      type: string
+      enum:
+      - georesouces
+      - spatialunits,
+      - indicators
+      - indicatorspatialunits
+    OrganizationalUnitPermissionOverviewElementType:
+      type: object
+      required:
+        - id
+        - permissionLevel
+        - roleId
+      properties:
+        id:
+          type: string
+          format: uuid
+        permissionLevel:
+          type: string
+        roleId:
+          type: string
+          format: uuid
+    OrganizationalUnitPermissionOverviewSpatialUnitElementType:
+      allOf:
+        - $ref: '#/components/schemas/OrganizationalUnitPermissionOverviewElementType'
+        - type: object
+          required:
+            - spatialUnitId
+          properties:
+            spatialUnitId:
+              type: string
+              format: uuid
+    OrganizationalUnitPermissionOverviewType:
+      allOf:
+        - $ref: '#/components/schemas/OrganizationalUnitOverviewType'
+        - type: object
+          required:
+            - permissions
+          properties:
+            permissions:
+              type: object
+              properties:
+                georesources:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/OrganizationalUnitPermissionOverviewElementType"
+                spatialunits:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/OrganizationalUnitPermissionOverviewElementType"
+                indicators:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/OrganizationalUnitPermissionOverviewElementType"
+                indicatorspatialunits:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/OrganizationalUnitPermissionOverviewSpatialUnitElementType"
     PeriodOfValidityType:
       title: PeriodOfValidityType
       required:
