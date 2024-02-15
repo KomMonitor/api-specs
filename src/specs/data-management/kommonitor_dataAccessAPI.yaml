@@ -6006,7 +6006,7 @@ components:
     ResourceType:
       type: string
       enum:
-      - georesouces
+      - georesources
       - spatialunits,
       - indicators
       - indicatorspatialunits
