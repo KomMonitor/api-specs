@@ -6549,6 +6549,13 @@ components:
         - publisher
         - editor
         - viewer
+    PermissionResourceType:
+      type: string
+      description: Defines what resource type a permission refers to (resource, themes or users)
+      enum:
+        - resources
+        - themes
+        - users
     IndicatorTypeEnum:
       type: string
       description: indicates whether the indicator is a status indicator (values represent the extent of the watched
