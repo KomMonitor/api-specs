@@ -5370,6 +5370,7 @@ components:
         - metadata
         - ownerId
         - topicReference
+        - isPublic
       type: object
       properties:
         permissions:
@@ -5400,6 +5401,9 @@ components:
           type: boolean
           description: boolean value indicating if the dataset contains points of
             interest
+        isPublic:
+          type: boolean
+          description: flag whether the resource is publicly accessible
         loiColor:
           type: string
           description: color name or color code (i.e. hex number) for lines of interest
@@ -6226,10 +6230,10 @@ components:
     ResourceType:
       type: string
       enum:
-      - georesources
-      - spatialunits,
-      - indicators
-      - indicatorspatialunits
+        - georesources
+        - spatialunits,
+        - indicators
+        - indicatorspatialunits
     OrganizationalUnitPermissionOverviewElementType:
       type: object
       required:
@@ -6516,6 +6520,7 @@ components:
         - userPermissions
         - wfsUrl
         - wmsUrl
+        - isPublic
       type: object
       properties:
         permissions:
@@ -6574,6 +6579,9 @@ components:
         ownerId:
           type: string
           description: identifier of the owning group
+        isPublic:
+          type: boolean
+          description: flag whether the resource is publicly accessible
     SpatialUnitPATCHInputType:
       title: SpatialUnitPATCHInputType
       required:
@@ -6583,7 +6591,7 @@ components:
         - nextUpperHierarchyLevel
       type: object
       properties:
-        datasetName: 
+        datasetName:
           type: string
           description: the name of the spatial unit - its "spatialUnitLevel"
         metadata:
