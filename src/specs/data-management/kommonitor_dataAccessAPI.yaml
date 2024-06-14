@@ -2342,6 +2342,81 @@ paths:
       deprecated: false
       security:
         - kommonitor-data-access_oauth: []
+  /organizationalUnits/{organizationalUnitId}/role-authorities:
+    get:
+      tags:
+        - access-control
+      summary: Fetch all role authorities for the selected organizationalUnit.
+      description: Fetch all role authorities for the selected organizationalUnit. In particular, these are all roles
+        that have been assigned to the selected organizational that represent delegated administrative tasks
+        for other organizational unit.
+      operationId: getOrganizationalUnitRoleAuthorities
+      parameters:
+        - name: organizationalUnitId
+          in: path
+          description: organizationalUnitId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationalUnitRoleAuthorityType'
+        "400":
+          description: Invalid status value
+          content: { }
+        "401":
+          description: API key is missing or invalid
+          content: { }
+        "403":
+          description: Forbidden
+          content: { }
+        "404":
+          description: Not Found
+          content: { }
+      deprecated: false
+      security:
+        - kommonitor-data-access_oauth: [ ]
+  /organizationalUnits/{organizationalUnitId}/role-delegates:
+    get:
+      tags:
+        - access-control
+      summary: Fetch all role delegates for the selected organizationalUnit.
+      description: Fetch all role delegates for the selected organizationalUnit. In particular, these are all roles
+        that represent delegated administrative tasks and have been assigned to other organizational unit.
+      operationId: getOrganizationalUnitRoleDelegates
+      parameters:
+        - name: organizationalUnitId
+          in: path
+          description: organizationalUnitId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationalUnitRoleDelegateType'
+        "400":
+          description: Invalid status value
+          content: { }
+        "401":
+          description: API key is missing or invalid
+          content: { }
+        "403":
+          description: Forbidden
+          content: { }
+        "404":
+          description: Not Found
+          content: { }
+      deprecated: false
+      security:
+        - kommonitor-data-access_oauth: [ ]
   /process-scripts:
     get:
       tags:
@@ -6192,7 +6267,8 @@ components:
         - keycloakId
         - contact
         - permissions
-        - parent
+        - userAdminRoles
+        - parentId
         - children
       type: object
       properties:
@@ -6218,6 +6294,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PermissionOverviewType'
+        userAdminRoles:
+          type: array
+          description: list of admin roles that are effective on this group for the current user
+          items:
+            $ref: '#/components/schemas/AdminRoleType'
         parentId:
           type: string
           description: uuid of the parent group
@@ -6761,6 +6842,44 @@ components:
             a main topic - only topics of type 'sub' shall be subTopics of topics
             with type 'main'
           $ref: '#/components/schemas/TopicTypeEnum'
+    OrganizationalUnitRoleAuthorityType:
+      title: OrganizationalUnitRoleAuthorityType
+      required:
+        - authorityRoles
+      type: object
+      properties:
+        authorityRoles:
+          type: array
+          description: list of Keycloak group based admin roles that have been assigned to this organizational unit
+          items:
+            $ref: '#/components/schemas/GroupAdminRolesType'
+    OrganizationalUnitRoleDelegateType:
+      title: OrganizationalUnitRoleDelegateType
+      required:
+        - roleDelegates
+      type: object
+      properties:
+        roleDelegates:
+          type: array
+          description: list of admin roles for this organizational units that have been assigned to other organizational
+            units for delegation purpose
+          items:
+            $ref: '#/components/schemas/GroupAdminRolesType'
+    GroupAdminRolesType:
+      title: GroupAdminRolesType
+      required:
+        - organizationalUnitId
+        - adminRoles
+      type: object
+      properties:
+        organizationalUnitId:
+          type: string
+          description: unique id of the organizational Unit
+        adminRoles:
+          type: array
+          description: Admin roles that refer to the organizational unit
+          items:
+            $ref: '#/components/schemas/AdminRoleType'
     ColorType:
       type: string
       description: Defines assignable colors for different feature styles, such as POI, LOI and AOI colors.
@@ -6789,6 +6908,16 @@ components:
         - resources
         - themes
         - users
+    AdminRoleType:
+      type: string
+      description: Permissions for administrative tasks regarding resources, themes and users
+      enum:
+        - client-users-creator
+        - unit-users-creator
+        - client-resources-creator
+        - unit-resources-creator
+        - client-themes-creator
+        - unit-themes-creator
     IndicatorTypeEnum:
       type: string
       description: indicates whether the indicator is a status indicator (values represent the extent of the watched
