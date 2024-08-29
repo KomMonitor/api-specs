@@ -2417,6 +2417,111 @@ paths:
       deprecated: false
       security:
         - kommonitor-data-access_oauth: [ ]
+    put:
+      tags:
+        - access-control
+      summary: Update role delegates for the selected Organizational Unit
+      description: Add role delegates for the selected Organizational Unit
+      operationId: updateRoleDelegates
+      parameters:
+        - name: organizationalUnitId
+          in: path
+          description: organizationalUnitId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: data
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/GroupAdminRolesPUTInputType'
+        required: true
+      responses:
+        "200":
+          description: OK
+        "201":
+          description: Created
+        "401":
+          description: API key is missing or invalid
+          content: { }
+        "403":
+          description: Forbidden
+          content: { }
+        "404":
+          description: Not Found
+          content: { }
+        "405":
+          description: Invalid input
+          content: { }
+      deprecated: false
+      security:
+        - kommonitor-data-access_oauth: [ ]
+      x-codegen-request-body-name: organizationalUnitData
+  /organizationalUnits/sync:
+    post:
+      tags:
+        - access-control
+      summary: Synchronize the all OrganizationalUnits and Keycloak entities
+      description: Synchronize the all OrganizationalUnis and Keycloak entities (group, roles and role policies)
+        with each other.
+      operationId: snycAllOrganizationalUnits
+      responses:
+        "200":
+          description: OK
+        "201":
+          description: Created
+        "401":
+          description: API key is missing or invalid
+          content: { }
+        "403":
+          description: Forbidden
+          content: { }
+        "404":
+          description: Not Found
+          content: { }
+        "405":
+          description: Invalid input
+          content: { }
+      deprecated: false
+      security:
+        - kommonitor-data-access_oauth: [ ]
+  /organizationalUnits/{organizationalUnitId}/sync:
+    post:
+      tags:
+        - access-control
+      summary: Synchronize the specified OrganizationalUnit and Keycloak entities
+      description: Synchronize the specified OrganizationalUnit and Keycloak entities (group, roles and role policies)
+        with each other.
+      operationId: snycOrganizationalUnit
+      parameters:
+        - name: organizationalUnitId
+          in: path
+          description: organizationalUnitId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content: { }
+        "400":
+          description: Invalid status value
+          content: { }
+        "401":
+          description: API key is missing or invalid
+          content: { }
+        "403":
+          description: Forbidden
+          content: { }
+        "404":
+          description: Not Found
+          content: { }
+      deprecated: false
+      security:
+        - kommonitor-data-access_oauth: [ ]
   /process-scripts:
     get:
       tags:
@@ -6302,6 +6407,9 @@ components:
         parentId:
           type: string
           description: uuid of the parent group
+        mandantId:
+          type: string
+          description: uuid of the group that acts as mandant
         children:
           type: array
           items:
@@ -6875,6 +6983,27 @@ components:
         organizationalUnitId:
           type: string
           description: unique id of the organizational Unit
+        adminRoles:
+          type: array
+          description: Admin roles that refer to the organizational unit
+          items:
+            $ref: '#/components/schemas/AdminRoleType'
+    GroupAdminRolesPUTInputType:
+      title: GroupAdminRolesPUTInputType
+      required:
+        - organizationalUnitId
+        - adminRoles
+      type: object
+      properties:
+        organizationalUnitId:
+          type: string
+          description: unique id of the organizational Unit
+        organizationalUnitName:
+          type: string
+          description: unique name of the organizational Unit
+        keycloakId:
+          type: string
+          description: unique Keycloak group ID
         adminRoles:
           type: array
           description: Admin roles that refer to the organizational unit
