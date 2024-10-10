@@ -263,6 +263,41 @@ paths:
       security:
         - kommonitor-data-access_oauth: []
       x-codegen-request-body-name: metadata
+  /georesources/query-features:
+    post:
+      tags:
+        - georesources
+      summary: Query the geo-resource features with regard to certain criteria
+      description: Query the geo-resource features with regard to certain criteria
+      operationId: queryGeoresourceFeatures
+      requestBody:
+        description: feature query body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeoresourcePOSTFeatureQueryType'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                format: byte
+        "401":
+          description: API key is missing or invalid
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+        "405":
+          description: Invalid input
+          content: {}
+      deprecated: false
   /georesources/{georesourceId}/allFeatures:
     get:
       tags:
@@ -2614,6 +2649,41 @@ paths:
       deprecated: false
       security:
         - kommonitor-data-access_oauth: []
+  /public/georesources/query-features:
+    post:
+      tags:
+        - georesources
+      summary: Query the geo-resource features of one or more with regard to certain criteria
+      description: Query the geo-resource features with regard to certain criteria
+      operationId: queryPublicGeoresourceFeatures
+      requestBody:
+        description: feature query body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeoresourcePOSTFeatureQueryType'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                format: byte
+        "401":
+          description: API key is missing or invalid
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+        "405":
+          description: Invalid input
+          content: {}
+      deprecated: false
   /public/georesources/{georesourceId}/allFeatures:
     get:
       tags:
@@ -6421,6 +6491,68 @@ components:
       enum:
         - text
         - symbol
+    GeoresourcePOSTFeatureQueryType:
+      title: GeoresourcePOSTFeatureQueryType
+      required:
+        - filter
+        - georesourceId
+        - date        
+      type: object
+      properties:
+        georesourceId:          
+          description: identifier of the geo-resource dataset          
+          schema:
+            type: string
+        date:
+          type: string
+          description: a timestamp representing the date to query valid georesource features using ISO
+            8601 (e.g. 2018-01-30)
+          format: date
+        filter:
+          description: one of allowed filter types to query georesource features using different criteria (i.e. spatial or by attributes)
+          oneOf:
+            - $ref: '#/components/schemas/GeoresourceFilterBySpatialUnitsType'
+    GeoresourceFilterBySpatialUnitsType:
+      type: object
+      description: a filter description to filter georesource features using a spatial filter 
+      required: 
+        - filterType
+        - spatialUnitId
+        - spatialUnitFeatureIds
+        - spatialOperation
+        - clipGeoresourceFeatures
+      properties:
+        filterType: 
+          $ref: '#/components/schemas/GeoresourceFilterTypeEnum'
+        spatialUnitId:
+          type: string
+          description: the ID of the spatial unit dataset whose spatial unit features operate as spatial filter geometries
+        spatialUnitFeatureIds:
+          type: array
+          description: array of spatial unit feature IDs specifying the filter geometries
+          items:
+            type: string
+        spatialOperation:
+          $ref: '#/components/schemas/GeoresourceFilterSpatialOperationTypeEnum'
+        clipGeoresourceFeatures:
+          type: boolean
+          description: controls whether georesource geometries shall be clipped (true) using spatial units feature geometries. i.e. if linear georesource geometries intersect with spatial unit feature geometries a clip will cut off any georesource geometry parts that lie beyound the spatial unit features borders.
+          default: false
+        
+    GeoresourceFilterTypeEnum:
+      type: string
+      description: allowed values for georesource filter types
+      enum:
+        - BY_SPATIAL_UNIT_FEATURES
+
+    GeoresourceFilterSpatialOperationTypeEnum:
+      type: string
+      enum:
+        - INTERSECTS
+        - WITHIN
+      default: INTERSECTS
+    
+
   securitySchemes:
     kommonitor-data-access_oauth:
       type: oauth2
