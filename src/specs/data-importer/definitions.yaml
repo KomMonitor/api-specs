@@ -96,28 +96,6 @@ components:
           type: boolean
           description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
 
-    Import_IndicatorPOSTInputType:
-      description: Definitions for importing an new indicator from a certain datasource
-      type: object
-      required:
-        - indicatorPostBody
-        - dataSource
-        - converter
-        - propertyMapping
-        - dryRun
-      properties:
-        indicatorPostBody:
-          $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/components/schemas/IndicatorPOSTInputType"
-        dataSource:
-          $ref: "#/components/schemas/DataSourceDefinitionType"
-        converter:
-          $ref: "#/components/schemas/ConverterDefinitionType"
-        propertyMapping:
-          $ref: "#/components/schemas/IndicatorPropertyMappingType"
-        dryRun:
-          type: boolean
-          description: Indicate wether to perform a dry run ('true') or not (default 'false'). If true the import will be performed without doing a POST request to the Data Management API. However, the response contains information about the entitites that would have been imported and possbile import errors.
-
     Update_IndicatorPOSTInputType:
       description: Definitions for updating a new indicator from a certain datasource
       type: object
@@ -129,6 +107,11 @@ components:
         - propertyMapping
         - dryRun
       properties:
+        aggregations:
+          type: array
+          description: list of aggregations for higher spatial units
+          items:
+            $ref: "#/components/schemas/AggregationType"
         indicatorId:
           type: string
           description: the unique ID of the indicator that shall be updated
@@ -279,6 +262,30 @@ components:
         timestampProperty:
           type: string
           description: property that contains the timestamp (year, month and date) according to ISO 8601 (e.g. 2018-01-30)
+
+    AggregationType:
+      description: Definition of an aggregation for a higher spatial unit
+      type: object
+      required:
+        - aggregateFunction
+        - spatialReferenceKeyProperty
+        - indicatorPutBody
+      properties:
+        aggregateFunction:
+          type: string
+          description: Function to use for the aggregation
+          enum:
+            - COUNT
+            - MEAN
+            - MAX
+            - MIN
+            - SUM
+            - MEDIAN
+        indicatorPutBody:
+          $ref: "../data-management/kommonitor_dataAccessAPI.yaml#/components/schemas/IndicatorPUTInputType"
+        spatialReferenceKeyProperty:
+          type: string
+          description: property that contains the identifier of the spatial feature to which the aggregated values shall be applied
 
     AttributeMappingType:
       description: Definitions for mapping of additional attributes of datasets from a data source
@@ -444,9 +451,13 @@ components:
           description: URIs of the newly created spatial unit resource
         importedFeatures:
           type: array
-          description: list of IDs that indicate those resource features that were imported succesfully
+          description: list of IDs that indicate those resource features that were imported successfully
           items:
             type: string
+        importedAggregations:
+          type: array
+          items:
+            $ref: "#/components/schemas/ImportedAggregationsType"
         errors:
           type: array
           description: List of error messages that occurred during the import
@@ -457,6 +468,23 @@ components:
           description: List of warning messages that occurred during the import
           items:
             type: string
+
+    ImportedAggregationsType:
+      description: Contains information about imported aggregated features
+      type: object
+      required:
+        - spatialUnit
+        - importedFeatures
+      properties:
+        spatialUnit:
+          type: string
+          description: Name of the spatial unit for which features have been aggregated
+        importedFeatures:
+          type: array
+          description: list of IDs that indicate those resource features of an aggregated spatial unit that were imported successfully
+          items:
+            type: string
+
 
     Error:
       description: A default error that will be responded if an unexpected server error occurs

@@ -6823,7 +6823,6 @@ components:
       required:
         - name
         - mandant
-        - keycloakId
         - contact
       type: object
       properties:
@@ -7298,10 +7297,7 @@ components:
       required:
         - permissions
         - geoJsonString
-        - jsonSchema
         - metadata
-        - nextLowerHierarchyLevel
-        - nextUpperHierarchyLevel
         - periodOfValidity
         - spatialUnitLevel
         - isPublic

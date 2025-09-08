@@ -30,6 +30,7 @@ paths:
       description: "Import a new spatial unit for a certain period of time. Parses input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls POST /spatial-units of KomMonitor Data Management API"
       operationId: "importSpatialUnit"
       requestBody:
+        required: true
         description: "Definitions to import spatial units"
         content:
           application/json:
@@ -65,6 +66,7 @@ paths:
       description: "Update a new spatial unit for a certain period of time. Parses input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls PUT /spatial-units of KomMonitor Data Management API"
       operationId: "updateSpatialUnit"
       requestBody:
+        required: true
         description: "Definitions to update spatial units"
         content:
           application/json:
@@ -101,6 +103,7 @@ paths:
       description: "Import a geo-resource dataset for a certain period of time. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls POST /georesources of KomMonitor Data Management API"
       operationId: "importGeoresource"
       requestBody:
+        required: true
         description: "Definitions to create georesources"
         content:
           application/json:
@@ -136,6 +139,7 @@ paths:
       description: "Update a georesource dataset for a certain period of time. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls PUT /georesources of KomMonitor Data Management API"
       operationId: "updateGeoresource"
       requestBody:
+        required: true
         description: "Definitions to update georesources"
         content:
           application/json:
@@ -172,6 +176,7 @@ paths:
       description: "Update or create an indicator dataset for a certain period of time and spatial unit/level. Parses Input source, extracts relevant data, performs schema mapping to KomMonitor data model and calls PUT /indicators of KomMonitor Data Management API"
       operationId: "updateIndicator"
       requestBody:
+        required: true
         description: "Definitions to create or update indicators"
         content:
           application/json:
