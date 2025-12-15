@@ -5868,7 +5868,6 @@ components:
         - contact
         - datasource
         - description
-        - sridEPSG
         - updateInterval
       type: object
       properties:
@@ -6146,9 +6145,6 @@ components:
         - datasetName
         - metadata
         - periodOfValidity
-        - isPOI
-        - isLOI
-        - isAOI
         - ownerId
         - isPublic
       type: object
@@ -6245,7 +6241,6 @@ components:
     GeoresourceReferenceType:
       title: GeoresourceReferenceType
       required:
-        - referencedGeoresourceDescription
         - referencedGeoresourceId
         - referencedGeoresourceName
       type: object
@@ -6357,18 +6352,14 @@ components:
     IndicatorOverviewType:
       title: IndicatorOverviewType
       required:
-        - abbreviation
         - applicableDates
         - applicableSpatialUnits
-        - characteristicValue
         - creationType
         - indicatorId
         - indicatorName
         - interpretation
         - isHeadlineIndicator
         - metadata
-        - ogcServices
-        - processDescription
         - ownerId
         - tags
         - topicReference
@@ -6520,7 +6511,6 @@ components:
     IndicatorPOSTInputType:
       title: IndicatorPOSTInputType
       required:
-        - abbreviation
         - permissions
         - characteristicValue
         - creationType
@@ -6725,7 +6715,6 @@ components:
     IndicatorReferenceType:
       title: IndicatorReferenceType
       required:
-        - referencedIndicatorDescription
         - referencedIndicatorId
         - referencedIndicatorName
       type: object
@@ -6796,11 +6785,6 @@ components:
           format: date-time
     OgcServicesType:
       title: OgcServicesType
-      required:
-        - defaultStyleName
-        - spatialUnit
-        - wfsUrl
-        - wmsUrl
       type: object
       properties:
         defaultStyleName:
@@ -7188,13 +7172,9 @@ components:
         - isPublic
         - permissions
         - metadata
-        - nextLowerHierarchyLevel
-        - nextUpperHierarchyLevel
         - spatialUnitId
         - spatialUnitLevel
         - userPermissions
-        - wfsUrl
-        - wmsUrl
       type: object
       properties:
         permissions:
