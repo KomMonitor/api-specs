@@ -6780,6 +6780,63 @@ components:
             - YEARLY
             - DAILY
             - WEEKLY
+    AbstractClassificationMappingType:
+      type: object
+      discriminator:
+        propertyName: classificationType
+        mapping:
+          SEQUENTIAL: '#/components/schemas/DefaultClassificationMappingType'
+          QUALITATIVE: '#/components/schemas/QualitativeClassificationMappingType'
+      required:
+        - colorBrewerSchemeName
+        - numClasses
+      properties:
+        classificationType:
+          $ref: '#/components/schemas/ClassificationTypeEnum'
+          default: SEQUENTIAL
+        colorBrewerSchemeName:
+          type: string
+          description: the name of the colorBrewer color scheme used to define the
+            colors for classification (see project http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3
+            for colorSchemes). Set to 'INDIVIDUAL' if colors are set arbitrarily.
+        numClasses:
+          type: number
+          format: int16
+          description: the number of classes
+          minimum: 1
+          maximum: 9
+    DefaultClassificationMappingType:
+      allOf:
+        - $ref: '#/components/schemas/AbstractClassificationMappingType'
+        - title: DefaultClassificationMappingType
+          required:
+            - classificationMethod
+            - items
+          type: object
+          properties:
+            classificationMethod:
+              type: string
+              description: the classification method as enumeration
+              enum:
+                - REGIONAL_DEFAULT
+                - JENKS
+                - EQUAL_INTERVAL
+                - QUANTILE
+            individualColors:
+              type: array
+              description: array of individual colors used for classification as hex color code
+              items:
+                type: string
+            labels:
+              type: array
+              description: array of labels for each class
+              items:
+                type: string
+            items:
+              type: array
+              description: array of classification mapping items. each item holds the break values for a certain spatial unit. not all spatial units of a certain indicator must be set.
+              items:
+                $ref: '#/components/schemas/DefaultClassificationMappingItemType'
     DefaultClassificationMappingItemType:
       title: DefaultClassificationMappingItemType
       required:
@@ -6796,40 +6853,51 @@ components:
           items:
             type: number
             format: float
-            
-    DefaultClassificationMappingType:
-      title: DefaultClassificationMappingType
+    QualitativeClassificationMappingType:
+      allOf:
+        - $ref: '#/components/schemas/AbstractClassificationMappingType'
+        - title: QualitativeClassificationMappingType
+          required:
+            - items
+          type: object
+          properties:
+            items:
+              type: array
+              description: Array of classification mapping items. Each item holds categorical data as well as its color
+                and label mappings for a certain spatial unit.
+              items:
+                $ref: '#/components/schemas/QualitativeClassificationMappingItemType'
+    QualitativeClassificationMappingItemType:
+      title: DefaultClassificationMappingItemType
       required:
-        - colorBrewerSchemeName
-        - numClasses
-        - classificationMethod
-        - items
+        - spatialUnitId
+        - categorialData
       type: object
       properties:
-        colorBrewerSchemeName:
+        spatialUnitId:
           type: string
-          description: the name of the colorBrewer color scheme used to define the
-            colors for classification (see project http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3
-            for colorSchemes). Set to 'INDIVIDUAL' if colors are set arbitrarily.
-        numClasses:
-          type: number
-          format: int16
-          description: the number of classes
-          minimum: 1
-          maximum: 9
-        classificationMethod:
-          type: string
-          description: the classification method as enumeration
-          enum:
-            - REGIONAL_DEFAULT
-            - JENKS
-            - EQUAL_INTERVAL
-            - QUANTILE
-        items:
+          description: spatial unit id
+        categoricalData:
           type: array
-          description: array of classification mapping items. each item holds the break values for a certain spatial unit. not all spatial units of a certain indicator must be set.
+          description: mapping of categorical values, colors and labels
           items:
-            $ref: '#/components/schemas/DefaultClassificationMappingItemType'
+            $ref: '#/components/schemas/CategoricalMappingType'
+    CategoricalMappingType:
+      title: DefaultClassificationMappingItemType
+      required:
+        - categoricalValue
+        - color
+      type: object
+      properties:
+        categoricalValue:
+          type: string
+          description: the categorical value
+        color:
+          type: string
+          description: color to use for the current categorical value as hex color code
+        label:
+          type: string
+          description: alias label to use for the current categorical value
     RegionalReferenceValueType:
       title: RegionalReferenceValueType
       required:
@@ -7156,7 +7224,7 @@ components:
           type: string
           description: the meaningful name of the indicator
         defaultClassificationMapping:
-          $ref: '#/components/schemas/DefaultClassificationMappingType'
+          $ref: '#/components/schemas/AbstractClassificationMappingType'
         regionalReferenceValues:
           type: array
           description: list of optional regional reference values (i.e. regional sum, average, spatiallyUnassignable)
@@ -7267,7 +7335,7 @@ components:
             a script (AGGREGATION)"
           $ref: '#/components/schemas/CreationTypeEnum'
         defaultClassificationMapping:
-          $ref: '#/components/schemas/DefaultClassificationMappingType'
+          $ref: '#/components/schemas/AbstractClassificationMappingType'
         regionalReferenceValues:
           type: array
           description: list of optional regional reference values (i.e. regional sum, average, spatiallyUnassignable)
@@ -7458,7 +7526,7 @@ components:
           type: string
           description: the meaningful name of the indicator
         defaultClassificationMapping:
-          $ref: '#/components/schemas/DefaultClassificationMappingType'
+          $ref: '#/components/schemas/AbstractClassificationMappingType'
         displayOrder:
           type: number
           description: an order number to control display order in clients
@@ -8682,6 +8750,11 @@ components:
       type: string
       enum:
         - wms
+    ClassificationTypeEnum:
+      type: string
+      enum:
+        - SEQUENTIAL
+        - QUALITATIVE
   securitySchemes:
     kommonitor-data-access_oauth:
       type: oauth2
