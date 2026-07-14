@@ -6785,7 +6785,7 @@ components:
       discriminator:
         propertyName: classificationType
         mapping:
-          SEQUENTIAL: '#/components/schemas/DefaultClassificationMappingType'
+          QUANTITATIVE: '#/components/schemas/DefaultClassificationMappingType'
           QUALITATIVE: '#/components/schemas/QualitativeClassificationMappingType'
       required:
         - colorBrewerSchemeName
@@ -6793,7 +6793,7 @@ components:
       properties:
         classificationType:
           $ref: '#/components/schemas/ClassificationTypeEnum'
-          default: SEQUENTIAL
+          default: QUANTITATIVE
         colorBrewerSchemeName:
           type: string
           description: the name of the colorBrewer color scheme used to define the
@@ -6858,30 +6858,14 @@ components:
         - $ref: '#/components/schemas/AbstractClassificationMappingType'
         - title: QualitativeClassificationMappingType
           required:
-            - items
+            - categoricalData
           type: object
           properties:
-            items:
+            categoricalData:
               type: array
-              description: Array of classification mapping items. Each item holds categorical data as well as its color
-                and label mappings for a certain spatial unit.
+              description: mapping of categorical values, colors and labels
               items:
-                $ref: '#/components/schemas/QualitativeClassificationMappingItemType'
-    QualitativeClassificationMappingItemType:
-      title: DefaultClassificationMappingItemType
-      required:
-        - spatialUnitId
-        - categorialData
-      type: object
-      properties:
-        spatialUnitId:
-          type: string
-          description: spatial unit id
-        categoricalData:
-          type: array
-          description: mapping of categorical values, colors and labels
-          items:
-            $ref: '#/components/schemas/CategoricalMappingType'
+                $ref: '#/components/schemas/CategoricalMappingType'
     CategoricalMappingType:
       title: DefaultClassificationMappingItemType
       required:
@@ -7199,7 +7183,6 @@ components:
     IndicatorMetadataPATCHInputType:
       title: IndicatorMetadataPATCHInputType
       required:
-        - abbreviation
         - interpretation
         - isHeadlineIndicator
         - metadata
@@ -7491,7 +7474,6 @@ components:
       title: IndicatorPOSTInputType
       required:
         - permissions
-        - characteristicValue
         - creationType
         - datasetName
         - defaultClassificationMapping
@@ -7594,17 +7576,62 @@ components:
     IndicatorPOSTInputTypeIndicatorValues:
       title: IndicatorPOSTInputTypeIndicatorValues
       type: object
+      required:
+        - valueMapping
       properties:
         spatialReferenceKey:
           type: string
-          description: identifier (uuid) of the spatial feature to which the values
-            shall be applied
+          description: identifier (uuid) of the spatial feature to which the values shall be applied
+        valueType:
+          description: Informational field indicating the type of mapping values inside this container.
+          allOf:
+            - $ref: '#/components/schemas/IndicatorValueTypeEnum'
+          default: NUMERIC
         valueMapping:
           type: array
           description: an array of entries mapping an indicator value to a timestamp
             as mapping key
           items:
-            $ref: '#/components/schemas/IndicatorPOSTInputTypeValueMapping'
+            allOf:
+              - $ref: '#/components/schemas/IndicatorPOSTInputTypeValueMapping'
+    IndicatorPOSTInputTypeValueMapping:
+      title: IndicatorPOSTInputTypeValueMapping
+      type: object
+      x-abstract: true
+      x-jackson-deserialize-builder: |
+        @JsonTypeInfo(use = JsonTypeInfo.Id.DEDUCTION)
+      required:
+        - timestamp
+      properties:
+        timestamp:
+          type: string
+          description: timestamp consisting of year, month and day according to ISO 8601 (e.g. 2018-01-30)
+          format: date
+    IndicatorPOSTInputTypeNumericalValueMapping:
+      title: IndicatorPOSTInputTypeNumericalValueMapping
+      allOf:
+        - $ref: '#/components/schemas/IndicatorPOSTInputTypeValueMapping'
+        - type: object
+          required:
+            - indicatorValue
+          properties:
+            indicatorValue:
+              type: number
+              description: the numeric extent of the indicator for the timestamp
+              format: float
+              example: 0.0
+    IndicatorPOSTInputTypeCategoricalValueMapping:
+      title: IndicatorPOSTInputTypeCategoricalValueMapping
+      allOf:
+        - $ref: '#/components/schemas/IndicatorPOSTInputTypeValueMapping'
+        - type: object
+          required:
+            - indicatorValue
+          properties:
+            indicatorValue:
+              type: string
+              description: the text-based categorical value of the indicator for the timestamp
+              example: "high"
     IndicatorPOSTInputTypeRefrencesToGeoresources:
       title: IndicatorPOSTInputTypeRefrencesToGeoresources
       type: object
@@ -7627,20 +7654,6 @@ components:
           type: string
           description: short description of how the indicator is referenced to the
             superior one
-    IndicatorPOSTInputTypeValueMapping:
-      title: IndicatorPOSTInputTypeValueMapping
-      type: object
-      properties:
-        indicatorValue:
-          type: number
-          description: the numeric extent of the indicator for the timestamp
-          format: float
-          example: 0.0
-        timestamp:
-          type: string
-          description: timestamp consisting of year, month and day according to ISO
-            8601 (e.g. 2018-01-30)
-          format: date
     IndicatorPUTInputType:
       title: IndicatorPUTInputType
       required:
@@ -8753,8 +8766,13 @@ components:
     ClassificationTypeEnum:
       type: string
       enum:
-        - SEQUENTIAL
+        - QUANTITATIVE
         - QUALITATIVE
+    IndicatorValueTypeEnum:
+      type: string
+      enum:
+        - NUMERIC
+        - CATEGORICAL
   securitySchemes:
     kommonitor-data-access_oauth:
       type: oauth2
