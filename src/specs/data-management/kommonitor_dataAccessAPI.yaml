@@ -4817,6 +4817,52 @@ paths:
       deprecated: false
       security:
         - kommonitor-data-access_oauth: []
+  /public/spatial-unit-hierarchies:
+    get:
+      tags:
+        - spatial-units-public
+      summary: retrieve the available public spatial unit hierarchies
+      description: retrieve the publicly accessible spatial unit hierarchies
+      operationId: getPublicSpatialUnitHierarchies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
+  /public/spatial-unit-hierarchies/{hierarchyId}:
+    get:
+      tags:
+        - spatial-units-public
+      summary: retrieve a single public spatial unit hierarchy
+      description: retrieve a single publicly accessible spatial unit hierarchy including
+        its ordered members
+      operationId: getPublicSpatialUnitHierarchyById
+      parameters:
+        - name: hierarchyId
+          in: path
+          description: the unique identifier of the hierarchy
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
   /public/spatial-units:
     get:
       tags:
@@ -7169,12 +7215,12 @@ components:
           type: number
           format: float
           description: regional sum value
-          
+
         regionalAverage:
           type: number
           format: float
           description: regional average value
-          
+
         spatiallyUnassignable:
           type: number
           format: float
@@ -7717,13 +7763,13 @@ components:
     TopicDisplayOrderModeInputType:
       title: TopicDisplayOrderModeInputType
       required:
-#        - topicResource
+        #        - topicResource
         - orderMode
       type: object
       properties:
-#        topicResource:
-#          description: topic resource indicating if the topic object corresponds to an indicator or to a georesource
-#          $ref: '#/components/schemas/TopicResourceEnum'
+        #        topicResource:
+        #          description: topic resource indicating if the topic object corresponds to an indicator or to a georesource
+        #          $ref: '#/components/schemas/TopicResourceEnum'
         orderMode:
           description: the mode which should be used for ordering topics
           $ref: '#/components/schemas/TopicOrderModeEnum'
@@ -8155,10 +8201,10 @@ components:
     ResourceType:
       type: string
       enum:
-      - georesources
-      - spatialunits,
-      - indicators
-      - indicatorspatialunits
+        - georesources
+        - spatialunits,
+        - indicators
+        - indicatorspatialunits
     OrganizationalUnitPermissionOverviewElementType:
       type: object
       required:
@@ -8563,10 +8609,11 @@ components:
         hierarchies:
           type: array
           description: optional list of hierarchies the new spatial unit shall be placed
-            into, each with the ordered position (level) it takes in that hierarchy. All
-            referenced hierarchies must belong to the same mandant as the spatial unit.
+            into. For each hierarchy the next upper and next lower spatial units within
+            that hierarchy are defined. All referenced hierarchies must belong to the
+            same mandant as the spatial unit.
           items:
-            $ref: '#/components/schemas/SpatialUnitHierarchyMembershipInputType'
+            $ref: '#/components/schemas/SpatialUnitHierarchyMembershipPOSTInputType'
         periodOfValidity:
           $ref: '#/components/schemas/PeriodOfValidityType'
         spatialUnitLevel:
@@ -8610,13 +8657,34 @@ components:
             Missing features that are already in the database will then not be deleted
         periodOfValidity:
           $ref: '#/components/schemas/PeriodOfValidityType'
+    SpatialUnitHierarchyMembershipPOSTInputType:
+      title: SpatialUnitHierarchyMembershipPOSTInputType
+      required:
+        - hierarchyId
+      type: object
+      description: places a newly registered spatial unit into a hierarchy by defining
+        its neighbouring spatial units within that hierarchy
+      properties:
+        hierarchyId:
+          type: string
+          description: the unique identifier of the hierarchy the spatial unit shall
+            be a member of
+        nextUpperSpatialUnitId:
+          type: string
+          description: the identifier of the next upper spatial unit within this
+            hierarchy. Leave empty if the spatial unit is the top level.
+        nextLowerSpatialUnitId:
+          type: string
+          description: the identifier of the next lower spatial unit within this
+            hierarchy. Leave empty if the spatial unit is the bottom level.
     SpatialUnitHierarchyMembershipInputType:
       title: SpatialUnitHierarchyMembershipInputType
       required:
         - hierarchyId
         - hierarchyLevel
       type: object
-      description: places a spatial unit into a hierarchy at a given ordered position
+      description: places an existing spatial unit into a hierarchy at a given ordered
+        position (level)
       properties:
         hierarchyId:
           type: string
@@ -8633,8 +8701,9 @@ components:
         - hierarchyId
         - hierarchyLevel
       type: object
-      description: membership of a spatial unit within a hierarchy including its ordered
-        position
+      description: membership of a spatial unit within a hierarchy. The ordering is kept
+        coherent in both representations - hierarchyLevel is always set and the
+        neighbouring spatial units are derived from it.
       properties:
         hierarchyId:
           type: string
@@ -8646,7 +8715,16 @@ components:
           type: integer
           format: int32
           description: the ordered position of the spatial unit within the hierarchy.
-            Lower values denote upper levels.
+            Lower values denote upper levels. Set when the membership was created by
+            adding an existing spatial unit or reordering.
+        nextUpperSpatialUnitId:
+          type: string
+          description: the identifier of the next upper spatial unit within this
+            hierarchy. Null denotes the top level.
+        nextLowerSpatialUnitId:
+          type: string
+          description: the identifier of the next lower spatial unit within this
+            hierarchy. Null denotes the bottom level.
     SpatialUnitHierarchyMemberInputType:
       title: SpatialUnitHierarchyMemberInputType
       required:
@@ -8669,7 +8747,9 @@ components:
         - spatialUnitId
         - hierarchyLevel
       type: object
-      description: a spatial unit member of a hierarchy including its ordered position
+      description: a spatial unit member of a hierarchy. The ordering is kept coherent in
+        both representations - hierarchyLevel is always set and the neighbouring spatial
+        units are derived from it.
       properties:
         spatialUnitId:
           type: string
@@ -8681,7 +8761,16 @@ components:
           type: integer
           format: int32
           description: the ordered position of the spatial unit within the hierarchy.
-            Lower values denote upper levels.
+            Lower values denote upper levels. Set when the membership was created by
+            adding an existing spatial unit or reordering.
+        nextUpperSpatialUnitId:
+          type: string
+          description: the identifier of the next upper spatial unit within this
+            hierarchy. Null denotes the top level.
+        nextLowerSpatialUnitId:
+          type: string
+          description: the identifier of the next lower spatial unit within this
+            hierarchy. Null denotes the bottom level.
     SpatialUnitHierarchyInputType:
       title: SpatialUnitHierarchyInputType
       required:
@@ -8697,12 +8786,17 @@ components:
           type: string
           description: identifier of the mandant (organizational unit) that owns the
             hierarchy
+        isPublic:
+          type: boolean
+          description: flag whether the hierarchy is publicly accessible
+          default: false
     SpatialUnitHierarchyOverviewType:
       title: SpatialUnitHierarchyOverviewType
       required:
         - hierarchyId
         - name
         - mandantId
+        - isPublic
       type: object
       description: metadata of a mandant-owned spatial unit hierarchy and its ordered
         members
@@ -8717,6 +8811,9 @@ components:
           type: string
           description: identifier of the mandant (organizational unit) that owns the
             hierarchy
+        isPublic:
+          type: boolean
+          description: flag whether the hierarchy is publicly accessible
         members:
           type: array
           description: the ordered spatial units that are members of this hierarchy
