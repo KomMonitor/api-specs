@@ -56,6 +56,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/GeoresourceOverviewType'
+              examples:
+                georesourceOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/GeoresourceOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -83,6 +86,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GeoresourcePOSTInputType'
+            examples:
+              georesourcePOSTInput:
+                $ref: './examples.yaml#/components/examples/GeoresourcePOSTInput'
         required: true
       responses:
         "200":
@@ -91,12 +97,18 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/GeoresourceOverviewType'
+              examples:
+                georesourceOverview:
+                  $ref: './examples.yaml#/components/examples/GeoresourceOverview'
         "201":
           description: Created
           content:
             'application/json':
               schema:
                 $ref: '#/components/schemas/GeoresourceOverviewType'
+              examples:
+                georesourceOverview:
+                  $ref: './examples.yaml#/components/examples/GeoresourceOverview'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -123,6 +135,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceFilterType'
+            examples:
+              resourceFilter:
+                $ref: './examples.yaml#/components/examples/ResourceFilter'
         required: true
       responses:
         "200":
@@ -133,6 +148,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/GeoresourceOverviewType'
+              examples:
+                georesourceOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/GeoresourceOverviewCollection'
         "401":
           description: API key is missing or invalid
           content: { }
@@ -169,6 +187,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GeoresourceOverviewType'
+              examples:
+                georesourceOverview:
+                  $ref: './examples.yaml#/components/examples/GeoresourceOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -208,6 +229,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GeoresourcePUTInputType'
+            examples:
+              georesourcePUTInput:
+                $ref: './examples.yaml#/components/examples/GeoresourcePUTInput'
         required: true
       responses:
         "200":
@@ -279,6 +303,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GeoresourcePATCHInputType'
+            examples:
+              georesourcePATCHInput:
+                $ref: './examples.yaml#/components/examples/GeoresourcePATCHInput'
         required: true
       responses:
         "200":
@@ -483,6 +510,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PermissionLevelType'
+              examples:
+                permissionLevelCollection:
+                  $ref: './examples.yaml#/components/examples/PermissionLevelCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -517,6 +547,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PermissionLevelInputType'
+            examples:
+              permissionLevelInput:
+                $ref: './examples.yaml#/components/examples/PermissionLevelInput'
       responses:
         "204":
           description: No Content
@@ -555,6 +588,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OwnerInputType'
+            examples:
+              ownerInput:
+                $ref: './examples.yaml#/components/examples/OwnerInput'
       responses:
         "204":
           description: No Content
@@ -1126,6 +1162,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorOverviewType'
+              examples:
+                indicatorOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorOverviewCollection'
 
         "400":
           description: Invalid status value
@@ -1155,6 +1194,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IndicatorPOSTInputType'
+            examples:
+              indicatorPOSTInput:
+                $ref: './examples.yaml#/components/examples/IndicatorPOSTInput'
         required: true
       responses:
         "200":
@@ -1163,12 +1205,18 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/IndicatorOverviewType'
+              examples:
+                indicatorOverview:
+                  $ref: './examples.yaml#/components/examples/IndicatorOverview'
         "201":
           description: Created
           content:
             'application/json':
               schema:
                 $ref: '#/components/schemas/IndicatorOverviewType'
+              examples:
+                indicatorOverview:
+                  $ref: './examples.yaml#/components/examples/IndicatorOverview'
         "401":
           description: Unauthorized
           content: {}
@@ -1198,6 +1246,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceFilterType'
+            examples:
+              resourceFilter:
+                $ref: './examples.yaml#/components/examples/ResourceFilter'
         required: true
       responses:
         "200":
@@ -1208,6 +1259,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorOverviewType'
+              examples:
+                indicatorOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorOverviewCollection'
         "401":
           description: API key is missing or invalid
           content: { }
@@ -1236,6 +1290,9 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/IndicatorPATCHDisplayOrderInputType'
+            examples:
+              indicatorPATCHDisplayOrderInputCollection:
+                $ref: './examples.yaml#/components/examples/IndicatorPATCHDisplayOrderInputCollection'
         required: true
       responses:
         "200":
@@ -1282,6 +1339,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IndicatorOverviewType'
+              examples:
+                indicatorOverview:
+                  $ref: './examples.yaml#/components/examples/IndicatorOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -1316,6 +1376,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IndicatorPUTInputType'
+            examples:
+              indicatorPUTInput:
+                $ref: './examples.yaml#/components/examples/IndicatorPUTInput'
         required: true
       responses:
         "200":
@@ -1387,6 +1450,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IndicatorMetadataPATCHInputType'
+            examples:
+              indicatorMetadataPATCHInput:
+                $ref: './examples.yaml#/components/examples/IndicatorMetadataPATCHInput'
         required: true
       responses:
         "200":
@@ -1432,6 +1498,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PermissionLevelType'
+              examples:
+                permissionLevelCollection:
+                  $ref: './examples.yaml#/components/examples/PermissionLevelCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -1465,6 +1534,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PermissionLevelInputType'
+            examples:
+              permissionLevelInput:
+                $ref: './examples.yaml#/components/examples/PermissionLevelInput'
         required: true
       responses:
         "204":
@@ -1502,6 +1574,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OwnerInputType'
+            examples:
+              ownerInput:
+                $ref: './examples.yaml#/components/examples/OwnerInput'
         required: true
       responses:
         "204":
@@ -1685,6 +1760,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PermissionLevelType'
+              examples:
+                permissionLevelCollection:
+                  $ref: './examples.yaml#/components/examples/PermissionLevelCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -1724,6 +1802,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PermissionLevelInputType'
+            examples:
+              permissionLevelInput:
+                $ref: './examples.yaml#/components/examples/PermissionLevelInput'
         required: true
       responses:
         "200":
@@ -1769,6 +1850,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OwnerInputType'
+            examples:
+              ownerInput:
+                $ref: './examples.yaml#/components/examples/OwnerInput'
         required: true
       responses:
         "200":
@@ -1843,6 +1927,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorPropertiesWithoutGeomType'
+              examples:
+                indicatorPropertiesWithoutGeomCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorPropertiesWithoutGeomCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -1959,6 +2046,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorPropertiesWithoutGeomType'
+              examples:
+                indicatorPropertiesWithoutGeomCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorPropertiesWithoutGeomCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -2015,6 +2105,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IndicatorPropertiesWithoutGeomType'
+            examples:
+              indicatorPropertiesWithoutGeom:
+                $ref: './examples.yaml#/components/examples/IndicatorPropertiesWithoutGeom'
         required: true
       responses:
         "200":
@@ -2118,6 +2211,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorPropertiesWithoutGeomType'
+              examples:
+                indicatorPropertiesWithoutGeomCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorPropertiesWithoutGeomCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -2372,6 +2468,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorPropertiesWithoutGeomType'
+              examples:
+                indicatorPropertiesWithoutGeomCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorPropertiesWithoutGeomCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -2403,6 +2502,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/OrganizationalUnitOverviewType'
+              examples:
+                organizationalUnitOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/OrganizationalUnitOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -2430,6 +2532,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrganizationalUnitInputType'
+            examples:
+              organizationalUnitInput:
+                $ref: './examples.yaml#/components/examples/OrganizationalUnitInput'
         required: true
       responses:
         "200":
@@ -2473,6 +2578,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrganizationalUnitOverviewType'
+              examples:
+                organizationalUnitOverview:
+                  $ref: './examples.yaml#/components/examples/OrganizationalUnitOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -2507,6 +2615,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrganizationalUnitInputType'
+            examples:
+              organizationalUnitInput:
+                $ref: './examples.yaml#/components/examples/OrganizationalUnitInput'
         required: true
       responses:
         "200":
@@ -2583,6 +2694,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrganizationalUnitPermissionOverviewType'
+              examples:
+                organizationalUnitPermissionOverview:
+                  $ref: './examples.yaml#/components/examples/OrganizationalUnitPermissionOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -2621,6 +2735,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrganizationalUnitRoleAuthorityType'
+              examples:
+                organizationalUnitRoleAuthority:
+                  $ref: './examples.yaml#/components/examples/OrganizationalUnitRoleAuthority'
         "400":
           description: Invalid status value
           content: { }
@@ -2658,6 +2775,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrganizationalUnitRoleDelegateType'
+              examples:
+                organizationalUnitRoleDelegate:
+                  $ref: './examples.yaml#/components/examples/OrganizationalUnitRoleDelegate'
         "400":
           description: Invalid status value
           content: { }
@@ -2694,6 +2814,9 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/GroupAdminRolesPUTInputType'
+            examples:
+              groupAdminRolesPUTInputCollection:
+                $ref: './examples.yaml#/components/examples/GroupAdminRolesPUTInputCollection'
         required: true
       responses:
         "200":
@@ -2794,6 +2917,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ProcessScriptOverviewType'
+              examples:
+                processScriptOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/ProcessScriptOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -2821,6 +2947,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProcessScriptPOSTInputType'
+            examples:
+              processScriptPOSTInput:
+                $ref: './examples.yaml#/components/examples/ProcessScriptPOSTInput'
         required: true
       responses:
         "200":
@@ -2829,12 +2958,18 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/ProcessScriptOverviewType'
+              examples:
+                processScriptOverview:
+                  $ref: './examples.yaml#/components/examples/ProcessScriptOverview'
         "201":
           description: Created
           content:
             'application/json':
               schema:
                 $ref: '#/components/schemas/ProcessScriptOverviewType'
+              examples:
+                processScriptOverview:
+                  $ref: './examples.yaml#/components/examples/ProcessScriptOverview'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -2910,6 +3045,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessScriptOverviewType'
+              examples:
+                processScriptOverview:
+                  $ref: './examples.yaml#/components/examples/ProcessScriptOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -2945,6 +3083,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProcessScriptPUTInputType'
+            examples:
+              processScriptPUTInput:
+                $ref: './examples.yaml#/components/examples/ProcessScriptPUTInput'
         required: true
       responses:
         "200":
@@ -3058,6 +3199,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessScriptOverviewType'
+              examples:
+                processScriptOverview:
+                  $ref: './examples.yaml#/components/examples/ProcessScriptOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -3093,6 +3237,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProcessScriptPUTInputType'
+            examples:
+              processScriptPUTInput:
+                $ref: './examples.yaml#/components/examples/ProcessScriptPUTInput'
         required: true
       responses:
         "200":
@@ -3199,6 +3346,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/UserInfoOverviewType'
+              examples:
+                userInfoOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/UserInfoOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -3226,6 +3376,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserInfoInputType'
+            examples:
+              userInfoInput:
+                $ref: './examples.yaml#/components/examples/UserInfoInput'
         required: true
       responses:
         "200":
@@ -3234,12 +3387,18 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/UserInfoOverviewType'
+              examples:
+                userInfoOverview:
+                  $ref: './examples.yaml#/components/examples/UserInfoOverview'
         "201":
           description: Created
           content:
             'application/json':
               schema:
                 $ref: '#/components/schemas/UserInfoOverviewType'
+              examples:
+                userInfoOverview:
+                  $ref: './examples.yaml#/components/examples/UserInfoOverview'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -3277,6 +3436,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserInfoOverviewType'
+              examples:
+                userInfoOverview:
+                  $ref: './examples.yaml#/components/examples/UserInfoOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -3311,6 +3473,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserInfoInputType'
+            examples:
+              userInfoInput:
+                $ref: './examples.yaml#/components/examples/UserInfoInput'
         required: true
       responses:
         "200":
@@ -3319,12 +3484,18 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/UserInfoOverviewType'
+              examples:
+                userInfoOverview:
+                  $ref: './examples.yaml#/components/examples/UserInfoOverview'
         "201":
           description: Created
           content:
             'application/json':
               schema:
                 $ref: '#/components/schemas/UserInfoOverviewType'
+              examples:
+                userInfoOverview:
+                  $ref: './examples.yaml#/components/examples/UserInfoOverview'
         "204":
           description: No Content
           content: {}
@@ -3360,6 +3531,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UserInfoInputType'
+            examples:
+              userInfoInput:
+                $ref: './examples.yaml#/components/examples/UserInfoInput'
         required: true
       responses:
         "200":
@@ -3368,12 +3542,18 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/UserInfoOverviewType'
+              examples:
+                userInfoOverview:
+                  $ref: './examples.yaml#/components/examples/UserInfoOverview'
         "201":
           description: Created
           content:
             'application/json':
               schema:
                 $ref: '#/components/schemas/UserInfoOverviewType'
+              examples:
+                userInfoOverview:
+                  $ref: './examples.yaml#/components/examples/UserInfoOverview'
         "204":
           description: No Content
           content: { }
@@ -3432,6 +3612,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserInfoOverviewType'
+              examples:
+                userInfoOverview:
+                  $ref: './examples.yaml#/components/examples/UserInfoOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -3461,6 +3644,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LastModificationOverviewType'
+              examples:
+                lastModificationOverview:
+                  $ref: './examples.yaml#/components/examples/LastModificationOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -3494,6 +3680,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/GeoresourceOverviewType'
+              examples:
+                georesourceOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/GeoresourceOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -3522,6 +3711,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceFilterType'
+            examples:
+              resourceFilter:
+                $ref: './examples.yaml#/components/examples/ResourceFilter'
         required: true
       responses:
         "200":
@@ -3532,6 +3724,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/GeoresourceOverviewType'
+              examples:
+                georesourceOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/GeoresourceOverviewCollection'
         "401":
           description: API key is missing or invalid
           content: { }
@@ -3568,6 +3763,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GeoresourceOverviewType'
+              examples:
+                georesourceOverview:
+                  $ref: './examples.yaml#/components/examples/GeoresourceOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -4082,6 +4280,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorOverviewType'
+              examples:
+                indicatorOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -4110,6 +4311,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourceFilterType'
+            examples:
+              resourceFilter:
+                $ref: './examples.yaml#/components/examples/ResourceFilter'
         required: true
       responses:
         "200":
@@ -4120,6 +4324,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorOverviewType'
+              examples:
+                indicatorOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorOverviewCollection'
         "401":
           description: API key is missing or invalid
           content: { }
@@ -4154,6 +4361,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IndicatorOverviewType'
+              examples:
+                indicatorOverview:
+                  $ref: './examples.yaml#/components/examples/IndicatorOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -4307,6 +4517,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorPropertiesWithoutGeomType'
+              examples:
+                indicatorPropertiesWithoutGeomCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorPropertiesWithoutGeomCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -4367,6 +4580,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorPropertiesWithoutGeomType'
+              examples:
+                indicatorPropertiesWithoutGeomCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorPropertiesWithoutGeomCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -4413,6 +4629,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorPropertiesWithoutGeomType'
+              examples:
+                indicatorPropertiesWithoutGeomCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorPropertiesWithoutGeomCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -4615,6 +4834,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/IndicatorPropertiesWithoutGeomType'
+              examples:
+                indicatorPropertiesWithoutGeomCollection:
+                  $ref: './examples.yaml#/components/examples/IndicatorPropertiesWithoutGeomCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -4648,6 +4870,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ProcessScriptOverviewType'
+              examples:
+                processScriptOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/ProcessScriptOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -4686,6 +4911,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessScriptOverviewType'
+              examples:
+                processScriptOverview:
+                  $ref: './examples.yaml#/components/examples/ProcessScriptOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -4763,6 +4991,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessScriptOverviewType'
+              examples:
+                processScriptOverview:
+                  $ref: './examples.yaml#/components/examples/ProcessScriptOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -4833,6 +5064,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+              examples:
+                spatialUnitHierarchyOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyOverviewCollection'
         "404":
           description: Not Found
           content: {}
@@ -4859,6 +5093,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+              examples:
+                spatialUnitHierarchyOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyOverview'
         "404":
           description: Not Found
           content: {}
@@ -4881,6 +5118,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SpatialUnitOverviewType'
+              examples:
+                spatialUnitOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -4919,6 +5159,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpatialUnitOverviewType'
+              examples:
+                spatialUnitOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -5256,6 +5499,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TopicOverviewType'
+              examples:
+                topicOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/TopicOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -5287,6 +5533,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/TopicDisplayOrderModeOverviewType'
+              examples:
+                topicDisplayOrderModeOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/TopicDisplayOrderModeOverviewCollection'
         "400":
           description: Invalid status value
           content: { }
@@ -5323,6 +5572,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TopicOverviewType'
+              examples:
+                topicOverview:
+                  $ref: './examples.yaml#/components/examples/TopicOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -5365,6 +5617,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/WebServiceOverviewType'
+              examples:
+                webServiceOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/WebServiceOverviewCollection'
       security:
         - kommonitor-data-access_oauth: [ ]
   /public/web-services/{webServiceId}:
@@ -5388,6 +5643,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WebServiceOverviewType'
+              examples:
+                webServiceOverview:
+                  $ref: './examples.yaml#/components/examples/WebServiceOverview'
       security:
         - kommonitor-data-access_oauth: [ ]
   /spatial-unit-hierarchies:
@@ -5407,6 +5665,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+              examples:
+                spatialUnitHierarchyOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyOverviewCollection'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -5432,6 +5693,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SpatialUnitHierarchyPOSTInputType'
+            examples:
+              spatialUnitHierarchyPOSTInput:
+                $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyPOSTInput'
         required: true
       responses:
         "200":
@@ -5440,12 +5704,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+              examples:
+                spatialUnitHierarchyOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyOverview'
         "201":
           description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+              examples:
+                spatialUnitHierarchyOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyOverview'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -5480,6 +5750,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+              examples:
+                spatialUnitHierarchyOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyOverview'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -5512,6 +5785,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SpatialUnitHierarchyInputType'
+            examples:
+              spatialUnitHierarchyInput:
+                $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyInput'
         required: true
       responses:
         "200":
@@ -5520,6 +5796,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+              examples:
+                spatialUnitHierarchyOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyOverview'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -5589,6 +5868,9 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/SpatialUnitHierarchyMemberInputType'
+            examples:
+              spatialUnitHierarchyMemberInputCollection:
+                $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyMemberInputCollection'
         required: true
       responses:
         "200":
@@ -5597,6 +5879,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpatialUnitHierarchyOverviewType'
+              examples:
+                spatialUnitHierarchyOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyOverview'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -5631,6 +5916,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SpatialUnitOverviewType'
+              examples:
+                spatialUnitOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitOverviewCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -5658,6 +5946,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SpatialUnitPOSTInputType'
+            examples:
+              spatialUnitPOSTInput:
+                $ref: './examples.yaml#/components/examples/SpatialUnitPOSTInput'
         required: true
       responses:
         "200":
@@ -5666,12 +5957,18 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/SpatialUnitOverviewType'
+              examples:
+                spatialUnitOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitOverview'
         "201":
           description: Created
           content:
             'application/json':
               schema:
                 $ref: '#/components/schemas/SpatialUnitOverviewType'
+              examples:
+                spatialUnitOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitOverview'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -5711,6 +6008,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpatialUnitOverviewType'
+              examples:
+                spatialUnitOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitOverview'
         "400":
           description: Invalid status value
           content: {}
@@ -5749,6 +6049,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SpatialUnitPUTInputType'
+            examples:
+              spatialUnitPUTInput:
+                $ref: './examples.yaml#/components/examples/SpatialUnitPUTInput'
         required: true
       responses:
         "200":
@@ -5820,6 +6123,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SpatialUnitPATCHInputType'
+            examples:
+              spatialUnitPATCHInput:
+                $ref: './examples.yaml#/components/examples/SpatialUnitPATCHInput'
         required: true
       responses:
         "200":
@@ -5949,6 +6255,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PermissionLevelType'
+              examples:
+                permissionLevelCollection:
+                  $ref: './examples.yaml#/components/examples/PermissionLevelCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -5985,6 +6294,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PermissionLevelInputType'
+            examples:
+              permissionLevelInput:
+                $ref: './examples.yaml#/components/examples/PermissionLevelInput'
         required: true
       responses:
         "200":
@@ -5995,6 +6307,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PermissionLevelType'
+              examples:
+                permissionLevelCollection:
+                  $ref: './examples.yaml#/components/examples/PermissionLevelCollection'
         "400":
           description: Invalid status value
           content: {}
@@ -6032,6 +6347,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OwnerInputType'
+            examples:
+              ownerInput:
+                $ref: './examples.yaml#/components/examples/OwnerInput'
         required: true
       responses:
         "200":
@@ -6079,6 +6397,9 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/SpatialUnitHierarchyMembershipInputType'
+            examples:
+              spatialUnitHierarchyMembershipInputCollection:
+                $ref: './examples.yaml#/components/examples/SpatialUnitHierarchyMembershipInputCollection'
         required: true
       responses:
         "200":
@@ -6087,6 +6408,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SpatialUnitOverviewType'
+              examples:
+                spatialUnitOverview:
+                  $ref: './examples.yaml#/components/examples/SpatialUnitOverview'
         "401":
           description: API key is missing or invalid
           content: { }
@@ -6539,6 +6863,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TopicInputType'
+            examples:
+              topicInput:
+                $ref: './examples.yaml#/components/examples/TopicInput'
         required: true
       responses:
         "200":
@@ -6547,12 +6874,18 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/TopicOverviewType'
+              examples:
+                topicOverview:
+                  $ref: './examples.yaml#/components/examples/TopicOverview'
         "201":
           description: Created
           content:
             'application/json':
               schema:
                 $ref: '#/components/schemas/TopicOverviewType'
+              examples:
+                topicOverview:
+                  $ref: './examples.yaml#/components/examples/TopicOverview'
         "401":
           description: API key is missing or invalid
           content: {}
@@ -6584,6 +6917,9 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/TopicDisplayOrderInputType'
+            examples:
+              topicDisplayOrderInputCollection:
+                $ref: './examples.yaml#/components/examples/TopicDisplayOrderInputCollection'
         required: true
       responses:
         "200":
@@ -6622,6 +6958,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TopicDisplayOrderModeInputType'
+            examples:
+              topicDisplayOrderModeInput:
+                $ref: './examples.yaml#/components/examples/TopicDisplayOrderModeInput'
         required: true
       responses:
         "200":
@@ -6662,6 +7001,9 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/TopicDisplayOrderInputType'
+            examples:
+              topicDisplayOrderInputCollection:
+                $ref: './examples.yaml#/components/examples/TopicDisplayOrderInputCollection'
         required: true
       responses:
         "200":
@@ -6700,6 +7042,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TopicDisplayOrderModeInputType'
+            examples:
+              topicDisplayOrderModeInput:
+                $ref: './examples.yaml#/components/examples/TopicDisplayOrderModeInput'
         required: true
       responses:
         "200":
@@ -6745,6 +7090,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TopicInputType'
+            examples:
+              topicInput:
+                $ref: './examples.yaml#/components/examples/TopicInput'
         required: true
       responses:
         "200":
@@ -6818,6 +7166,9 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/TopicDisplayOrderInputType'
+            examples:
+              topicDisplayOrderInputCollection:
+                $ref: './examples.yaml#/components/examples/TopicDisplayOrderInputCollection'
         required: true
       responses:
         "200":
@@ -6870,6 +7221,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/WebServiceOverviewType'
+              examples:
+                webServiceOverviewCollection:
+                  $ref: './examples.yaml#/components/examples/WebServiceOverviewCollection'
       security:
         - kommonitor-data-access_oauth: [ ]
     post:
@@ -6884,6 +7238,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/WebServiceCreationType'
+            examples:
+              webServiceCreation:
+                $ref: './examples.yaml#/components/examples/WebServiceCreation'
         required: true
       responses:
         "200":
@@ -6892,12 +7249,18 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/WebServiceOverviewType'
+              examples:
+                webServiceOverview:
+                  $ref: './examples.yaml#/components/examples/WebServiceOverview'
         "201":
           description: Created
           content:
             'application/json':
               schema:
                 $ref: '#/components/schemas/WebServiceOverviewType'
+              examples:
+                webServiceOverview:
+                  $ref: './examples.yaml#/components/examples/WebServiceOverview'
   /web-services/{webServiceId}:
     get:
       tags:
@@ -6919,6 +7282,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WebServiceOverviewType'
+              examples:
+                webServiceOverview:
+                  $ref: './examples.yaml#/components/examples/WebServiceOverview'
       security:
         - kommonitor-data-access_oauth: [ ]
     put:
@@ -6940,6 +7306,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/WebServiceType'
+            examples:
+              webServiceInput:
+                $ref: './examples.yaml#/components/examples/WebServiceInput'
         required: true
       responses:
         "200":
@@ -6996,6 +7365,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PermissionLevelType'
+              examples:
+                permissionLevelCollection:
+                  $ref: './examples.yaml#/components/examples/PermissionLevelCollection'
       deprecated: false
       security:
         - kommonitor-data-access_oauth: [ ]
@@ -7018,6 +7390,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PermissionLevelInputType'
+            examples:
+              permissionLevelInput:
+                $ref: './examples.yaml#/components/examples/PermissionLevelInput'
       responses:
         "204":
           description: No Content
@@ -7044,6 +7419,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OwnerInputType'
+            examples:
+              ownerInput:
+                $ref: './examples.yaml#/components/examples/OwnerInput'
       responses:
         "204":
           description: No Content
@@ -7063,20 +7441,25 @@ components:
         contact:
           type: string
           description: contact details where additional information can be achieved
+          example: KomMonitor Team, info@kommonitor.de
         databasis:
           type: string
           description: information about data used as a basis to generate the dataset
+          example: Open data portal of the municipality
         datasource:
           type: string
           description: information about the origin/source of the dataset
+          example: Municipal education department
         description:
           type: string
           description: description of the dataset
+          example: Locations of all public schools within the city.
         lastUpdate:
           type: string
           description: a timestamp representing the lastUpdate according to ISO 8601
             (e.g. 2018-01-30)
           format: date
+          example: "2018-01-30"
         literature:
           type: string
           description: an optional hint to literature about the dataset (e.g. URL
@@ -7087,7 +7470,7 @@ components:
         sridEPSG:
           type: number
           description: the coordinate reference system of the dataset as EPSG code
-          example: 0.0
+          example: 4326
         updateInterval:
           type: string
           enum:
@@ -7098,6 +7481,7 @@ components:
             - YEARLY
             - DAILY
             - WEEKLY
+          example: YEARLY
     AbstractClassificationMappingType:
       type: object
       discriminator:
@@ -7117,12 +7501,14 @@ components:
           description: the name of the colorBrewer color scheme used to define the
             colors for classification (see project http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3
             for colorSchemes). Set to 'INDIVIDUAL' if colors are set arbitrarily.
+          example: BuGn
         numClasses:
           type: number
           format: int16
           description: the number of classes
           minimum: 1
           maximum: 9
+          example: 5
     DefaultClassificationMappingType:
       allOf:
         - $ref: '#/components/schemas/AbstractClassificationMappingType'
@@ -7165,12 +7551,17 @@ components:
         spatialUnitId:
           type: string
           description: spatial unit id for manual classification
+          example: 5a1b2c3d-0001-4e5f-8a9b-000000000001
         breaks:
           type: array
           description: array of numeric break values
           items:
             type: number
             format: float
+          example:
+            - 0.0
+            - 10.0
+            - 20.0
     QualitativeClassificationMappingType:
       allOf:
         - $ref: '#/components/schemas/AbstractClassificationMappingType'
@@ -7335,6 +7726,7 @@ components:
         datasetName:
           type: string
           description: the meaningful name of the dataset
+          example: Public Schools
         isAOI:
           type: boolean
           description: boolean value indicating if the dataset contains areas of interest
@@ -7373,6 +7765,7 @@ components:
           description: If georesource is a POI then custom POI marker symbol can be
             set by specifying the name of a Bootstrap 3 glyphicon symbol (i.e. "home"
             for a home symbol or "education" for a students hat symbol)
+          example: education
         poiSymbolColor:
           description: If georesource is a POI then custom POI symbol color can be
             set by specifying one of the following color names
@@ -7380,6 +7773,7 @@ components:
         topicReference:
           type: string
           description: 'id of the last topic hierarchy entity '
+          example: education
     GeoresourcePOSTInputType:
       title: GeoresourcePOSTInputType
       required:
@@ -7395,26 +7789,35 @@ components:
           description: list of permissions on this entity
           items:
             type: string
+          example:
+            - creator
+            - editor
         aoiColor:
           type: string
           description: color name or color code (i.e. hex number) for areas of interest
         datasetName:
           type: string
           description: the meaningful name of the dataset
+          example: Schools
         geoJsonString:
           type: string
           description: a valid GeoJSON string containing the features consisting of
             a geometry and properties specific to the dataset
+          example: >-
+            {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[7.011,51.455]},"properties":{"name":"Primary School Centre"}}]}
         isAOI:
           type: boolean
           description: boolean value indicating if the dataset contains areas of interest
+          example: false
         isLOI:
           type: boolean
           description: boolean value indicating if the dataset contains lines of interest
+          example: false
         isPOI:
           type: boolean
           description: boolean value indicating if the dataset contains points of
             interest
+          example: true
         jsonSchema:
           type: string
           description: a JSON schema as string that defines the data model for this
@@ -7435,6 +7838,7 @@ components:
         ownerId:
           type: string
           description: identifier of the owning group
+          example: 3c9f8b12-0001-4a1b-9c33-1a2b3c4d5e01
         periodOfValidity:
           $ref: '#/components/schemas/PeriodOfValidityType'
         poiMarkerStyle:
@@ -7452,6 +7856,7 @@ components:
           description: If georesource is a POI then custom POI marker symbol can be
             set by specifying the name of a Bootstrap 3 glyphicon symbol (i.e. "home"
             for a home symbol or "education" for a students hat symbol)
+          example: education
         poiSymbolColor:
           description: If georesource is a POI then custom POI symbol color can be
             set by specifying one of the following color names
@@ -7459,9 +7864,11 @@ components:
         topicReference:
           type: string
           description: id of the last topic hierarchy entity
+          example: education
         isPublic:
           type: boolean
           description: flag whether the resource is publicly accessible
+          example: false
     GeoresourcePUTInputType:
       title: GeoresourcePUTInputType
       required:
@@ -7473,10 +7880,13 @@ components:
           type: string
           description: a valid GeoJSON string containing the features consisting of
             a geometry and properties specific to the dataset
+          example: >-
+            {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[7.013,51.457]},"properties":{"name":"Primary School Centre"}}]}
         isPartialUpdate:
           type: boolean
           description: if set to TRUE, then a partial upload of geometries is possible.
             Missing features that are already in the database will then not be deleted
+          example: false
         periodOfValidity:
           $ref: '#/components/schemas/PeriodOfValidityType'
     GeoresourceReferenceType:
@@ -7513,6 +7923,7 @@ components:
         abbreviation:
           type: string
           description: abbreviated mark of the indicator
+          example: U6
         characteristicValue:
           type: string
           description: the distuingishing characteristic value of the indicator
@@ -7524,6 +7935,7 @@ components:
         datasetName:
           type: string
           description: the meaningful name of the indicator
+          example: Share of children under 6 years
         defaultClassificationMapping:
           $ref: '#/components/schemas/AbstractClassificationMappingType'
         regionalReferenceValues:
@@ -7534,7 +7946,7 @@ components:
         displayOrder:
           type: number
           description: an order number to control display order in clients
-          example: 0
+          example: 1
         indicatorType:
           description: indicates whether the indicator is a status indicator (values
             represent the extent of the watched phenomenon for a certain point in
@@ -7544,9 +7956,11 @@ components:
         interpretation:
           type: string
           description: interpretation of the indicator values
+          example: Higher values indicate a younger population structure.
         isHeadlineIndicator:
           type: boolean
           description: boolean value indicating if the indicator is a headline indicator
+          example: true
         lowestSpatialUnitForComputation:
           type: string
           description: identifier/name of the lowest spatial unit for which the indicator
@@ -7557,9 +7971,11 @@ components:
           type: integer
           description: Defines the number of decimal places for indicator values. If null, there is no predefined
             precision for this indicator.
+          example: 2
         processDescription:
           type: string
           description: description about how the indicator was computed
+          example: Number of children under 6 divided by total population.
         referenceDateNote:
           type: string
           description: an optional note on the reference date of the indicator
@@ -7583,12 +7999,17 @@ components:
           description: list of tag labels for the indicator
           items:
             type: string
+          example:
+            - demography
+            - children
         topicReference:
           type: string
           description: 'id of the last topic hierarchy entity '
+          example: demography
         unit:
           type: string
           description: unit of the indicator values
+          example: percent
     IndicatorOverviewType:
       title: IndicatorOverviewType
       required:
@@ -7661,9 +8082,11 @@ components:
         interpretation:
           type: string
           description: interpretation of the indicator values
+          example: Higher values indicate a younger population structure.
         isHeadlineIndicator:
           type: boolean
           description: boolean value indicating if the indicator is a headline indicator
+          example: true
         lowestSpatialUnitForComputation:
           type: string
           description: identifier/name of the lowest spatial unit for which the indicator
@@ -7682,10 +8105,12 @@ components:
         processDescription:
           type: string
           description: description about how the indicator was computed
+          example: Number of children under 6 divided by total population.
         precision:
           type: integer
           description: Defines the number of decimal places for indicator values. If null, there is no predefined
             precision for this indicator.
+          example: 2
         referenceDateNote:
           type: string
           description: an optional note on the reference date of the indicator
@@ -7704,6 +8129,9 @@ components:
           description: list of tag labels for the indicator
           items:
             type: string
+          example:
+            - demography
+            - children
         topicReference:
           type: string
           description: 'id of the last topic hierarchy entity '
@@ -7729,10 +8157,11 @@ components:
         displayOrder:
           type: number
           description: the new display order value
-          example: 0.0
+          example: 1
         indicatorId:
           type: string
           description: unique ID of the associated indicator
+          example: 1d2e3f40-0001-4a5b-8c9d-000000000001
     TopicDisplayOrderInputType:
       title: TopicDisplayOrderInputType
       required:
@@ -7785,9 +8214,13 @@ components:
           description: list of permissions on this entity
           items:
             type: string
+          example:
+            - 9a8b7c6d-1001-4e2f-8a3b-000000000001
+            - 9a8b7c6d-1002-4e2f-8a3b-000000000002
         isPublic:
           type: boolean
           description: flag whether this resource is publicly viewable
+          example: false
     IndicatorPOSTInputType:
       title: IndicatorPOSTInputType
       required:
@@ -7809,11 +8242,14 @@ components:
         abbreviation:
           type: string
           description: abbreviated mark of the indicator
+          example: U6
         permissions:
           type: array
           description: list of permissions on this entity
           items:
             type: string
+          example:
+            - creator
         characteristicValue:
           type: string
           description: the distuingishing characteristic value of the indicator
@@ -7825,12 +8261,13 @@ components:
         datasetName:
           type: string
           description: the meaningful name of the indicator
+          example: Share of children under 6 years
         defaultClassificationMapping:
           $ref: '#/components/schemas/AbstractClassificationMappingType'
         displayOrder:
           type: number
           description: an order number to control display order in clients
-          example: 0
+          example: 1
         indicatorType:
           description: indicates whether the indicator is a status indicator (values
             represent the extent of the watched phenomenon for a certain point in
@@ -7840,9 +8277,11 @@ components:
         interpretation:
           type: string
           description: interpretation of the indicator values
+          example: Higher values indicate a younger population structure.
         isHeadlineIndicator:
           type: boolean
           description: boolean value indicating if the indicator is a headline indicator
+          example: true
         lowestSpatialUnitForComputation:
           type: string
           description: identifier/name of the lowest spatial unit for which the indicator
@@ -7853,12 +8292,14 @@ components:
           type: integer
           description: Defines the number of decimal places for indicator values. If null, there is no predefined
             precision for this indicator.
+          example: 2
         ownerId:
           type: string
           description: identifier of the owning group
         processDescription:
           type: string
           description: description about how the indicator was computed
+          example: Number of children under 6 divided by total population.
         referenceDateNote:
           type: string
           description: an optional note on the reference date of the indicator
@@ -7882,15 +8323,21 @@ components:
           description: list of tag labels for the indicator
           items:
             type: string
+          example:
+            - demography
+            - children
         topicReference:
           type: string
           description: 'id of the last topic hierarchy entity '
+          example: demography
         unit:
           type: string
           description: unit of the indicator values
+          example: percent
         isPublic:
           type: boolean
           description: flag whether the resource is publicly accessible
+          example: false
     IndicatorPOSTInputTypeIndicatorValues:
       title: IndicatorPOSTInputTypeIndicatorValues
       type: object
@@ -7900,6 +8347,7 @@ components:
         spatialReferenceKey:
           type: string
           description: identifier (uuid) of the spatial feature to which the values shall be applied
+          example: 8f14e45f-ceea-467d-9a1b-000000000101
         valueType:
           description: Informational field indicating the type of mapping values inside this container.
           allOf:
@@ -7925,6 +8373,7 @@ components:
           type: string
           description: timestamp consisting of year, month and day according to ISO 8601 (e.g. 2018-01-30)
           format: date
+          example: "2020-01-01"
     IndicatorPOSTInputTypeNumericalValueMapping:
       title: IndicatorPOSTInputTypeNumericalValueMapping
       allOf:
@@ -7937,7 +8386,7 @@ components:
               type: number
               description: the numeric extent of the indicator for the timestamp
               format: float
-              example: 0.0
+              example: 12.4
     IndicatorPOSTInputTypeCategoricalValueMapping:
       title: IndicatorPOSTInputTypeCategoricalValueMapping
       allOf:
@@ -7987,8 +8436,11 @@ components:
           description: list of permissions on this entity
           items:
             type: string
+          example:
+            - creator
         applicableSpatialUnit:
           type: string
+          example: 5a1b2c3d-0001-4e5f-8a9b-000000000001
         indicatorValues:
           type: array
           description: an array of entries containing indicator values and mapping
@@ -7998,9 +8450,11 @@ components:
         isPublic:
           type: boolean
           description: flag whether the resource is publicly accessible
+          example: false
         ownerId:
           type: string
           description: identifier of the owning group
+          example: 3c9f8b12-0001-4a1b-9c33-1a2b3c4d5e01
     IndicatorPropertiesWithoutGeomType:
       title: IndicatorPropertiesWithoutGeomType
       type: object
@@ -8013,15 +8467,19 @@ components:
         id:
           type: string
           description: the id of the spatial feature
+          example: 8f14e45f-ceea-467d-9a1b-000000000101
         name:
           type: string
           description: the name of the spatial feature
+          example: District Centre
         validStartDate:
           type: string
           description: the start date from which on the spatial feature is valid
+          example: "2020-01-01"
         validEndDate:
           type: string
           description: the end date until the spatial feature is valid - or null if not set
+          example: "2020-12-31"
     IndicatorReferenceType:
       title: IndicatorReferenceType
       required:
@@ -8129,18 +8587,22 @@ components:
         name:
           type: string
           description: name of this organizational Unit
+          example: District administration
         mandant:
           type: boolean
           description: flag whether this unit is an autonomous mandant
+          example: true
         keycloakId:
           type: string
           description: uuid of the corresponding Keycloak group
         contact:
           type: string
           description: contact information of the person responsible for this group
+          example: admin@example.org
         description:
           type: string
           description: additional information
+          example: Administration of the example municipality.
         parentId:
           type: string
           description: uuid of the parent group
@@ -8277,6 +8739,7 @@ components:
         ownerId:
           type: string
           description: ID of the owning group
+          example: 3c9f8b12-0002-4a1b-9c33-1a2b3c4d5e02
     PeriodOfValidityType:
       title: PeriodOfValidityType
       required:
@@ -8289,11 +8752,13 @@ components:
             to ISO 8601 (e.g. 2018-01-30). The parameter can be omitted, if the
             end date is unknown.
           format: date
+          example: "2018-12-31"
         startDate:
           type: string
           description: a timestamp representing the starting date according to ISO
             8601 (e.g. 2018-01-30)
           format: date
+          example: "2018-01-01"
       description: definition of the period of validity of a certain dataset
     ProcessInputType:
       title: ProcessInputType
@@ -8315,13 +8780,15 @@ components:
         defaultValue:
           type: string
           description: the default value of the process parameter
+          example: "5.0"
         description:
           type: string
           description: a short description of the process input
+          example: Threshold used during computation.
         maxParameterValueForNumericInputs:
           type: number
           description: the maximum value that is allowed for the process parameter
-          example: 0.0
+          example: 100.0
         minParameterValueForNumericInputs:
           type: number
           description: the minimum value that is allowed for the process parameter
@@ -8329,6 +8796,7 @@ components:
         name:
           type: string
           description: the name of the process input parameter
+          example: threshold
     ProcessScriptOverviewType:
       title: ProcessScriptOverviewType
       required:
@@ -8393,30 +8861,38 @@ components:
           description: unique identifier of the associated indicator (e.g. the indicator
             that is computed by a script or for which the values shall be aggregated
             to another spatial unit)
+          example: 1d2e3f40-0001-4a5b-8c9d-000000000001
         description:
           type: string
           description: short description of the scripts content (what does it do)
+          example: Computes the U6 indicator from population counts.
         name:
           type: string
           description: name of the process script
+          example: Compute share of children under 6
         requiredGeoresourceIds:
           type: array
           description: identifiers of georesources that are used within the script.
           items:
             type: string
+          example: []
         requiredIndicatorIds:
           type: array
           description: identifiers of indicators that are used within the script.
           items:
             type: string
+          example:
+            - 1d2e3f40-0002-4a5b-8c9d-000000000002
         scriptCodeBase64:
           type: string
           description: the actual script code (JavaScript) as BASE64 encoded string
+          example: LyoganMgc2NyaXB0IGNvZGUgaGVyZSAqLw==
         scriptType:
           type: string
           description: a script type reference name used to distuingish process scripts
             from a client perspective, i.e. setup admin pages due to knowledge about
             type-specific script parameters and required indicators/georesources
+          example: kommonitor-standard
         variableProcessParameters:
           type: array
           description: list of process parameters that can be set by an expert user.
@@ -8437,27 +8913,34 @@ components:
         description:
           type: string
           description: short description of the scripts content (what does it do)
+          example: Computes the U6 indicator from population counts.
         name:
           type: string
           description: name of the process script
+          example: Compute share of children under 6
         requiredGeoresourceIds:
           type: array
           description: identifiers of georesources that are used within the script.
           items:
             type: string
+          example: []
         requiredIndicatorIds:
           type: array
           description: identifiers of indicators that are used within the script.
           items:
             type: string
+          example:
+            - 1d2e3f40-0002-4a5b-8c9d-000000000002
         scriptCodeBase64:
           type: string
           description: the actual script code (JavaScript) as BASE64 encoded string
+          example: LyoganMgc2NyaXB0IGNvZGUgdjIgKi8=
         scriptType:
           type: string
           description: a script type reference name used to distuingish process scripts
             from a client perspective, i.e. setup admin pages due to knowledge about
             type-specific script parameters and required indicators/georesources
+          example: kommonitor-standard
         variableProcessParameters:
           type: array
           description: list of process parameters that can be set by an expert user.
@@ -8564,6 +9047,7 @@ components:
           type: string
           description: the name of the spatial unit - its "spatialUnitLevel". The name
             is unique only within a mandant.
+          example: districts
         metadata:
           $ref: '#/components/schemas/CommonMetadataType'
         isOutlineLayer:
@@ -8573,10 +9057,12 @@ components:
         outlineColor:
           type: string
           description: outline color for this layer as hex code
+          example: "#333333"
         outlineWidth:
           type: number
           format: int32
           description: outline width as stroke width for outline geometry
+          example: 2
         outlineDashArrayString:
           type: string
           description: 'string of line stroke dash array for lines of interest (e.g. 20,20; see https://developer.mozilla.org/de/docs/Web/SVG/Attribute/stroke-dasharray)'
@@ -8596,10 +9082,14 @@ components:
           description: list of permissions on this entity
           items:
             type: string
+          example:
+            - creator
         geoJsonString:
           type: string
           description: a valid GeoJSON string containing the features consisting of
             a geometry and a unique identifier as property 'uuid'
+          example: >-
+            {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[7.0,51.4],[7.1,51.4],[7.1,51.5],[7.0,51.5],[7.0,51.4]]]},"properties":{"uuid":"8f14e45f-ceea-467d-9a1b-000000000101","name":"District Centre"}}]}
         jsonSchema:
           type: string
           description: a JSON schema as string that defines the data model for this
@@ -8620,6 +9110,7 @@ components:
           type: string
           description: the name and identifier of the spatial unit level the features
             apply to. The name is unique only within a mandant.
+          example: districts
         isOutlineLayer:
           type: boolean
           description: if true, then KomMonitor web client map application will offer this spatial unit as outline layer in legend control
@@ -8627,19 +9118,23 @@ components:
         outlineColor:
           type: string
           description: outline color for this layer as hex code
+          example: "#333333"
         outlineWidth:
           type: number
           format: int32
           description: outline width as stroke width for outline geometry
+          example: 2
         outlineDashArrayString:
           type: string
           description: 'string of line stroke dash array for lines of interest (e.g. 20,20; see https://developer.mozilla.org/de/docs/Web/SVG/Attribute/stroke-dasharray)'
         ownerId:
           type: string
           description: identifier of the owning group
+          example: 3c9f8b12-0001-4a1b-9c33-1a2b3c4d5e01
         isPublic:
           type: boolean
           description: flag whether the resource is publicly accessible
+          example: true
     SpatialUnitPUTInputType:
       title: SpatialUnitPUTInputType
       required:
@@ -8651,10 +9146,13 @@ components:
           type: string
           description: a valid GeoJSON string containing the features consisting of
             a geometry and a unique identifier as property 'uuid'
+          example: >-
+            {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[7.0,51.4],[7.1,51.4],[7.1,51.5],[7.0,51.5],[7.0,51.4]]]},"properties":{"uuid":"8f14e45f-ceea-467d-9a1b-000000000101","name":"District Centre"}}]}
         isPartialUpdate:
           type: boolean
           description: if set to TRUE, then a partial upload of geometries is possible.
             Missing features that are already in the database will then not be deleted
+          example: false
         periodOfValidity:
           $ref: '#/components/schemas/PeriodOfValidityType'
     SpatialUnitHierarchyMembershipPOSTInputType:
@@ -8669,14 +9167,17 @@ components:
           type: string
           description: the unique identifier of the hierarchy the spatial unit shall
             be a member of
+          example: 7b3f9a10-0001-4c2d-8e3f-000000000001
         nextUpperSpatialUnitId:
           type: string
           description: the identifier of the next upper spatial unit within this
             hierarchy. Leave empty if the spatial unit is the top level.
+          example: 5a1b2c3d-0001-4e5f-8a9b-000000000001
         nextLowerSpatialUnitId:
           type: string
           description: the identifier of the next lower spatial unit within this
             hierarchy. Leave empty if the spatial unit is the bottom level.
+          example: 5a1b2c3d-0002-4e5f-8a9b-000000000002
     SpatialUnitHierarchyMembershipInputType:
       title: SpatialUnitHierarchyMembershipInputType
       required:
@@ -8690,11 +9191,13 @@ components:
           type: string
           description: the unique identifier of the hierarchy the spatial unit shall
             be a member of
+          example: 7b3f9a10-0001-4c2d-8e3f-000000000001
         hierarchyLevel:
           type: integer
           format: int32
           description: the ordered position of the spatial unit within the hierarchy.
             Lower values denote upper levels.
+          example: 1
     SpatialUnitHierarchyMembershipType:
       title: SpatialUnitHierarchyMembershipType
       required:
@@ -8736,11 +9239,13 @@ components:
         spatialUnitId:
           type: string
           description: the unique identifier of the spatial unit
+          example: 5a1b2c3d-0001-4e5f-8a9b-000000000001
         hierarchyLevel:
           type: integer
           format: int32
           description: the ordered position of the spatial unit within the hierarchy.
             Lower values denote upper levels.
+          example: 1
     SpatialUnitHierarchyMemberType:
       title: SpatialUnitHierarchyMemberType
       required:
@@ -8783,14 +9288,17 @@ components:
         name:
           type: string
           description: the name of the hierarchy. Unique within the owning mandant.
+          example: Administrative hierarchy
         mandantId:
           type: string
           description: identifier of the mandant (organizational unit) that owns the
             hierarchy
+          example: 3c9f8b12-0001-4a1b-9c33-1a2b3c4d5e01
         isPublic:
           type: boolean
           description: flag whether the hierarchy is publicly accessible
           default: false
+          example: true
     SpatialUnitHierarchyPOSTInputType:
       title: SpatialUnitHierarchyPOSTInputType
       required:
@@ -8803,14 +9311,17 @@ components:
         name:
           type: string
           description: the name of the hierarchy. Unique within the owning mandant.
+          example: Administrative hierarchy
         mandantId:
           type: string
           description: identifier of the mandant (organizational unit) that owns the
             hierarchy
+          example: 3c9f8b12-0001-4a1b-9c33-1a2b3c4d5e01
         isPublic:
           type: boolean
           description: flag whether the hierarchy is publicly accessible
           default: false
+          example: false
         members:
           type: array
           description: optional ordered list of existing spatial units to place into the
@@ -8862,12 +9373,14 @@ components:
         topicDescription:
           type: string
           description: short description of the topic
+          example: Indicators describing the population structure.
         topicId:
           type: string
           description: the topic identifier
         topicName:
           type: string
           description: the topic name
+          example: Demography
         topicResource:
           description: topic resource indicating if the topic object corresponds to
             an indicator or to a georesource
@@ -8926,11 +9439,17 @@ components:
           description: list of topics for which all resources should be filtered
           items:
             type: string
+          example:
+            - t-demography
+            - t-mobility
         ids:
           type: array
           description: list of resources that should be filtered
           items:
             type: string
+          example:
+            - 1d2e3f40-0001-4a5b-8c9d-000000000001
+            - 1d2e3f40-0002-4a5b-8c9d-000000000002
     WebServiceType:
       title: WebServiceType
       required:
@@ -8946,6 +9465,7 @@ components:
         contact:
           type: string
           description: contact details where additional information can be achieved
+          example: KomMonitor Team, info@kommonitor.de
         connectionDetails:
           oneOf:
             - $ref: '#/components/schemas/WmsConnectionInfoType'
@@ -8957,9 +9477,11 @@ components:
         datasource:
           type: string
           description: information about the origin/source of the web service
+          example: Municipal education department
         description:
           type: string
           description: description of the web service
+          example: WMS serving the school locations.
         note:
           type: string
           description: an optional note with background information about the web service
@@ -8969,9 +9491,11 @@ components:
         title:
           type: string
           description: title of the web service
+          example: Schools WMS
         topicReference:
           type: string
           description: 'id of the last topic hierarchy entity '
+          example: education
     WebServiceCreationType:
       title: WebServiceOverviewType
       allOf:
@@ -8985,14 +9509,18 @@ components:
             isPublic:
               type: boolean
               description: flag whether the resource is publicly accessible
+              example: true
             ownerId:
               type: string
               description: identifier of the owning group
+              example: 3c9f8b12-0001-4a1b-9c33-1a2b3c4d5e01
             permissions:
               type: array
               description: list of permissions on this entity
               items:
                 type: string
+              example:
+                - creator
     WebServiceOverviewType:
       title: WebServiceOverviewType
       allOf:
@@ -9045,9 +9573,11 @@ components:
             baseUrl:
               type: string
               description: the base URL of the WMS web service
+              example: https://geoserver.example.org/kommonitor/wms
             layerName:
               type: string
               description: the layer Name of the WMS web service
+              example: kommonitor:schools
     UserInfoOverviewType:
       title: UserInfoOverviewType
       required:
@@ -9100,26 +9630,36 @@ components:
           description: list of georesource user favourites
           items:
             type: string
+          example:
+            - 0c0d17bb-0001-4a56-9abc-000000000001
         indicatorFavourites:
           type: array
           description: list of indicator user favourites
           items:
             type: string
+          example:
+            - 1d2e3f40-0001-4a5b-8c9d-000000000001
         georesourceTopicFavourites:
           type: array
           description: list of georesource topic user favourites
           items:
             type: string
+          example:
+            - t-administrative-boundaries
         indicatorTopicFavourites:
           type: array
           description: list of indicator topic user favourites
           items:
             type: string
+          example:
+            - t-demography
         webServiceFavourites:
           type: array
           description: list of web service user favourites
           items:
             type: string
+          example:
+            - ws-0001-0001-0001
     OrganizationalUnitRoleAuthorityType:
       title: OrganizationalUnitRoleAuthorityType
       required:
